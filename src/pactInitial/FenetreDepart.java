@@ -1,13 +1,17 @@
 package pactInitial;
 
 import javax.swing.JFrame;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class FenetreDepart extends JFrame {
+public class FenetreDepart extends JFrame implements ActionListener{
 
 
 
@@ -28,6 +32,10 @@ public class FenetreDepart extends JFrame {
 			contenu.add(image, BorderLayout.CENTER);
 
 			this.pack();
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			
 		}
 
 	}
