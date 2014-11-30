@@ -27,7 +27,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			contenu.setLayout(new BorderLayout());
 			contenu.setBackground(new Color(255, 255, 255));
 
-			JLabel image = new JLabel(new ImageIcon("Data/bienvenue2.png"));
+			JLabel image = new JLabel(new ImageIcon("data/bienvenue.png"));
 
 			contenu.add(image, BorderLayout.CENTER);
 
