@@ -27,17 +27,19 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+			JLabel image = new JLabel(new ImageIcon("data/bienvenue.png"));
+
 			// Utilisation de BorderLayout
 			Container contenu = getContentPane();
 			contenu.setLayout(new BorderLayout());
 			contenu.setBackground(new Color(255, 255, 255));
 
-			JLabel image = new JLabel(new ImageIcon("data/bienvenue.png"));
 			
 			//Ajouts des bouttons sur buttons
 			
 			bouttons.add(commencerButton);
 			bouttons.add(creditsButton);
+			bouttons.setBackground(new Color(255,255,255));
 
 			//Ajouts sur le ContentPane
 			contenu.add(image, BorderLayout.CENTER);
