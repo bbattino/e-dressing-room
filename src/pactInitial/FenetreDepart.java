@@ -45,6 +45,11 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			contenu.add(image, BorderLayout.CENTER);
 			contenu.add(bouttons,BorderLayout.PAGE_END);
 
+			//Ajout des Listeners
+			commencerButton.addActionListener(this);
+			creditsButton.addActionListener(this);
+
+			
 			this.pack();
 		}
 		
