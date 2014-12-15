@@ -47,8 +47,23 @@ public class FenetreDepart extends JFrame implements ActionListener{
 
 			this.pack();
 		}
+		
+		public void commencer(){
+			
+			System.out.println("on commence");
+		}
+		
+		public void credits(){
+			System.out.println("crédits");
+
+		}
 
 		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource()==commencerButton)
+				commencer();
+			if(e.getSource()==creditsButton)
+				credits();
 			
 		}
 
