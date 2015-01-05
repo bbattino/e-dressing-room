@@ -84,8 +84,10 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 		if(e.getSource()==nouveauCompteButton)
 			nouveauCompte();
 		for(JButton bouton : utilisateurs){
-			if(e.getSource()==bouton)
+			if(e.getSource()==bouton){
 				new FenetreCatalogue();
+				dispose();
+			}
 		}
 	}
 
