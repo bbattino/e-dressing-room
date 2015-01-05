@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -48,11 +49,17 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 		contenu.add(bouttons,BorderLayout.PAGE_END);
 		for(JButton utilisateurButton : utilisateurs)
 			utilisateurLabel.add(utilisateurButton);
-		contenu.add(utilisateurLabel,BorderLayout.CENTER);
+		utilisateurLabel.setBackground(new Color(255,255,255));
+		contenu.add(utilisateurLabel,BorderLayout.PAGE_START);
 
 		//Ajout des Listeners
 		quitterButton.addActionListener(this);
 		nouveauCompteButton.addActionListener(this);
+		
+		//Ajout d'une image de fond
+		JLabel image = new JLabel(new ImageIcon("data/identification.gif"));
+		contenu.add(image,BorderLayout.CENTER);
+
 
 		
 		this.pack();
