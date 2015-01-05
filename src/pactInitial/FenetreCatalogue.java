@@ -36,7 +36,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-			JLabel image = new JLabel(new ImageIcon("data/bienvenue.png"));
+			JLabel image = new JLabel(new ImageIcon("data/vetements.jpg"));
 
 			// Utilisation de BorderLayout
 			Container contenu = getContentPane();
@@ -58,6 +58,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			//Ajout des Listeners
 			for(JButton bouton : boutonListe )
 				bouton.addActionListener(this);
+			quitterButton.addActionListener(this);
 			
 			//Configuration du panneau catalogue
 			

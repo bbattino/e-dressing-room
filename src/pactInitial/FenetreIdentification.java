@@ -13,8 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
-
 public class FenetreIdentification extends JFrame implements ActionListener{
 	
 
