@@ -56,6 +56,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 		public void commencer(){
 			
 			System.out.println("on commence");
+			new FenetreIdentification();
 		}
 		
 		public void credits(){
