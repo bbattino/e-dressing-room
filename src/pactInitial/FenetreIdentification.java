@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+
 public class FenetreIdentification extends JFrame implements ActionListener{
 	
 
@@ -55,6 +57,8 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 		//Ajout des Listeners
 		quitterButton.addActionListener(this);
 		nouveauCompteButton.addActionListener(this);
+		for(JButton bouton : utilisateurs)
+			bouton.addActionListener(this);
 		
 		//Ajout d'une image de fond
 		JLabel image = new JLabel(new ImageIcon("data/identification.gif"));
@@ -81,7 +85,10 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 			quitter();
 		if(e.getSource()==nouveauCompteButton)
 			nouveauCompte();
-		
+		for(JButton bouton : utilisateurs){
+			if(e.getSource()==bouton)
+				new FenetreCatalogue();
+		}
 	}
 
 
