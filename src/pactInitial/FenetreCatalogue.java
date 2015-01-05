@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		private JButton robeButton = new JButton("Robe");
 		private JButton pantalonButton = new JButton("Pantalon");
 		private JButton quitterButton= new JButton("Quitter");
+		private JPanel catalogue = new JPanel();
 
 
 		private JPanel bouttons = new JPanel();
@@ -53,36 +55,40 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 
 
 
-
+			//Ajout des Listeners
+			for(JButton bouton : boutonListe )
+				bouton.addActionListener(this);
+			
+			//Configuration du panneau catalogue
+			
+			catalogue.setLayout(new GridLayout(2,2));
+			catalogue.setBackground(new Color(255,255,255));
+			catalogue.add(tShirtButton);
+			catalogue.add(pullButton);
+			catalogue.add(pantalonButton);
+			catalogue.add(robeButton);
+			
 			//Ajouts sur le ContentPane
 			contenu.add(image, BorderLayout.PAGE_START);
 			contenu.add(bouttons,BorderLayout.PAGE_END);
+			contenu.add(catalogue,BorderLayout.CENTER);
 
-			//Ajout des Listeners
-			commencerButton.addActionListener(this);
-			creditsButton.addActionListener(this);
+			
 
 			
 			this.pack();
 		}
 		
-		public void commencer(){
-			
-			System.out.println("on commence");
-			new FenetreIdentification();
-		}
-		
-		public void credits(){
-			System.out.println("crédits");
-
+		public void tShirt(){
+			System.out.println("T Shirt");
 		}
 
 		public void actionPerformed(ActionEvent e) {
 			
-			if(e.getSource()==commencerButton)
-				commencer();
-			if(e.getSource()==creditsButton)
-				credits();
+			if(e.getSource()==tShirtButton)
+				tShirt();
+			if(e.getSource()==quitterButton)
+				System.exit(0);
 			
 		}
 
