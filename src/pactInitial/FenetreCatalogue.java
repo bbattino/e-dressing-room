@@ -83,11 +83,29 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		public void tShirt(){
 			System.out.println("T Shirt");
 		}
+		public void robe(){
+			System.out.println("Robe");
+		}
+		public void pantalon(){
+			System.out.println("Pantalon");
+		}
+		public void pull(){
+			System.out.println("Pull");
+		}
 
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==tShirtButton)
 				tShirt();
+			if(e.getSource()==robeButton)
+				robe();
+			if(e.getSource()==pantalonButton)
+				pantalon();
+			if(e.getSource()==pullButton)
+				pull();
+
+
+
 			if(e.getSource()==quitterButton)
 				System.exit(0);
 			
