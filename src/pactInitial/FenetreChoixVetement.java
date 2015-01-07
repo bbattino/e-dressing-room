@@ -26,19 +26,21 @@ public class FenetreChoixVetement extends JFrame implements ActionListener{
 		private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 		private JPanel bouttons = new JPanel();
 		private ArrayList<JLabel> images = new ArrayList<JLabel>();
+		private int numeroChoix=0;
+		private Container contenu = getContentPane();
+
 
 		public FenetreChoixVetement() {
 			setTitle("Choisissez votre vêtement"); // Titre
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-			images.add(new JLabel(new ImageIcon("data/bienvenue.png")));
-			images.add(new JLabel(new ImageIcon("data/bienvenue.png")));
-			images.add(new JLabel(new ImageIcon("data/bienvenue.png")));
+			images.add(new JLabel(new ImageIcon("data/tshirt1.jpg")));
+			images.add(new JLabel(new ImageIcon("data/tshirt2.png")));
+			images.add(new JLabel(new ImageIcon("data/tshirt3.png")));
 			
 
 			// Utilisation de BorderLayout
-			Container contenu = getContentPane();
 			contenu.setLayout(new BorderLayout());
 			contenu.setBackground(new Color(255, 255, 255));
 
@@ -55,7 +57,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener{
 			listeBoutons.add(precedentButton);
 			
 			//Ajouts sur le ContentPane
-			contenu.add(images.get(0), BorderLayout.CENTER);
+			contenu.add(images.get(numeroChoix), BorderLayout.CENTER);
 			contenu.add(bouttons,BorderLayout.PAGE_END);
 			contenu.add(precedentButton,BorderLayout.LINE_START);
 			contenu.add(suivantButton,BorderLayout.LINE_END);
@@ -64,7 +66,8 @@ public class FenetreChoixVetement extends JFrame implements ActionListener{
 			for(JButton bouton : listeBoutons)
 				bouton.addActionListener(this);
 			
-			this.pack();
+			this.setSize(getToolkit().getScreenSize());
+			
 		}
 		
 		public void essayer(){
@@ -72,9 +75,11 @@ public class FenetreChoixVetement extends JFrame implements ActionListener{
 			System.out.println("essayage");
 		}
 		
-		public void credits(){
-			System.out.println("crédits");
-
+		public void suivant(){
+			System.out.println("Suivant");
+			numeroChoix= (numeroChoix==images.size()-1)?  0:numeroChoix+1;
+			System.out.println(numeroChoix);
+			contenu.add(images.get(numeroChoix),BorderLayout.CENTER);
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -83,6 +88,8 @@ public class FenetreChoixVetement extends JFrame implements ActionListener{
 				System.exit(0);
 			if(e.getSource()==essayerButton)
 				essayer();
+			if(e.getSource()==suivantButton)
+				suivant();
 			
 		}
 
