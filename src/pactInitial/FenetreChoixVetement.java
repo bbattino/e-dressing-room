@@ -26,7 +26,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener{
 		private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 		private JPanel bouttons = new JPanel();
 		private ArrayList<JLabel> images = new ArrayList<JLabel>();
-		private int numeroChoix=0;
+		private static int numeroChoix=0;
 		private Container contenu = getContentPane();
 
 
@@ -79,7 +79,8 @@ public class FenetreChoixVetement extends JFrame implements ActionListener{
 			System.out.println("Suivant");
 			numeroChoix= (numeroChoix==images.size()-1)?  0:numeroChoix+1;
 			System.out.println(numeroChoix);
-			contenu.add(images.get(numeroChoix),BorderLayout.CENTER);
+			dispose();
+			new FenetreChoixVetement();
 		}
 
 		public void actionPerformed(ActionEvent e) {
