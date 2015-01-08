@@ -77,11 +77,12 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			
 
 			
-			this.pack();
+			this.setExtendedState(this.MAXIMIZED_BOTH);
 		}
 		
 		public void tShirt(){
 			System.out.println("T Shirt");
+			new FenetreChoixVetement();
 		}
 		public void robe(){
 			System.out.println("Robe");

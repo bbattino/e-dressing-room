@@ -49,8 +49,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			commencerButton.addActionListener(this);
 			creditsButton.addActionListener(this);
 
-			
-			this.pack();
+			this.setExtendedState(this.MAXIMIZED_BOTH);
 		}
 		
 		public void commencer(){

@@ -66,7 +66,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener{
 			for(JButton bouton : listeBoutons)
 				bouton.addActionListener(this);
 			
-			this.setSize(getToolkit().getScreenSize());
+			this.setExtendedState(this.MAXIMIZED_BOTH);
 			
 		}
 		

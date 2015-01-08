@@ -64,7 +64,7 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 
 
 		
-		this.pack();
+		this.setExtendedState(this.MAXIMIZED_BOTH);
 	}
 	
 	public void quitter(){
