@@ -19,6 +19,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 
 		private static final long serialVersionUID = 1L;
 		private JButton commencerButton = new JButton("Commencer");
+		private JButton quitterButton = new JButton("Quitter");
 		private JButton creditsButton = new JButton("A propos");
 		private JPanel bouttons = new JPanel();
 
@@ -39,6 +40,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			
 			bouttons.add(commencerButton);
 			bouttons.add(creditsButton);
+			bouttons.add(quitterButton);
 			bouttons.setBackground(new Color(255,255,255));
 
 			//Ajouts sur le ContentPane
@@ -48,6 +50,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			//Ajout des Listeners
 			commencerButton.addActionListener(this);
 			creditsButton.addActionListener(this);
+			quitterButton.addActionListener(this);
 
 			this.setExtendedState(this.MAXIMIZED_BOTH);
 		}
@@ -69,6 +72,8 @@ public class FenetreDepart extends JFrame implements ActionListener{
 				commencer();
 			if(e.getSource()==creditsButton)
 				credits();
+			if(e.getSource()==quitterButton)
+				System.exit(0);
 			
 		}
 
