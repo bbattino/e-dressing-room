@@ -72,11 +72,17 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	}
 
 	public void suivant() {
-		System.out.println("Suivant");
 		numeroChoix = (numeroChoix == images.size() - 1) ? 0 : numeroChoix + 1;
-		System.out.println(numeroChoix);
 		dispose();
 		new FenetreChoixVetement();
+	}
+	
+	public void precedent(){
+		numeroChoix = (numeroChoix == 0) ? images.size()-1: numeroChoix - 1;
+		dispose();
+		new FenetreChoixVetement();
+
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -87,6 +93,8 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 			essayer();
 		if (e.getSource() == suivantButton)
 			suivant();
+		if (e.getSource() == precedentButton)
+			precedent();
 
 	}
 
