@@ -81,7 +81,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		}
 		
 		public void tShirt(){
-			System.out.println("T Shirt");
+			dispose();
 			new FenetreChoixVetement();
 		}
 		public void robe(){
