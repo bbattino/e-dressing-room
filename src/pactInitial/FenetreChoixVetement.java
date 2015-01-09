@@ -73,6 +73,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener{
 		public void essayer(){
 			
 			System.out.println("essayage");
+			new FenetreAffichage("data/tshirt1.jpg");
 		}
 		
 		public void suivant(){
