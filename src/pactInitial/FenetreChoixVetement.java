@@ -71,7 +71,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	public void essayer() {
 
 		dispose();
-		new FenetreAffichage("data/tshirt1.jpg");
+		new FenetreAffichage("data/tShirtMis.jpg");
 	}
 
 	public void suivant() {
