@@ -24,7 +24,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 		private JPanel bouttons = new JPanel();
 
 		public FenetreDepart() {
-			setTitle("Bienvenue"); // Titre
+			setUndecorated(true);
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

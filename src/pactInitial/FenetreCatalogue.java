@@ -32,7 +32,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		private JPanel bouttons = new JPanel();
 
 		public FenetreCatalogue() {
-			setTitle("Catalogue"); // Titre
+			setUndecorated(true);
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

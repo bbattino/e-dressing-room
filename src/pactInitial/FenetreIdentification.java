@@ -25,7 +25,7 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 
 
 	public FenetreIdentification() {
-		setTitle("Identifiez vous"); // Titre
+		setUndecorated(true);
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		utilisateurs.add(new JButton("Jean"));

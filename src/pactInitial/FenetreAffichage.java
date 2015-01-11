@@ -27,7 +27,7 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 
 
 		public FenetreAffichage(String imagePath) {
-			setTitle("Essayage Virtuel"); // Titre
+			setUndecorated(true);
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

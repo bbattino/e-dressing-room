@@ -28,7 +28,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	private Container contenu = getContentPane();
 
 	public FenetreChoixVetement() {
-		setTitle("Choisissez votre vêtement"); // Titre
+		setUndecorated(true);
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
