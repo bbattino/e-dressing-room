@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 		for (JButton bouton : listeBoutons)
 			bouton.addActionListener(this);
 
-		this.setExtendedState(this.MAXIMIZED_BOTH);
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 
 	}
 
