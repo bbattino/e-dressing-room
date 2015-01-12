@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import audio.LecteurAudio;
+
 public class FenetreAffichage extends JFrame implements ActionListener{
 
 
@@ -48,6 +50,8 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 			
 			listeBoutons.add(retourButton);
 			listeBoutons.add(quitterButton);
+			
+			new LecteurAudio("SolutionSon.wav");
 			
 			//Ajouts sur le ContentPane
 			contenu.add(image, BorderLayout.CENTER);
