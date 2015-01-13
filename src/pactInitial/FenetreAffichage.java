@@ -24,6 +24,7 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 		private static final long serialVersionUID = 1L;
 		private JButton retourButton = new JButton("Retour");
 		private JButton quitterButton = new JButton("Quitter");
+		private JButton panierButton = new JButton("Ajouter au Panier");
 		private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 		private JPanel bouttons = new JPanel();
 		private Container contenu = getContentPane();
@@ -46,10 +47,12 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 			
 			bouttons.add(retourButton);
 			bouttons.add(quitterButton);
+			bouttons.add(panierButton);
 			bouttons.setBackground(new Color(255,255,255));
 			
 			listeBoutons.add(retourButton);
 			listeBoutons.add(quitterButton);
+			listeBoutons.add(panierButton);
 			
 			new LecteurAudio("SolutionSon.wav");
 			
@@ -70,6 +73,9 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 			dispose();
 			new FenetreChoixVetement();
 		}
+		public void panier(){
+			
+		}
 		
 		
 		public void actionPerformed(ActionEvent e) {
@@ -78,6 +84,8 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 				System.exit(0);
 			if(e.getSource()==retourButton)
 				retour();
+			if(e.getSource()==panierButton)
+				panier();
 			
 		}
 
