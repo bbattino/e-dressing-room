@@ -23,6 +23,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	private JButton suivantButton = new JButton("suivant");
 	private JButton precedentButton = new JButton("précedent");
 	private JButton retourButton = new JButton("Retour");
+	private JButton panierButton = new JButton("panier");
 	private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
 	private ArrayList<JLabel> images = new ArrayList<JLabel>();
@@ -46,6 +47,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 
 		bouttons.add(retourButton);
 		bouttons.add(essayerButton);
+		bouttons.add(panierButton);
 		bouttons.add(quitterButton);
 		bouttons.setBackground(new Color(255, 255, 255));
 
@@ -54,6 +56,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 		listeBoutons.add(suivantButton);
 		listeBoutons.add(precedentButton);
 		listeBoutons.add(retourButton);
+		listeBoutons.add(panierButton);
 		// Ajouts sur le ContentPane
 		contenu.add(images.get(numeroChoix), BorderLayout.CENTER);
 		contenu.add(bouttons, BorderLayout.PAGE_END);
@@ -91,6 +94,9 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 		this.dispose();
 		new FenetreCatalogue();
 	}
+	public void panier() {
+		System.out.print("panier");
+	}
 
 	public void actionPerformed(ActionEvent e) {
 
@@ -104,6 +110,8 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 			precedent();
 		if (e.getSource()== retourButton)
 			retour();
+		if (e.getSource()== panierButton)
+			panier();
 
 	}
 
