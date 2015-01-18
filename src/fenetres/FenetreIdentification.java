@@ -6,7 +6,9 @@ import java.awt.Container;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,14 +25,21 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 	private ArrayList<JButton> utilisateurs =new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
 	private JPanel utilisateurLabel= new JPanel();
+	private static Logger logger;
 
 
 	public FenetreIdentification() {
+		logger = Logger.getLogger("com.foo.FenetreIdentification");
+
 		setUndecorated(true);
+        logger.info("Initialisation de la fenêtre d'identification \n");
+
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		utilisateurs.add(new JButton("Jean"));
 		utilisateurs.add(new JButton("Paul"));
+		logger.info("Ajout des boutons \n");
+
 
 		
 
@@ -58,10 +67,17 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 		nouveauCompteButton.addActionListener(this);
 		for(JButton bouton : utilisateurs)
 			bouton.addActionListener(this);
+		logger.info("Ajout des actionListeners pour les boutons \n");
+
 		
 		//Ajout d'une image de fond
 		JLabel image = new JLabel(new ImageIcon("data/identification.gif"));
 		contenu.add(image,BorderLayout.CENTER);
+		File imageFile = new File("data/identificatio.gif");
+		if(imageFile.exists())
+			logger.info("l'image a été chargée \n");
+		else
+			logger.warning("image non chargée ! \n");
 
 
 		
