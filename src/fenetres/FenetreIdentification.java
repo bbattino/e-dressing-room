@@ -63,18 +63,12 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 		//Ajout des Listeners
 		quitterButton.addActionListener(this);
 		nouveauCompteButton.addActionListener(this);
-		logger.info("Ajout des boutons");
 		for(JButton bouton : utilisateurs)
 			bouton.addActionListener(this);
-		logger.info("Ajout des actionListener");
 		
 		//Ajout d'une image de fond
 		JLabel image = new JLabel(new ImageIcon("data/identification.gif"));
 		contenu.add(image,BorderLayout.CENTER);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {}
-		System.out.println(image.getHeight());
 		if(image.getHeight()==0)
 			logger.warning("l'image n'a pas été chargée");
 		else
