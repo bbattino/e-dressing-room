@@ -1,4 +1,4 @@
-package pactInitial;
+package fenetres;
 
 import javax.swing.JFrame;
 
