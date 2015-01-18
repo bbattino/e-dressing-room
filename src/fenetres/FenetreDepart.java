@@ -32,11 +32,11 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			logger = Logger.getLogger("com.foo.FenetreDepart");
 
 			setUndecorated(true);
-	        logger.info("Initialisation de la fenêtre de départ");
+	        logger.info("Initialisation de la fenêtre de départ \n");
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			JLabel image = new JLabel( new ImageIcon("data/bienvenue.png"));
-			logger.info("l'image a été chargée");
+			logger.info("l'image a été chargée \n");
 
 			// Utilisation de BorderLayout
 			Container contenu = getContentPane();
@@ -50,7 +50,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			bouttons.add(creditsButton);
 			bouttons.add(quitterButton);
 			bouttons.setBackground(new Color(255,255,255));
-			logger.info("Ajout des boutons");
+			logger.info("Ajout des boutons \n");
 
 			//Ajouts sur le ContentPane
 			contenu.add(image, BorderLayout.CENTER);
@@ -60,7 +60,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			commencerButton.addActionListener(this);
 			creditsButton.addActionListener(this);
 			quitterButton.addActionListener(this);
-			logger.info("Ajout des actionListeners pour les boutons");
+			logger.info("Ajout des actionListeners pour les boutons \n");
 
 			this.setExtendedState(Frame.MAXIMIZED_BOTH);
 			
@@ -83,7 +83,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==commencerButton)
-				logger.info("Clique sur Commencer");
+				logger.info("Clique sur Commencer \n");
 				commencer();
 			if(e.getSource()==creditsButton)
 				credits();
