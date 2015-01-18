@@ -7,7 +7,6 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,16 +23,10 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 	private ArrayList<JButton> utilisateurs =new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
 	private JPanel utilisateurLabel= new JPanel();
-	private static Logger logger;
-
 
 
 	public FenetreIdentification() {
-		logger = Logger.getLogger("com.foo.FenetreIdentification");
-
 		setUndecorated(true);
-        logger.info("Initialisation de la fenêtre d'identification");
-
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		utilisateurs.add(new JButton("Jean"));
@@ -69,11 +62,6 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 		//Ajout d'une image de fond
 		JLabel image = new JLabel(new ImageIcon("data/identification.gif"));
 		contenu.add(image,BorderLayout.CENTER);
-		if(image.getHeight()==0)
-			logger.warning("l'image n'a pas été chargée");
-		else
-			logger.info("l'image a été chargée");
-		
 
 
 		
@@ -99,7 +87,6 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 		for(JButton bouton : utilisateurs){
 			if(e.getSource()==bouton){
 				new FenetreCatalogue();
-				logger.info("Utilisateur choisi");
 				dispose();
 			}
 		}
