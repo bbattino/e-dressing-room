@@ -1,5 +1,6 @@
 package pactInitial;
 
+import fenetres.FenetreDepart;
 import audio.LecteurAudio;
 
 
