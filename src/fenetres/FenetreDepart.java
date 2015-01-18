@@ -8,6 +8,7 @@ import java.awt.Container;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -36,7 +37,14 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			JLabel image = new JLabel( new ImageIcon("data/bienvenue.png"));
-			logger.info("l'image a été chargée \n");
+			File imageFile = new File("data/bienvenue.png");
+			if(imageFile.exists())
+				logger.info("l'image a été chargée \n");
+			else
+				logger.warning("image non chargée \n");
+				
+			
+			
 
 			// Utilisation de BorderLayout
 			Container contenu = getContentPane();
