@@ -40,7 +40,6 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 		File dataFile = new File("data");
 		File[] fichiersImage = dataFile.listFiles(new FilenameFilter() {
 			public boolean accept(File dir, String name) {return name.startsWith("catalogue");}});
-		images.add(new JLabel(new ImageIcon("data/tshirt1.jpg")));
 
 		for (int i = 0; i<fichiersImage.length;i++){
 			images.add(new JLabel(new ImageIcon("data/"+fichiersImage[i].getName())));
