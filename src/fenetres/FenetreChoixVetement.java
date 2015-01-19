@@ -8,6 +8,8 @@ import java.awt.Container;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -34,11 +36,15 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 		setUndecorated(true);
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		/******** Recherches de toutes les images du catalogue dans le dossier data ********/
+		File dataFile = new File("data");
+		File[] fichiersImage = dataFile.listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name) {return name.startsWith("catalogue");}});
 		images.add(new JLabel(new ImageIcon("data/tshirt1.jpg")));
-		images.add(new JLabel(new ImageIcon("data/tshirt2.png")));
-		images.add(new JLabel(new ImageIcon("data/tshirt3.png")));
 
+		for (int i = 0; i<fichiersImage.length;i++){
+			images.add(new JLabel(new ImageIcon("data/"+fichiersImage[i].getName())));
+		}
 		// Utilisation de BorderLayout
 		contenu.setLayout(new BorderLayout());
 		contenu.setBackground(new Color(255, 255, 255));
@@ -82,18 +88,19 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 		dispose();
 		new FenetreChoixVetement();
 	}
-	
-	public void precedent(){
-		numeroChoix = (numeroChoix == 0) ? images.size()-1: numeroChoix - 1;
+
+	public void precedent() {
+		numeroChoix = (numeroChoix == 0) ? images.size() - 1 : numeroChoix - 1;
 		dispose();
 		new FenetreChoixVetement();
-		
-		
+
 	}
-	public void retour(){
+
+	public void retour() {
 		this.dispose();
 		new FenetreCatalogue();
 	}
+
 	public void panier() {
 		System.out.print("panier");
 	}
@@ -108,9 +115,9 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 			suivant();
 		if (e.getSource() == precedentButton)
 			precedent();
-		if (e.getSource()== retourButton)
+		if (e.getSource() == retourButton)
 			retour();
-		if (e.getSource()== panierButton)
+		if (e.getSource() == panierButton)
 			panier();
 
 	}
