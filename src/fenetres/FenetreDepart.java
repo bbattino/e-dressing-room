@@ -84,17 +84,21 @@ public class FenetreDepart extends JFrame implements ActionListener{
 		}
 		
 		public void credits(){
-			System.out.println("crédits");
-
+			new FenetreCredit(this);
+			dispose();
 		}
 
 		public void actionPerformed(ActionEvent e) {
 			
-			if(e.getSource()==commencerButton)
+			if(e.getSource()==commencerButton){
 				logger.info("Clique sur Commencer \n");
 				commencer();
-			if(e.getSource()==creditsButton)
+			}
+			if(e.getSource()==creditsButton){
+				logger.info("Clique sur crédit");
 				credits();
+
+			}
 			if(e.getSource()==quitterButton)
 				System.exit(0);
 			
