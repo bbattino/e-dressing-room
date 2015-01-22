@@ -7,7 +7,6 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -149,7 +148,7 @@ public class FenetreIdentification extends JFrame implements ActionListener {
 			nouveauCompte();
 		for (JButton bouton : utilisateurs) {
 			if (e.getSource() == bouton) {
-				new FenetreCatalogue();
+				new FenetreCatalogue(bouton.getText());
 				dispose();
 			}
 		}

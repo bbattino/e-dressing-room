@@ -28,9 +28,11 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 		private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 		private JPanel bouttons = new JPanel();
 		private Container contenu = getContentPane();
+		private String userName;
 
 
-		public FenetreAffichage(String imagePath) {
+		public FenetreAffichage(String imagePath, String userName) {
+			this.userName=userName;
 			setUndecorated(true);
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,7 +73,7 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 		public void retour(){
 			
 			dispose();
-			new FenetreChoixVetement();
+			new FenetreChoixVetement(userName);
 		}
 		public void panier(){
 			

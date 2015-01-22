@@ -29,11 +29,13 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		private JButton quitterButton= new JButton("Quitter");
 		private JButton retourButton = new JButton("Retour");
 		private JPanel catalogue = new JPanel();
+		private String userName;
 
 
 		private JPanel bouttons = new JPanel();
 
-		public FenetreCatalogue() {
+		public FenetreCatalogue(String userName) {
+			this.userName =userName;
 			setUndecorated(true);
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,7 +87,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		
 		public void tShirt(){
 			dispose();
-			new FenetreChoixVetement();
+			new FenetreChoixVetement(userName);
 		}
 		public void robe(){
 			System.out.println("Robe");

@@ -31,8 +31,10 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	private ArrayList<JLabel> images = new ArrayList<JLabel>();
 	private static int numeroChoix = 0;
 	private Container contenu = getContentPane();
+	private String userName;
 
-	public FenetreChoixVetement() {
+	public FenetreChoixVetement(String userName) {
+		this.userName=userName;
 		setUndecorated(true);
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,25 +81,25 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	public void essayer() {
 
 		dispose();
-		new FenetreAffichage("data/tShirtMis.jpg");
+		new FenetreAffichage("data/tShirtMis.jpg",userName);
 	}
 
 	public void suivant() {
 		numeroChoix = (numeroChoix == images.size() - 1) ? 0 : numeroChoix + 1;
 		dispose();
-		new FenetreChoixVetement();
+		new FenetreChoixVetement(userName);
 	}
 
 	public void precedent() {
 		numeroChoix = (numeroChoix == 0) ? images.size() - 1 : numeroChoix - 1;
 		dispose();
-		new FenetreChoixVetement();
+		new FenetreChoixVetement(userName);
 
 	}
 
 	public void retour() {
 		this.dispose();
-		new FenetreCatalogue();
+		new FenetreCatalogue(userName);
 	}
 
 	public void panier() {
