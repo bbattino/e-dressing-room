@@ -12,39 +12,37 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class FenetreIdentification extends JFrame implements ActionListener{
-	
+public class FenetreIdentification extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JButton quitterButton = new JButton("Quitter");
 	private JButton nouveauCompteButton = new JButton("Nouveau Compte");
-	private ArrayList<JButton> utilisateurs =new ArrayList<JButton>();
+	private ArrayList<JButton> utilisateurs = new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
-	private JPanel utilisateurLabel= new JPanel();
-
+	private JPanel utilisateurLabel = new JPanel();
 
 	public FenetreIdentification() {
-		
+
 		/********************** Lecture des utilisateurs dans le fichier *****************/
-		
-		
-		try{
-			InputStream ips=new FileInputStream("users/utilisateurs.txt"); 
-			InputStreamReader ipsr=new InputStreamReader(ips);
-			BufferedReader br=new BufferedReader(ipsr);
+
+		try {
+			InputStream ips = new FileInputStream("users/utilisateurs.txt");
+			InputStreamReader ipsr = new InputStreamReader(ips);
+			BufferedReader br = new BufferedReader(ipsr);
 			String userName;
-			while ((userName=br.readLine())!=null){
+			while ((userName = br.readLine()) != null) {
 				utilisateurs.add(new JButton(userName));
 			}
-			br.close(); 
-		}		
-		catch (Exception e){
+			br.close();
+		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 
@@ -52,71 +50,79 @@ public class FenetreIdentification extends JFrame implements ActionListener{
 
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-
-
-		
 
 		// Utilisation de BorderLayout
 		Container contenu = getContentPane();
 		contenu.setLayout(new BorderLayout());
 		contenu.setBackground(new Color(255, 255, 255));
 
-		
-		//Ajouts des bouttons sur buttons
-		
+		// Ajouts des bouttons sur buttons
+
 		bouttons.add(quitterButton);
 		bouttons.add(nouveauCompteButton);
-		bouttons.setBackground(new Color(255,255,255));
+		bouttons.setBackground(new Color(255, 255, 255));
 
-		//Ajouts sur le ContentPane
-		contenu.add(bouttons,BorderLayout.PAGE_END);
-		for(JButton utilisateurButton : utilisateurs)
+		// Ajouts sur le ContentPane
+		contenu.add(bouttons, BorderLayout.PAGE_END);
+		for (JButton utilisateurButton : utilisateurs)
 			utilisateurLabel.add(utilisateurButton);
-		utilisateurLabel.setBackground(new Color(255,255,255));
-		contenu.add(utilisateurLabel,BorderLayout.PAGE_START);
+		utilisateurLabel.setBackground(new Color(255, 255, 255));
+		contenu.add(utilisateurLabel, BorderLayout.PAGE_START);
 
-		//Ajout des Listeners
+		// Ajout des Listeners
 		quitterButton.addActionListener(this);
 		nouveauCompteButton.addActionListener(this);
-		for(JButton bouton : utilisateurs)
+		for (JButton bouton : utilisateurs)
 			bouton.addActionListener(this);
 
-		
-		//Ajout d'une image de fond
+		// Ajout d'une image de fond
 		JLabel image = new JLabel(new ImageIcon("data/identification.gif"));
-		contenu.add(image,BorderLayout.CENTER);
+		contenu.add(image, BorderLayout.CENTER);
 		File imageFile = new File("data/identificatio.gif");
-		if(!imageFile.exists())
-			System.err.println("Attention l'image n'existe pas !");		
+		if (!imageFile.exists())
+			System.err.println("Attention l'image n'existe pas !");
 
-		
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 	}
-	
-	public void quitter(){
+
+	public void quitter() {
 
 		System.exit(0);
 	}
-	
-	public void nouveauCompte(){
-		System.out.println("nouveau compte");
 
+	/******************* Nouveau Compte ********************/
+	public void nouveauCompte() {
+		String userName = JOptionPane.showInputDialog(null, "Comment vous appelez vous ?",
+				"Identification !", JOptionPane.QUESTION_MESSAGE);
+	    String[] ouiNon = {"oui", "non"};
+	    int reponse = JOptionPane.showOptionDialog(null, 
+	    	      "Etes vous sur de vouloir créer le profil "+userName+" ?",
+	    	      "Confirmation",
+	    	      JOptionPane.YES_NO_OPTION,
+	    	      JOptionPane.QUESTION_MESSAGE,
+	    	      null,
+	    	      ouiNon,ouiNon[1]
+	    	      );
+	    if(reponse==0)
+	    	nouveauCompte(userName);
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void nouveauCompte(String userName){
 		
-		if(e.getSource()==quitterButton)
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+
+		if (e.getSource() == quitterButton)
 			quitter();
-		if(e.getSource()==nouveauCompteButton)
+		if (e.getSource() == nouveauCompteButton)
 			nouveauCompte();
-		for(JButton bouton : utilisateurs){
-			if(e.getSource()==bouton){
+		for (JButton bouton : utilisateurs) {
+			if (e.getSource() == bouton) {
 				new FenetreCatalogue();
 				dispose();
 			}
 		}
 	}
-
 
 }
