@@ -97,6 +97,7 @@ public class FenetreIdentification extends JFrame implements ActionListener {
 		String userName = JOptionPane.showInputDialog(null, "Comment vous appelez vous ?",
 				"Identification !", JOptionPane.QUESTION_MESSAGE);
 	    String[] ouiNon = {"oui", "non"};
+	    if (!(userName==null)){
 	    int reponse = JOptionPane.showOptionDialog(null, 
 	    	      "Etes vous sur de vouloir créer le profil "+userName+" ?",
 	    	      "Confirmation",
@@ -105,30 +106,35 @@ public class FenetreIdentification extends JFrame implements ActionListener {
 	    	      null,
 	    	      ouiNon,ouiNon[1]
 	    	      );
-	    if(reponse==0)
+	    if(reponse==0){
+	    	System.out.println("oui");
 	    	nouveauCompte(userName);
+	    	dispose();
+	    	new FenetreIdentification();
+	    }
+	}
 	}
 
-	public void nouveauCompte(String userName){
+	public void nouveauCompte(String userName) {
 		System.out.println(userName);
 		FileWriter writer = null;
-		try{
-		     writer = new FileWriter("users/utilisateurs.txt", true);
-		     writer.write("\n"+userName,0,userName.length()+1);
-		}catch(IOException e){
-		    e.printStackTrace();
-		}finally{
-		  if(writer != null){
-		     try {
-				writer.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+		try {
+			writer = new FileWriter("users/utilisateurs.txt", true);
+			writer.write("\n" + userName, 0, userName.length() + 1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
-		  }
 		}
-		
+
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == quitterButton)
