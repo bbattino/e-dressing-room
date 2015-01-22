@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class FenetreCredit extends JFrame implements ActionListener {
 
@@ -20,12 +21,13 @@ public class FenetreCredit extends JFrame implements ActionListener {
 	private JButton quitterButton = new JButton("Quitter");
 	private Container contenu;
 	private Logger logger;
-	private JLabel bouttons = new JLabel();
-	private FenetreDepart frameDepart;
+	private JPanel bouttons = new JPanel();
+	private FenetreDepart fentreDepart;
+	
 
-	public FenetreCredit(FenetreDepart frameDepart) {
-
-		this.frameDepart = frameDepart;
+	public FenetreCredit(FenetreDepart fentreDepart) {
+		
+		this.fentreDepart=fentreDepart;
 
 		logger = Logger.getLogger("com.foo.FenetreCredits");
 
@@ -33,7 +35,7 @@ public class FenetreCredit extends JFrame implements ActionListener {
 		logger.info("Initialisation de la fenêtre de départ \n");
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		JLabel image = new JLabel(new ImageIcon("data/bienvenue.png"));
+		JLabel image = new JLabel(new ImageIcon("data/tShirtMis.jpg"));
 
 		// Utilisation de BorderLayout
 		Container contenu = getContentPane();
