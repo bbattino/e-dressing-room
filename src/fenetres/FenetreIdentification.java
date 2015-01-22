@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -108,6 +110,22 @@ public class FenetreIdentification extends JFrame implements ActionListener {
 	}
 
 	public void nouveauCompte(String userName){
+		System.out.println(userName);
+		FileWriter writer = null;
+		try{
+		     writer = new FileWriter("users/utilisateurs.txt", true);
+		     writer.write("\n"+userName,0,userName.length()+1);
+		}catch(IOException e){
+		    e.printStackTrace();
+		}finally{
+		  if(writer != null){
+		     try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		  }
+		}
 		
 	}
 	
