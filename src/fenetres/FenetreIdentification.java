@@ -7,6 +7,7 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -80,7 +81,7 @@ public class FenetreIdentification extends JFrame implements ActionListener {
 		// Ajout d'une image de fond
 		JLabel image = new JLabel(new ImageIcon("data/identification.gif"));
 		contenu.add(image, BorderLayout.CENTER);
-		File imageFile = new File("data/identificatio.gif");
+		File imageFile = new File("data/identification.gif");
 		if (!imageFile.exists())
 			System.err.println("Attention l'image n'existe pas !");
 
@@ -94,29 +95,22 @@ public class FenetreIdentification extends JFrame implements ActionListener {
 
 	/******************* Nouveau Compte ********************/
 	public void nouveauCompte() {
-		String userName = JOptionPane.showInputDialog(null, "Comment vous appelez vous ?",
-				"Identification !", JOptionPane.QUESTION_MESSAGE);
-	    String[] ouiNon = {"oui", "non"};
-	    if (!(userName==null)){
-	    int reponse = JOptionPane.showOptionDialog(null, 
-	    	      "Etes vous sur de vouloir créer le profil "+userName+" ?",
-	    	      "Confirmation",
-	    	      JOptionPane.YES_NO_OPTION,
-	    	      JOptionPane.QUESTION_MESSAGE,
-	    	      null,
-	    	      ouiNon,ouiNon[1]
-	    	      );
-	    if(reponse==0){
-	    	System.out.println("oui");
-	    	nouveauCompte(userName);
-	    	dispose();
-	    	new FenetreIdentification();
-	    }
-	}
+		String userName = JOptionPane.showInputDialog(null, "Comment vous appelez vous ?", "Identification !",
+				JOptionPane.QUESTION_MESSAGE);
+		String[] ouiNon = { "oui", "non" };
+		if (!(userName == null)) {
+			int reponse = JOptionPane.showOptionDialog(null, "Etes vous sur de vouloir créer le profil " + userName
+					+ " ?", "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, ouiNon,
+					ouiNon[1]);
+			if (reponse == 0) {
+				nouveauCompte(userName);
+				dispose();
+				new FenetreIdentification();
+			}
+		}
 	}
 
 	public void nouveauCompte(String userName) {
-		System.out.println(userName);
 		FileWriter writer = null;
 		try {
 			writer = new FileWriter("users/utilisateurs.txt", true);
@@ -132,7 +126,19 @@ public class FenetreIdentification extends JFrame implements ActionListener {
 				}
 			}
 		}
+		creerPanier(userName);
 
+	}
+
+	/* Generation d'un fichier texte spécifique aux nouveux utilisateurs */
+	public void creerPanier(String userName){
+		File panier = new File("users/panier"+userName+".txt");
+		try {
+			System.out.print("ok");
+			panier.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
