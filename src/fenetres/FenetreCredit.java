@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
@@ -30,6 +31,7 @@ public class FenetreCredit extends JFrame implements ActionListener {
 		this.fentreDepart=fentreDepart;
 
 		logger = Logger.getLogger("com.foo.FenetreCredits");
+		logger.setLevel(Level.OFF);
 
 		setUndecorated(true);
 		logger.info("Initialisation de la fenêtre de départ \n");

@@ -31,7 +31,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 
 		public FenetreDepart() {
 			logger = Logger.getLogger("com.foo.FenetreDepart");
-
+			logger.setLevel(Level.OFF);
 			setUndecorated(true);
 	        logger.info("Initialisation de la fenêtre de départ \n");
 			setVisible(true); // affichage
