@@ -38,7 +38,7 @@ public class FenetreCredit extends JFrame implements ActionListener {
 		JLabel image = new JLabel(new ImageIcon("data/tShirtMis.jpg"));
 
 		// Utilisation de BorderLayout
-		Container contenu = getContentPane();
+		contenu = getContentPane();
 		contenu.setLayout(new BorderLayout());
 		contenu.setBackground(new Color(255, 255, 255));
 
