@@ -61,8 +61,17 @@ public class FenetreCredit extends JFrame implements ActionListener {
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 
 	}
-
+	public void retour(){
+		fentreDepart.setVisible(true);
+		dispose();
+		
+	}
+	
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==quitterButton)
+			System.exit(0);
+		else if (e.getSource()==retourButton)
+			retour();
 
 	}
 }

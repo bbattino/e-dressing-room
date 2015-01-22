@@ -85,7 +85,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 		
 		public void credits(){
 			new FenetreCredit(this);
-			dispose();
+			setVisible(false);
 		}
 
 		public void actionPerformed(ActionEvent e) {
