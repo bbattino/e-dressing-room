@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class FenetreCredit extends JFrame implements ActionListener {
 
@@ -24,6 +25,7 @@ public class FenetreCredit extends JFrame implements ActionListener {
 	private Logger logger;
 	private JPanel bouttons = new JPanel();
 	private FenetreDepart fentreDepart;
+	private JTextArea texte = new JTextArea("Nous sommes le groupe 1.2");
 	
 
 	public FenetreCredit(FenetreDepart fentreDepart) {
@@ -34,7 +36,7 @@ public class FenetreCredit extends JFrame implements ActionListener {
 		logger.setLevel(Level.OFF);
 
 		setUndecorated(true);
-		logger.info("Initialisation de la fenêtre de départ \n");
+		logger.info("Initialisation de la fenêtre de credits \n");
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		JLabel image = new JLabel(new ImageIcon("data/tShirtMis.jpg"));
@@ -52,6 +54,7 @@ public class FenetreCredit extends JFrame implements ActionListener {
 		logger.info("Ajout des boutons \n");
 
 		// Ajouts sur le ContentPane
+		contenu.add(texte,BorderLayout.PAGE_START);
 		contenu.add(image, BorderLayout.CENTER);
 		contenu.add(bouttons, BorderLayout.PAGE_END);
 
