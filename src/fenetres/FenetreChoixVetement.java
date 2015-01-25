@@ -9,7 +9,9 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -103,7 +105,40 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	}
 
 	public void panier() {
-		System.out.print("panier");
+		
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter("users/panier"+userName+".txt", true);
+			System.out.println(writer);
+			System.out.println(images);
+			System.out.println(numeroChoix);
+			System.out.println(images.get(numeroChoix));
+			System.out.println(images.get(numeroChoix).getText());
+			//System.out.println(images.get(numeroChoix).getText().length());
+
+
+
+
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//writer.write("\n" + images.get(numeroChoix).getName(), 0, images.get(numeroChoix).getName().length() + 1);
+			writer.write("bonjour");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
