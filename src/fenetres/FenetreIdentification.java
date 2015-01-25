@@ -113,7 +113,7 @@ public class FenetreIdentification extends JFrame implements ActionListener {
 		FileWriter writer = null;
 		try {
 			writer = new FileWriter("users/utilisateurs.txt", true);
-			writer.write("\n" + userName, 0, userName.length() + 1);
+			writer.write(userName+"\n" , 0, userName.length() + 1);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -133,7 +133,6 @@ public class FenetreIdentification extends JFrame implements ActionListener {
 	public void creerPanier(String userName){
 		File panier = new File("users/panier"+userName+".txt");
 		try {
-			System.out.print("ok");
 			panier.createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
