@@ -8,6 +8,8 @@ import java.awt.Container;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -28,11 +30,13 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 		private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 		private JPanel bouttons = new JPanel();
 		private Container contenu = getContentPane();
-		private String userName;
+		private String userName,imagePath;
+		
 
 
 		public FenetreAffichage(String imagePath, String userName) {
 			this.userName=userName;
+			this.imagePath=imagePath;
 			setUndecorated(true);
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,6 +80,23 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 			new FenetreChoixVetement(userName);
 		}
 		public void panier(){
+			
+			FileWriter writer = null;
+			try {
+				writer = new FileWriter("users/panier"+userName+".txt", true);
+				writer.write(imagePath+"\n" );
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (writer != null) {
+					try {
+						writer.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
 			
 		}
 		
