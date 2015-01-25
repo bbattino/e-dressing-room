@@ -9,7 +9,10 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JButton essayerButton = new JButton("Essayer");
+	private JButton supprimerButton = new JButton("Retirer du panier");
 	private JButton quitterButton = new JButton("Quitter");
 	private JButton suivantButton = new JButton("suivant");
 	private JButton precedentButton = new JButton("précedent");
@@ -31,75 +35,76 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 	private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
 	private ArrayList<JLabel> images = new ArrayList<JLabel>();
-	private ArrayList<String> imagePath= new ArrayList<String>();
+	private ArrayList<String> imagePath = new ArrayList<String>();
 	private static int numeroChoix = 0;
 	private Container contenu = getContentPane();
-	private String userName,vetementType;
+	private String userName, vetementType;
 	private boolean panierVide = false;
 
 	public FenetreVisualisation(String userName) {
-		this.userName=userName;
+		this.userName = userName;
 		setUndecorated(true);
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		/******** Recherches de toutes les images du panier dans le dossier data ********/
-		
+
 		try {
-			InputStream ips = new FileInputStream("users/panier"+userName+".txt");
+			InputStream ips = new FileInputStream("users/panier" + userName + ".txt");
 			InputStreamReader ipsr = new InputStreamReader(ips);
 			BufferedReader br = new BufferedReader(ipsr);
 			String imgpath;
-			if ((imgpath=br.readLine())==null)
-				 panierVide=true;
+			if ((imgpath = br.readLine()) == null)
+				panierVide = true;
 			else {
 				imagePath.add(imgpath);
-				images.add(new JLabel(new ImageIcon(imgpath)));		
+				images.add(new JLabel(new ImageIcon(imgpath)));
 			}
 			while ((imgpath = br.readLine()) != null) {
 				imagePath.add(imgpath);
 				images.add(new JLabel(new ImageIcon(imgpath)));
-				
+
 			}
 			br.close();
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		if (numeroChoix>images.size()-1)
-			numeroChoix=0;
-		if (panierVide){
+		if (numeroChoix > images.size() - 1)
+			numeroChoix = 0;
+		if (panierVide) {
 			dispose();
 			new FenetreCatalogue(userName);
 			JOptionPane.showMessageDialog(new JFrame(), "Votre Panier est vide");
-		}else{
-		
-		
-		// Utilisation de BorderLayout
-		contenu.setLayout(new BorderLayout());
-		contenu.setBackground(new Color(255, 255, 255));
+		} else {
 
-		// Ajouts des bouttons sur buttons
+			// Utilisation de BorderLayout
+			contenu.setLayout(new BorderLayout());
+			contenu.setBackground(new Color(255, 255, 255));
 
-		bouttons.add(retourButton);
-		bouttons.add(essayerButton);
-		bouttons.add(quitterButton);
-		bouttons.setBackground(new Color(255, 255, 255));
+			// Ajouts des bouttons sur buttons
 
-		listeBoutons.add(essayerButton);
-		listeBoutons.add(quitterButton);
-		listeBoutons.add(suivantButton);
-		listeBoutons.add(precedentButton);
-		listeBoutons.add(retourButton);
-		// Ajouts sur le ContentPane
-		contenu.add(images.get(numeroChoix), BorderLayout.CENTER);
-		contenu.add(bouttons, BorderLayout.PAGE_END);
-		contenu.add(precedentButton, BorderLayout.LINE_START);
-		contenu.add(suivantButton, BorderLayout.LINE_END);
+			bouttons.add(retourButton);
+			bouttons.add(essayerButton);
+			bouttons.add(quitterButton);
+			bouttons.add(supprimerButton);
+			bouttons.setBackground(new Color(255, 255, 255));
 
-		// Ajout des Listeners
-		for (JButton bouton : listeBoutons)
-			bouton.addActionListener(this);
+			listeBoutons.add(essayerButton);
+			listeBoutons.add(quitterButton);
+			listeBoutons.add(suivantButton);
+			listeBoutons.add(precedentButton);
+			listeBoutons.add(retourButton);
+			listeBoutons.add(supprimerButton);
+			// Ajouts sur le ContentPane
+			contenu.add(images.get(numeroChoix), BorderLayout.CENTER);
+			contenu.add(bouttons, BorderLayout.PAGE_END);
+			contenu.add(precedentButton, BorderLayout.LINE_START);
+			contenu.add(suivantButton, BorderLayout.LINE_END);
 
-		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+			// Ajout des Listeners
+			for (JButton bouton : listeBoutons)
+				bouton.addActionListener(this);
+
+			this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		}
 
 	}
@@ -107,7 +112,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 	public void essayer() {
 
 		dispose();
-		new FenetreAffichage(imagePath.get(numeroChoix),userName,vetementType);
+		new FenetreAffichage(imagePath.get(numeroChoix), userName, vetementType);
 	}
 
 	public void suivant() {
@@ -127,6 +132,34 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 		new FenetreCatalogue(userName);
 	}
 
+	public void supprimer() {
+		try {
+			new FileWriter(new File("users/panier" + userName + ".txt")).close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter("users/panier" + userName + ".txt", true);
+			for (int i = 0; i < images.size(); i++) {
+				if (i != numeroChoix) {
+					writer.write(imagePath.get(numeroChoix) + "\n");
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == quitterButton)
@@ -139,5 +172,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 			precedent();
 		else if (e.getSource() == retourButton)
 			retour();
+		else if (e.getSource() == suivantButton)
+			supprimer();
 	}
 }
