@@ -64,15 +64,15 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
+		if (numeroChoix>images.size()-1)
+			numeroChoix=0;
 		if (panierVide){
 			dispose();
 			new FenetreCatalogue(userName);
 			JOptionPane.showMessageDialog(new JFrame(), "Votre Panier est vide");
-		}
+		}else{
 		
-		if (numeroChoix>images.size()-1)
-			numeroChoix=0;
+		
 		// Utilisation de BorderLayout
 		contenu.setLayout(new BorderLayout());
 		contenu.setBackground(new Color(255, 255, 255));
@@ -100,6 +100,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 			bouton.addActionListener(this);
 
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+		}
 
 	}
 
