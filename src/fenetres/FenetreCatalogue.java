@@ -115,18 +115,18 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			
 			if(e.getSource()==tShirtButton)
 				tShirt();
-			if(e.getSource()==robeButton)
+			
+			else if(e.getSource()==robeButton)
 				robe();
-			if(e.getSource()==pantalonButton)
+			else if(e.getSource()==pantalonButton)
 				pantalon();
-			if(e.getSource()==pullButton)
+			else if(e.getSource()==pullButton)
 				pull();
-
-			if(e.getSource()== retourButton)
+			else if(e.getSource()== retourButton)
 				retour();
-			if(e.getSource()==quitterButton)
+			else if(e.getSource()==quitterButton)
 				System.exit(0);
-			if(e.getSource()==voirPanierButton)
+			else if(e.getSource()==voirPanierButton)
 				voirPanier();
 			
 		}

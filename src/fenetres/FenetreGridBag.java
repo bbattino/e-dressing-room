@@ -17,6 +17,8 @@ public class FenetreGridBag extends JFrame {
 		setVisible(true);
 		contenu.setLayout(new GridBagLayout());
 		contenu.add(new JButton("ok"));
+		contenu.add(new JButton("ok2"));
+		setSize(700,300);
 		
 	}
 

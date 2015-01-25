@@ -100,14 +100,13 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 			
 		}
 		
-		
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==quitterButton)
 				System.exit(0);
-			if(e.getSource()==retourButton)
+			else if(e.getSource()==retourButton)
 				retour();
-			if(e.getSource()==panierButton)
+			else if(e.getSource()==panierButton)
 				panier();
 			
 		}

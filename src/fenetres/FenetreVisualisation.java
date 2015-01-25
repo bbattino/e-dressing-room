@@ -118,13 +118,13 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 
 		if (e.getSource() == quitterButton)
 			System.exit(0);
-		if (e.getSource() == essayerButton)
+		else if (e.getSource() == essayerButton)
 			essayer();
-		if (e.getSource() == suivantButton)
+		else if (e.getSource() == suivantButton)
 			suivant();
-		if (e.getSource() == precedentButton)
+		else if (e.getSource() == precedentButton)
 			precedent();
-		if (e.getSource() == retourButton)
+		else if (e.getSource() == retourButton)
 			retour();
 		
 
