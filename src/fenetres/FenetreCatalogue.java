@@ -107,6 +107,8 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		}
 
 		public void voirPanier(){
+			dispose();
+			new FenetreVisualisation(userName);
 			
 		}
 		public void actionPerformed(ActionEvent e) {
@@ -119,7 +121,6 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 				pantalon();
 			if(e.getSource()==pullButton)
 				pull();
-
 
 			if(e.getSource()== retourButton)
 				retour();
