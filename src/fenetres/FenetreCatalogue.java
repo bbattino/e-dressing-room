@@ -28,6 +28,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		private JButton pantalonButton = new JButton("Pantalon");
 		private JButton quitterButton= new JButton("Quitter");
 		private JButton retourButton = new JButton("Retour");
+		private JButton voirPanierButton = new JButton("Voir le Panier");
 		private JPanel catalogue = new JPanel();
 		private String userName;
 
@@ -50,6 +51,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			
 			//Ajouts des bouttons sur buttons
 			bouttons.add(retourButton);
+			bouttons.add(voirPanierButton);
 			bouttons.add(quitterButton);
 			bouttons.setBackground(new Color(255,255,255));
 			boutonListe.add(tShirtButton);
@@ -63,6 +65,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			for(JButton bouton : boutonListe )
 				bouton.addActionListener(this);
 			quitterButton.addActionListener(this);
+			voirPanierButton.addActionListener(this);
 			retourButton.addActionListener(this);
 			
 			//Configuration du panneau catalogue
@@ -103,6 +106,9 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			new FenetreIdentification();
 		}
 
+		public void voirPanier(){
+			
+		}
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==tShirtButton)
@@ -119,6 +125,8 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 				retour();
 			if(e.getSource()==quitterButton)
 				System.exit(0);
+			if(e.getSource()==voirPanierButton)
+				voirPanier();
 			
 		}
 
