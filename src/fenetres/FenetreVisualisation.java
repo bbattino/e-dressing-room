@@ -1,6 +1,7 @@
 package fenetres;
 
 import javax.swing.JFrame;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -12,9 +13,11 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class FenetreVisualisation extends JFrame implements ActionListener {
@@ -32,6 +35,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 	private static int numeroChoix = 0;
 	private Container contenu = getContentPane();
 	private String userName,vetementType;
+	private boolean panierVide = false;
 
 	public FenetreVisualisation(String userName) {
 		this.userName=userName;
@@ -45,6 +49,12 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 			InputStreamReader ipsr = new InputStreamReader(ips);
 			BufferedReader br = new BufferedReader(ipsr);
 			String imgpath;
+			if ((imgpath=br.readLine())==null)
+				 panierVide=true;
+			else {
+				imagePath.add(imgpath);
+				images.add(new JLabel(new ImageIcon(imgpath)));		
+			}
 			while ((imgpath = br.readLine()) != null) {
 				imagePath.add(imgpath);
 				images.add(new JLabel(new ImageIcon(imgpath)));
@@ -55,6 +65,14 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 			System.out.println(e.toString());
 		}
 		
+		if (panierVide){
+			dispose();
+			new FenetreCatalogue(userName);
+			JOptionPane.showMessageDialog(new JFrame(), "Eggs are not supposed to be green.");
+		}
+		
+		if (numeroChoix>images.size()-1)
+			numeroChoix=0;
 		// Utilisation de BorderLayout
 		contenu.setLayout(new BorderLayout());
 		contenu.setBackground(new Color(255, 255, 255));
