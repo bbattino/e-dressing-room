@@ -90,7 +90,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		
 		public void tShirt(){
 			dispose();
-			new FenetreChoixVetement(userName);
+			new FenetreChoixVetement(userName,"TShirt");
 		}
 		public void robe(){
 			System.out.println("Robe");

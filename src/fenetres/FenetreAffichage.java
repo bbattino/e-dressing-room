@@ -30,12 +30,13 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 		private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 		private JPanel bouttons = new JPanel();
 		private Container contenu = getContentPane();
-		private String userName,imagePath;
+		private String userName,imagePath,vetementType;
 		
 
 
-		public FenetreAffichage(String imagePath, String userName) {
+		public FenetreAffichage(String imagePath, String userName, String vetementType) {
 			this.userName=userName;
+			this.vetementType=vetementType;
 			this.imagePath=imagePath;
 			setUndecorated(true);
 			setVisible(true); // affichage
@@ -77,7 +78,7 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 		public void retour(){
 			
 			dispose();
-			new FenetreChoixVetement(userName);
+			new FenetreChoixVetement(userName,vetementType);
 		}
 		public void panier(){
 			

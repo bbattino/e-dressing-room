@@ -1,7 +1,6 @@
 package fenetres;
 
 import javax.swing.JFrame;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -9,15 +8,10 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.FilenameFilter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -37,7 +31,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 	private ArrayList<String> imagePath= new ArrayList<String>();
 	private static int numeroChoix = 0;
 	private Container contenu = getContentPane();
-	private String userName;
+	private String userName,vetementType;
 
 	public FenetreVisualisation(String userName) {
 		this.userName=userName;
@@ -94,7 +88,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 	public void essayer() {
 
 		dispose();
-		new FenetreAffichage(imagePath.get(numeroChoix),userName);
+		new FenetreAffichage(imagePath.get(numeroChoix),userName,vetementType);
 	}
 
 	public void suivant() {
@@ -126,8 +120,5 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 			precedent();
 		else if (e.getSource() == retourButton)
 			retour();
-		
-
 	}
-
 }

@@ -32,17 +32,19 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	private ArrayList<String> imagePath= new ArrayList<String>();
 	private static int numeroChoix = 0;
 	private Container contenu = getContentPane();
-	private String userName;
+	private String userName,vetementType;
 
-	public FenetreChoixVetement(String userName) {
+	public FenetreChoixVetement(String userName,  String typeVetement) {
 		this.userName=userName;
+		this.vetementType=typeVetement;
+		final String prefixe = "catalogue"+vetementType;
 		setUndecorated(true);
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		/******** Recherches de toutes les images du catalogue dans le dossier data ********/
 		File dataFile = new File("data");
 		File[] fichiersImage = dataFile.listFiles(new FilenameFilter() {
-			public boolean accept(File dir, String name) {return name.startsWith("catalogue");}});
+			public boolean accept(File dir, String name) {return name.startsWith(prefixe);}});
 
 		for (int i = 0; i<fichiersImage.length;i++){
 			images.add(new JLabel(new ImageIcon("data/"+fichiersImage[i].getName())));
@@ -83,19 +85,19 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	public void essayer() {
 
 		dispose();
-		new FenetreAffichage(imagePath.get(numeroChoix),userName);
+		new FenetreAffichage(imagePath.get(numeroChoix),userName,vetementType);
 	}
 
 	public void suivant() {
 		numeroChoix = (numeroChoix == images.size() - 1) ? 0 : numeroChoix + 1;
 		dispose();
-		new FenetreChoixVetement(userName);
+		new FenetreChoixVetement(userName,vetementType);
 	}
 
 	public void precedent() {
 		numeroChoix = (numeroChoix == 0) ? images.size() - 1 : numeroChoix - 1;
 		dispose();
-		new FenetreChoixVetement(userName);
+		new FenetreChoixVetement(userName,vetementType);
 
 	}
 
