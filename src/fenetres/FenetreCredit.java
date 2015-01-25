@@ -39,7 +39,7 @@ public class FenetreCredit extends JFrame implements ActionListener {
 		logger.info("Initialisation de la fenêtre de credits \n");
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		JLabel image = new JLabel(new ImageIcon("data/tShirtMis.jpg"));
+		JLabel image = new JLabel(new ImageIcon("data/photoGroupe.png"));
 
 		// Utilisation de BorderLayout
 		contenu = getContentPane();
