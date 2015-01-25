@@ -158,6 +158,8 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 				}
 			}
 		}
+		dispose();
+		new FenetreVisualisation(userName);
 	}
 
 	public void actionPerformed(ActionEvent e) {
