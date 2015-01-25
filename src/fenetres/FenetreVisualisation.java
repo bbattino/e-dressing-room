@@ -144,7 +144,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 			writer = new FileWriter("users/panier" + userName + ".txt", true);
 			for (int i = 0; i < images.size(); i++) {
 				if (i != numeroChoix) {
-					writer.write(imagePath.get(numeroChoix) + "\n");
+					writer.write(imagePath.get(i) + "\n");
 				}
 			}
 		} catch (IOException e) {
@@ -172,7 +172,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 			precedent();
 		else if (e.getSource() == retourButton)
 			retour();
-		else if (e.getSource() == suivantButton)
+		else if (e.getSource() == supprimerButton)
 			supprimer();
 	}
 }
