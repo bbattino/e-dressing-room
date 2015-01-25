@@ -31,6 +31,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
 	private ArrayList<JLabel> images = new ArrayList<JLabel>();
+	private ArrayList<String> imagePath= new ArrayList<String>();
 	private static int numeroChoix = 0;
 	private Container contenu = getContentPane();
 	private String userName;
@@ -47,6 +48,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 
 		for (int i = 0; i<fichiersImage.length;i++){
 			images.add(new JLabel(new ImageIcon("data/"+fichiersImage[i].getName())));
+			imagePath.add("data/"+fichiersImage[i].getName());
 		}
 		// Utilisation de BorderLayout
 		contenu.setLayout(new BorderLayout());
@@ -109,24 +111,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 		FileWriter writer = null;
 		try {
 			writer = new FileWriter("users/panier"+userName+".txt", true);
-			System.out.println(writer);
-			System.out.println(images);
-			System.out.println(numeroChoix);
-			System.out.println(images.get(numeroChoix));
-			System.out.println(images.get(numeroChoix).getText());
-			//System.out.println(images.get(numeroChoix).getText().length());
-
-
-
-
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			//writer.write("\n" + images.get(numeroChoix).getName(), 0, images.get(numeroChoix).getName().length() + 1);
-			writer.write("bonjour");
+			writer.write("\n" + imagePath.get(numeroChoix));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
