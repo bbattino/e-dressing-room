@@ -8,10 +8,14 @@ import java.awt.Container;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -106,12 +110,30 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 		new FenetreCatalogue(userName);
 	}
 
+	public boolean panierVide(){
+		try {
+			InputStream ips = new FileInputStream("users/panier"+userName+".txt");
+			InputStreamReader ipsr = new InputStreamReader(ips);
+			BufferedReader br = new BufferedReader(ipsr);
+			boolean panierVide = (br.readLine() == null) ;
+			br.close();
+			return panierVide;
+				
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return false;
+
+	
+	}
+	
 	public void panier() {
 		
 		FileWriter writer = null;
+		String sautDeLigne = (panierVide())? "" : "\n";
 		try {
 			writer = new FileWriter("users/panier"+userName+".txt", true);
-			writer.write("\n" + imagePath.get(numeroChoix));
+			writer.write(sautDeLigne + imagePath.get(numeroChoix));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
