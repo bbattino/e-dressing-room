@@ -68,7 +68,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 		if (panierVide){
 			dispose();
 			new FenetreCatalogue(userName);
-			JOptionPane.showMessageDialog(new JFrame(), "Eggs are not supposed to be green.");
+			JOptionPane.showMessageDialog(new JFrame(), "Votre Panier est vide");
 		}
 		
 		if (numeroChoix>images.size()-1)
