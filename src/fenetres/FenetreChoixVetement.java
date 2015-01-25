@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -29,27 +28,29 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
 	private ArrayList<JLabel> images = new ArrayList<JLabel>();
-	private ArrayList<String> imagePath= new ArrayList<String>();
+	private ArrayList<String> imagePath = new ArrayList<String>();
 	private static int numeroChoix = 0;
 	private Container contenu = getContentPane();
-	private String userName,vetementType;
+	private String userName, vetementType;
 
-	public FenetreChoixVetement(String userName,  String typeVetement) {
-		this.userName=userName;
-		this.vetementType=typeVetement;
-		final String prefixe = "catalogue"+vetementType;
+	public FenetreChoixVetement(String userName, String typeVetement) {
+		this.userName = userName;
+		this.vetementType = typeVetement;
+		final String dossier = "data/catalogue/" + vetementType;
 		setUndecorated(true);
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		/******** Recherches de toutes les images du catalogue dans le dossier data ********/
-		File dataFile = new File("data");
-		File[] fichiersImage = dataFile.listFiles(new FilenameFilter() {
-			public boolean accept(File dir, String name) {return name.startsWith(prefixe);}});
+		File dataFile = new File(dossier);
+		File[] fichiersImage = dataFile.listFiles();
 
-		for (int i = 0; i<fichiersImage.length;i++){
-			images.add(new JLabel(new ImageIcon("data/"+fichiersImage[i].getName())));
-			imagePath.add("data/"+fichiersImage[i].getName());
+		for (int i = 0; i < fichiersImage.length; i++) {
+			images.add(new JLabel(new ImageIcon(dossier + "/" + fichiersImage[i].getName())));
+			imagePath.add(dossier + "/" + fichiersImage[i].getName());
 		}
+		// pour eviter les dépassement d'arrayList eventuels (si il n'y a pas le
+		// même nombre de vêtements dans toutes les categories)
+		if (numeroChoix > images.size() - 1)
+			numeroChoix = 0;
 		// Utilisation de BorderLayout
 		contenu.setLayout(new BorderLayout());
 		contenu.setBackground(new Color(255, 255, 255));
@@ -85,19 +86,19 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	public void essayer() {
 
 		dispose();
-		new FenetreAffichage(imagePath.get(numeroChoix),userName,vetementType);
+		new FenetreAffichage(imagePath.get(numeroChoix), userName, vetementType);
 	}
 
 	public void suivant() {
 		numeroChoix = (numeroChoix == images.size() - 1) ? 0 : numeroChoix + 1;
 		dispose();
-		new FenetreChoixVetement(userName,vetementType);
+		new FenetreChoixVetement(userName, vetementType);
 	}
 
 	public void precedent() {
 		numeroChoix = (numeroChoix == 0) ? images.size() - 1 : numeroChoix - 1;
 		dispose();
-		new FenetreChoixVetement(userName,vetementType);
+		new FenetreChoixVetement(userName, vetementType);
 
 	}
 
@@ -107,11 +108,11 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	}
 
 	public void panier() {
-		
+
 		FileWriter writer = null;
 		try {
-			writer = new FileWriter("users/panier"+userName+".txt", true);
-			writer.write(imagePath.get(numeroChoix)+"\n" );
+			writer = new FileWriter("users/panier" + userName + ".txt", true);
+			writer.write(imagePath.get(numeroChoix) + "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
