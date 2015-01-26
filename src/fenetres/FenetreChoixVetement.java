@@ -1,6 +1,7 @@
 package fenetres;
 
 import javax.swing.JFrame;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -11,9 +12,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class FenetreChoixVetement extends JFrame implements ActionListener {
@@ -124,6 +127,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 				}
 			}
 		}
+		JOptionPane.showMessageDialog(new JFrame(), "L'article a été ajouté au panier");
 
 	}
 

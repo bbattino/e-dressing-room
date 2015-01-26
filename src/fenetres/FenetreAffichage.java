@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import audio.LecteurAudio;
@@ -97,6 +98,7 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 					}
 				}
 			}
+			JOptionPane.showMessageDialog(new JFrame(), "L'article a été ajouté au panier");
 
 			
 		}
