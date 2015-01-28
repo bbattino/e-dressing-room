@@ -140,6 +140,10 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			return usersList;
 			
 		}
+		public void supprimerPanier(String userName){
+			File panier = new File("users/panier" + userName + ".txt");
+			panier.delete();
+		}
 		public void supprimer(String userName){
 			ArrayList<String> usersList = this.getUser();
 			try {
@@ -167,6 +171,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 					}
 				}
 			}
+			supprimerPanier(userName);
 			dispose();
 			new FenetreIdentification();
 		}
