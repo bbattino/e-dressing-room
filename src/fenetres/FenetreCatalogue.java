@@ -152,7 +152,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			try {
 				writer = new FileWriter("users/utilisateurs.txt", true);
 				for (int i = 0; i < usersList.size(); i++) {
-					if (!(usersList.get(i)==userName)) {
+					if (!(usersList.get(i).equals(userName))) {
 						writer.write(usersList.get(i) + "\n");
 					}
 				}
