@@ -29,6 +29,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		private JButton quitterButton= new JButton("Quitter");
 		private JButton retourButton = new JButton("Retour");
 		private JButton voirPanierButton = new JButton("Voir le Panier");
+		private JButton supprimerButton = new JButton("Supprimer Compte");
 		private JPanel catalogue = new JPanel();
 		private String userName;
 
@@ -52,6 +53,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			//Ajouts des bouttons sur buttons
 			bouttons.add(retourButton);
 			bouttons.add(voirPanierButton);
+			bouttons.add(supprimerButton);
 			bouttons.add(quitterButton);
 			bouttons.setBackground(new Color(255,255,255));
 			boutonListe.add(tShirtButton);
@@ -67,6 +69,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			quitterButton.addActionListener(this);
 			voirPanierButton.addActionListener(this);
 			retourButton.addActionListener(this);
+			supprimerButton.addActionListener(this);
 			
 			//Configuration du panneau catalogue
 			
@@ -112,6 +115,10 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			new FenetreVisualisation(userName);
 			
 		}
+		public void supprimer(String userName){
+			System.out.println("Suppression de compte");
+			
+		}
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==tShirtButton)
@@ -129,6 +136,8 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 				System.exit(0);
 			else if(e.getSource()==voirPanierButton)
 				voirPanier();
+			else if (e.getSource()==supprimerButton)
+				supprimer(userName);
 			
 		}
 
