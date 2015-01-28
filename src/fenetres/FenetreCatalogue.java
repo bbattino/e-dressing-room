@@ -107,9 +107,11 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			new FenetreChoixVetement(userName,"robe");		
 		}
 		public void pantalon(){
+			dispose();
 			new FenetreChoixVetement(userName,"pantalon");		
 		}
 		public void pull(){
+			dispose();
 			new FenetreChoixVetement(userName,"pull");		
 		}
 		public void retour(){
