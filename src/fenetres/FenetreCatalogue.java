@@ -9,9 +9,13 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -120,7 +124,20 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 		}
 		
 		public ArrayList<String> getUser(){
-			return null;
+			ArrayList<String> usersList = new ArrayList<String>();
+			try {
+				InputStream ips = new FileInputStream("users/utilisateurs.txt");
+				InputStreamReader ipsr = new InputStreamReader(ips);
+				BufferedReader br = new BufferedReader(ipsr);
+				String userName;
+				while ((userName = br.readLine()) != null) {
+					usersList.add(userName);
+				}
+				br.close();
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+			return usersList;
 			
 		}
 		public void supprimer(String userName){
@@ -135,7 +152,7 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			try {
 				writer = new FileWriter("users/utilisateurs.txt", true);
 				for (int i = 0; i < usersList.size(); i++) {
-					if (usersList.get(i)==userName) {
+					if (!(usersList.get(i)==userName)) {
 						writer.write(usersList.get(i) + "\n");
 					}
 				}
