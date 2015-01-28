@@ -9,6 +9,9 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -115,10 +118,44 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			new FenetreVisualisation(userName);
 			
 		}
-		public void supprimer(String userName){
-			System.out.println("Suppression de compte");
+		
+		public ArrayList<String> getUser(){
+			return null;
 			
 		}
+		public void supprimer(String userName){
+			ArrayList<String> usersList = this.getUser();
+			try {
+				new FileWriter(new File("users/utilisateurs.txt")).close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			FileWriter writer = null;
+			try {
+				writer = new FileWriter("users/utilisateurs.txt", true);
+				for (int i = 0; i < usersList.size(); i++) {
+					if (usersList.get(i)==userName) {
+						writer.write(usersList.get(i) + "\n");
+					}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (writer != null) {
+					try {
+						writer.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			dispose();
+			new FenetreIdentification();
+		}
+
+			
+		
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==tShirtButton)
