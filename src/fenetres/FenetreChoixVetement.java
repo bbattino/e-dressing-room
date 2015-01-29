@@ -19,6 +19,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import audio.LecteurAudio;
+
 public class FenetreChoixVetement extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -127,6 +129,7 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 				}
 			}
 		}
+		new LecteurAudio("recharge.wav");
 		JOptionPane.showMessageDialog(new JFrame(), "L'article a été ajouté au panier");
 
 	}

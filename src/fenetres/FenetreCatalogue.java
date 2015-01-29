@@ -93,8 +93,6 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			contenu.add(catalogue,BorderLayout.CENTER);
 
 			
-
-			
 			this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		}
 		
@@ -118,13 +116,12 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			dispose();
 			new FenetreIdentification();
 		}
-
 		public void voirPanier(){
 			dispose();
 			new FenetreVisualisation(userName);
 			
 		}
-		
+		/********* getUser renvoie l'arrayList des noms d'utilisateurs*********/
 		public ArrayList<String> getUser(){
 			ArrayList<String> usersList = new ArrayList<String>();
 			try {
@@ -142,10 +139,13 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			return usersList;
 			
 		}
-		public void supprimerPanier(String userName){
+		
+		public void supprimerPanier(String userName){ //Supprime le fichier panierUser.txt
 			File panier = new File("users/panier" + userName + ".txt");
 			panier.delete();
 		}
+		
+		/******* Methode génerale pour supprimer un utilisateur*****/
 		public void supprimer(String userName){
 			ArrayList<String> usersList = this.getUser();
 			try {
@@ -178,13 +178,11 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 			new FenetreIdentification();
 		}
 
-			
 		
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==tShirtButton)
 				tShirt();
-			
 			else if(e.getSource()==robeButton)
 				robe();
 			else if(e.getSource()==pantalonButton)
