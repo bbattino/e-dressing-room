@@ -98,6 +98,7 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 					}
 				}
 			}
+			new LecteurAudio("recharge.wav");
 			JOptionPane.showMessageDialog(new JFrame(), "L'article a été ajouté au panier");
 
 			
