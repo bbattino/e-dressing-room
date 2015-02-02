@@ -95,9 +95,14 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 	}
 
 	public void suivant() {
+		contenu.remove(images.get(numeroChoix));
 		numeroChoix = (numeroChoix == images.size() - 1) ? 0 : numeroChoix + 1;
-		dispose();
-		new FenetreChoixVetement(userName, vetementType);
+		//dispose();
+		//new FenetreChoixVetement(userName, vetementType);
+		contenu.add(images.get(numeroChoix),BorderLayout.CENTER);
+		this.setSize(getMaximumSize());
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+
 	}
 
 	public void precedent() {
