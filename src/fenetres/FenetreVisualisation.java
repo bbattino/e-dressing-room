@@ -36,7 +36,7 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 	private JPanel bouttons = new JPanel();
 	private ArrayList<JLabel> images = new ArrayList<JLabel>();
 	private ArrayList<String> imagePath = new ArrayList<String>();
-	private static int numeroChoix = 0;
+	private int numeroChoix = 0;
 	private Container contenu = getContentPane();
 	private String userName, vetementType;
 	private boolean panierVide = false;
