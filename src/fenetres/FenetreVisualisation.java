@@ -122,14 +122,14 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 		this.setSize(getMaximumSize());
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 
-		
-
-	}
+		}
 
 	public void precedent() {
+		contenu.remove(images.get(numeroChoix));
 		numeroChoix = (numeroChoix == 0) ? images.size() - 1 : numeroChoix - 1;
-		dispose();
-		new FenetreVisualisation(userName);
+		contenu.add(images.get(numeroChoix),BorderLayout.CENTER);
+		this.setSize(getMaximumSize());
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 	}
 
 	public void retour() {
