@@ -1,9 +1,11 @@
 package event;
 
+import java.awt.Point;
+
 public interface IGestionEvenement {
 	
-	public void getPositionMain();
-	public boolean MainSurBoutton();
+	public Point getPositionMain();
+	public boolean mainSurBoutton();
 	public void launchTimer();
 	public void stopTimer();
 	public void action();
