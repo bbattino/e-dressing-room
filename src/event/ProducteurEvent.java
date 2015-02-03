@@ -16,19 +16,22 @@ public class ProducteurEvent implements IGestionEvenement{
 		
 	}
 
-	public boolean mainSurBoutton() {
+	public JButton mainSurBoutton() {
 		
 		for (JButton bouton : boutons)
-			mainSurBoutton(bouton);
+			if(mainSurBoutton(bouton)!=null)
+				return bouton;
 			
-		return false;
+		return null;
 	}
 	
-	public boolean mainSurBoutton(JButton bouton){
+	public JButton mainSurBoutton(JButton bouton){
 		Dimension tailleBouton =bouton.getSize();
-		Rectangle boutonRectangle = new Rectangle(new Point(),tailleBouton);
+		Point positionBouton = bouton.getLocationOnScreen();
+		Rectangle boutonRectangle = new Rectangle(positionBouton,tailleBouton);
 		
-		return false;
+		
+		return (boutonRectangle.contains(getPositionMain()))? bouton:null;
 		
 	}
 
