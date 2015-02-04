@@ -23,10 +23,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class MainDansLaZoneTest extends JPanel {
+public class MainDansLaZoneTest extends JButton {
  
 	private static final long serialVersionUID = 1L;
-	protected static final long TIME = 3000; // le temps d'attente = 3 secondes
+	protected static final long TIME = 1000; // le temps d'attente = 3 secondes
 	private static final long PERIOD = 100; // la période d'observation (toutes les 100 ms)
  
 	private final Rectangle rectangle; // stocke la zone (pour la dessiner)
@@ -42,7 +42,8 @@ public class MainDansLaZoneTest extends JPanel {
 	protected static MainDansLaZoneTest panel;
  
  
-	public MainDansLaZoneTest(Rectangle rectangle) {
+	public MainDansLaZoneTest(Rectangle rectangle, String msg) {
+		super(msg);
 		this.counterTimer = new Timer();
 		this.rectangle=rectangle;
 		// simulation de la détection de la main dans la zone = tes classes C++ de gestion de la kinect
@@ -52,30 +53,18 @@ public class MainDansLaZoneTest extends JPanel {
 			public void mouseMoved(MouseEvent e) {
 				if ( !e.getPoint().equals(mousePoint) ) {
 					mousePoint = e.getPoint();
-					repaint();
-				}
-			}
- 
+					repaint();}}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				if ( mousePoint!=null ) {
 					mousePoint=null;
 					stopCounter();
-					repaint();
-				}
-			}
-		});
-	}
- 
+					repaint();}}});} 
  
 	public Point getMousePoint() {
 		Point point = super.getMousePosition();
-		if ( point!=null && rectangle.contains(point) ) {
-			startCounter();
-		}
-		else {
-			stopCounter();
-		}
+		if ( point!=null && rectangle.contains(point) ) {startCounter();}
+		else {stopCounter();}
 		return point;
 	}
  
@@ -85,49 +74,26 @@ public class MainDansLaZoneTest extends JPanel {
 			counterTask = new TimerTask() {
  
 				@Override
-				public void run() {
-					counter--;
-					if ( counter==0 ) cancel();
-					repaint();
-				}
-			};
+				public void run() {counter--;
+					if ( counter==0 ) {cancel();}
+					repaint();}};
 			counterTimer.schedule(counterTask, 1000, 1000);
-			repaint();
-		}
-	}
+			repaint();}}
  
 	private void stopCounter() {
 		if ( counterStarted.compareAndSet(true, false) ) {
 			if ( counterTask!=null) counterTask.cancel();
-			counter=0;
-			repaint();
-		}
-	}
+			counter=0;repaint();}}
  
 	public void setStarted(boolean started) {
 		if ( this.started!=started) {
 			this.started=started;
-			if ( !started ) {
-				stopCounter();
-			}
-			repaint();
-		}
-	}
- 
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if ( started ) {}
-			
-			
-			
-	}
+			if ( !started ) {stopCounter();}
+			repaint();}}
  
 	public void setMainDansLaZone(boolean mainDansLaZone) {
 		if ( this.mainDansLaZone.compareAndSet(!mainDansLaZone, mainDansLaZone) ) {
-			repaint();
-		}
-	}
+			repaint();}}
  
 	public static void main(String[] args) {run();}
  
@@ -145,7 +111,7 @@ public class MainDansLaZoneTest extends JPanel {
  
 		Rectangle zone = new Rectangle( 300, 100, 150, 100); // zone d'observation
  
-		panel = new MainDansLaZoneTest(zone); // simulation de kinect
+		panel = new MainDansLaZoneTest(zone,"ok"); // simulation de kinect
  
 		MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(
 				new TrucKinect() {
