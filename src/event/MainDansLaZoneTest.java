@@ -1,35 +1,27 @@
 package event;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+
 
 public class MainDansLaZoneTest extends JButton {
  
 	private static final long serialVersionUID = 1L;
-	protected static final long TIME = 1000; // le temps d'attente = 3 secondes
-	private static final long PERIOD = 100; // la période d'observation (toutes les 100 ms)
- 
-	private final Rectangle rectangle; // stocke la zone (pour la dessiner)
+	protected static final long TIME = 300; 
+	private static final long PERIOD = 100; 
+	private Rectangle rectangle; // stocke la zone (pour la dessiner)
 	private volatile Point mousePoint; // stocke la position de la souris = la position de la main
 	private AtomicBoolean mainDansLaZone=new AtomicBoolean(); // un état pour savoir qu'on a valider "main dans la zone pendant 3 secondes"
  
@@ -60,6 +52,10 @@ public class MainDansLaZoneTest extends JButton {
 					mousePoint=null;
 					stopCounter();
 					repaint();}}});} 
+	
+	public void setZone(Rectangle rectangle){
+		this.rectangle= rectangle;
+	}
  
 	public Point getMousePoint() {
 		Point point = super.getMousePosition();
@@ -109,7 +105,7 @@ public class MainDansLaZoneTest extends JButton {
 		ok.setSize(10,10);
 		frame.getContentPane().add(new JButton("ok"));
  
-		Rectangle zone = new Rectangle( 300, 100, 150, 100); // zone d'observation
+		Rectangle zone = new Rectangle( 0, 0, 150, 100);
  
 		panel = new MainDansLaZoneTest(zone,"ok"); // simulation de kinect
  
@@ -121,13 +117,11 @@ public class MainDansLaZoneTest extends JButton {
 					}
 		}, zone, TIME, PERIOD);
  
-		// enregistrement de l'écouteur
 		eventProducer.addListener(new Listener());
 		
-		JPanel mainPanel = new JPanel();
-		mainPanel.setLayout(new BorderLayout());
-		mainPanel.add(panel, BorderLayout.CENTER);
-		mainPanel.add(ok,BorderLayout.LINE_END);
+		frame.getContentPane().setLayout(new BorderLayout());
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		frame.getContentPane().add(ok,BorderLayout.LINE_END);
  
 		JCheckBox checkBox = new JCheckBox("Ecoute active");
 		checkBox.addChangeListener(e-> {
@@ -140,10 +134,8 @@ public class MainDansLaZoneTest extends JButton {
 				panel.setStarted(false);
 			}
 		});
-		mainPanel.add(checkBox, BorderLayout.SOUTH);
- 
-		frame.getContentPane().add(mainPanel);
- 
+		frame.getContentPane().add(checkBox, BorderLayout.SOUTH);
+  
 		// important : il faut démarrer le composant et l'arrêter
 		// ici on démarre quand la fenêtre est ouverte, et on arrête quand elle est fermée
 		frame.addWindowListener(new WindowAdapter() {
