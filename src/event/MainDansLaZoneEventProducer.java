@@ -13,35 +13,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MainDansLaZoneEventProducer {
 
-	private final Rectangle zone; // la zone à observer
-	private final long time; // la durée d'observation avant d'envoyer
-								// l'évenement en ms
-	private final long period; // la période d'observation (on teste la position
-								// toutes les period ms)
-	private final TrucKinect trucKinect; // la classe avec la méthode
-											// getPosition()
-	private AtomicBoolean started; // indique que l'observation est démarrée
-	private ExecutorService executor; // pour déléguer l'exécution de l'envoi de
-										// l'évenement aux écouteurs (pour
-										// éviter de bloquer timer)
-
-	private Timer timerObserver; // le timer qui sert à observer la position de
-									// la main
-	private Timer timerEvent; // le timer qui permet d'envoyer l'évenement au
-								// bout du temps time
-
-	private final List<IMainDansLaZoneListener> listeners; // la liste des
-															// écouteurs
-
-	private final Runnable fireEventTask; // la tâche qui envoie l'évenement
-
-	/**
-	 * 
-	 * @param zone
-	 *            la zone à tester
-	 * @param time
-	 * @param period
-	 */
+	private final Rectangle zone; 
+	private final long time, period;
+	private final TrucKinect trucKinect; 
+	private AtomicBoolean started; 
+	private ExecutorService executor; 
+	private Timer timerObserver; 
+	private Timer timerEvent; 
+	private final List<IMainDansLaZoneListener> listeners; 
+	private final Runnable fireEventTask;
+	
 	public MainDansLaZoneEventProducer(TrucKinect trucKinect, Rectangle zone, long time, long period) {
 		this.zone = zone;
 		this.time = time;
@@ -49,18 +30,9 @@ public class MainDansLaZoneEventProducer {
 		this.trucKinect = trucKinect;
 		this.started = new AtomicBoolean(false);
 		this.listeners = new ArrayList<>();
-		this.fireEventTask = new Runnable() {
-			
-			@Override
-			public void run() {
-				fireEvent();				
-			}
-		};
+		this.fireEventTask = new Runnable() {@Override public void run() {fireEvent();}};
 	}
 
-	/**
-	 * Démarrer l'observation
-	 */
 	public void start() {
 		if (started.compareAndSet(false, true)) {
 			executor = Executors.newSingleThreadExecutor();
@@ -74,13 +46,7 @@ public class MainDansLaZoneEventProducer {
 				@Override
 				public void run() {
 					final Point position = trucKinect.getPosition();
-					if (position != null && zone.contains(position)) { // test
-																		// si la
-																		// main
-																		// est
-																		// dans
-																		// la
-																		// zone
+					if (position != null && zone.contains(position)) { 
 						if (!mainDansLaZone) { // si on a déjà détecté, on ne
 												// fait rien
 							mainDansLaZone = true; // sinon on relève qu'on a
@@ -127,46 +93,24 @@ public class MainDansLaZoneEventProducer {
 		if (started.compareAndSet(true, false)) {
 			executor.shutdownNow();
 			timerEvent.cancel();
-			timerObserver.cancel();
-		}
-	}
+			timerObserver.cancel();}}
 
-	/**
-	 * Pour ajouter un écouteur
-	 * 
-	 * @param listener
-	 */
 	public void addListener(IMainDansLaZoneListener listener) {
 		Objects.requireNonNull(listener, "Listener can't be null");
 		synchronized (listeners) {
 			if (!listeners.contains(listener)) {
-				listeners.add(listener);
-			}
-		}
-	}
+				listeners.add(listener);}}}
+			
 
-	/**
-	 * Pour enlever un écouteur
-	 * 
-	 * @param listener
-	 */
 	public void removeListener(IMainDansLaZoneListener listener) {
 		synchronized (listeners) {
-			listeners.remove(listener);
-		}
-	}
-
+			listeners.remove(listener);}}
+	
 	private void fireEvent() {
 		synchronized (listeners) { // on parcourt tous les listeners et on leur
 									// envoie l'événement
 			for (IMainDansLaZoneListener listener : listeners) {
-				listener.mainDansLaZone();
-			}
-		}
-	}
+				listener.mainDansLaZone();}}}
+		
+	public interface IMainDansLaZoneListener {	void mainDansLaZone();}}
 
-	public interface IMainDansLaZoneListener {
-		void mainDansLaZone();
-	}
-
-}

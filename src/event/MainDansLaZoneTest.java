@@ -117,33 +117,10 @@ public class MainDansLaZoneTest extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if ( started ) {
+		if ( started ) {}
 			
-			if ( mousePoint!=null ) {
-				g.setColor(Color.BLACK);
-				g.drawLine(mousePoint.x-1, mousePoint.y, mousePoint.x+1, mousePoint.y);
-				g.drawLine(mousePoint.x, mousePoint.y-1, mousePoint.x, mousePoint.y+1);
-			}
-			if ( counter>0 ) {
-				g.setColor(Color.BLACK);
-				String counterString = String.valueOf(counter);
-				int size = g.getFont().getSize();
-				FontMetrics fm = g.getFontMetrics();
-				Rectangle2D stringBounds = fm.getStringBounds(counterString, g);
-				double scale = rectangle.getHeight()/size;
-				AffineTransform scaleTransform = AffineTransform.getScaleInstance(scale, scale);
-				stringBounds = scaleTransform.createTransformedShape(stringBounds).getBounds2D();
-				Rectangle2D bounds = new Rectangle2D.Double(0, 0, rectangle.width, rectangle.height);
-				AffineTransform transform = AffineTransform.getTranslateInstance(rectangle.x + (int)((bounds.getWidth()-stringBounds.getWidth())/2), rectangle.y /*+ (int)((bounds.getHeight()-stringBounds.getHeight())/2)*/);
-				transform.concatenate(scaleTransform);
-				((Graphics2D)g).setTransform(transform);
-				g.drawString(counterString, 0, fm.getAscent()-fm.getDescent());
-			}
-		}
-		else {
-			g.setColor(Color.DARK_GRAY);
-			g.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-		}
+			
+			
 	}
  
 	public void setMainDansLaZone(boolean mainDansLaZone) {
@@ -152,10 +129,7 @@ public class MainDansLaZoneTest extends JPanel {
 		}
 	}
  
-	public static void main(String[] args) {
- 
-		run();
-	}
+	public static void main(String[] args) {run();}
  
 	private static void run() {
  
