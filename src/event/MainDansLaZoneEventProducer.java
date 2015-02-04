@@ -20,7 +20,7 @@ public class MainDansLaZoneEventProducer {
 	private ExecutorService executor; 
 	private Timer timerObserver; 
 	private Timer timerEvent; 
-	private final List<IMainDansLaZoneListener> listeners; 
+	private final List<Listener> listeners; 
 	private final Runnable fireEventTask;
 	
 	public MainDansLaZoneEventProducer(TrucKinect trucKinect, Rectangle zone, long time, long period) {
@@ -29,8 +29,8 @@ public class MainDansLaZoneEventProducer {
 		this.period = period;
 		this.trucKinect = trucKinect;
 		this.started = new AtomicBoolean(false);
-		this.listeners = new ArrayList<>();
-		this.fireEventTask = new Runnable() {@Override public void run() {fireEvent();}};
+		this.listeners = new ArrayList<Listener>();
+		this.fireEventTask = new Runnable() {public void run() {fireEvent();}};
 	}
 
 	public void start() {
@@ -99,7 +99,7 @@ public class MainDansLaZoneEventProducer {
 		Objects.requireNonNull(listener, "Listener can't be null");
 		synchronized (listeners) {
 			if (!listeners.contains(listener)) {
-				listeners.add(listener);}}}
+				listeners.add((Listener) listener);}}}
 			
 
 	public void removeListener(IMainDansLaZoneListener listener) {

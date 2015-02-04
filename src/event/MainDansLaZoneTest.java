@@ -1,6 +1,7 @@
 package event;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
@@ -10,10 +11,12 @@ import java.awt.event.WindowEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 public class MainDansLaZoneTest extends JButton {
@@ -31,7 +34,7 @@ public class MainDansLaZoneTest extends JButton {
 	private TimerTask counterTask;
 	private AtomicBoolean counterStarted=new AtomicBoolean();
 	private boolean started;
-	protected static MainDansLaZoneTest panel;
+	protected static MainDansLaZoneTest button;
  
  
 	public MainDansLaZoneTest(Rectangle rectangle, String msg) {
@@ -95,7 +98,6 @@ public class MainDansLaZoneTest extends JButton {
  
 	private static void run() {
  
-		// création de l'UI
 		JFrame frame = new JFrame("Démo");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
  
@@ -104,37 +106,50 @@ public class MainDansLaZoneTest extends JButton {
 		JButton ok = new JButton("ok");
 		ok.setSize(10,10);
 		frame.getContentPane().add(new JButton("ok"));
+		System.out.println(ok.getBounds());
  
 		Rectangle zone = new Rectangle( 0, 0, 150, 100);
  
-		panel = new MainDansLaZoneTest(zone,"ok"); // simulation de kinect
+		button = new MainDansLaZoneTest(zone,"ok"); // simulation de kinect
  
-		MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(
+		final MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(
 				new TrucKinect() {
 					@Override
 					public Point getPosition() {
-						return panel.getMousePoint();
+						return button.getMousePoint();
 					}
 		}, zone, TIME, PERIOD);
  
 		eventProducer.addListener(new Listener());
 		
-		frame.getContentPane().setLayout(new BorderLayout());
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		frame.getContentPane().add(ok,BorderLayout.LINE_END);
+		frame.getContentPane().setLayout(new FlowLayout());
+		frame.getContentPane().add(button);
+		System.out.println(button.getBounds());
+		Rectangle rec = button.getBounds();
+		
+		
+		button.setZone(rec);
+		frame.getContentPane().remove(button);
+		button = new MainDansLaZoneTest(rec, "ok");
+		frame.getContentPane().add(button);
+		frame.repaint();
  
-		JCheckBox checkBox = new JCheckBox("Ecoute active");
-		checkBox.addChangeListener(e-> {
-			if ( checkBox.isSelected() ) {
-				eventProducer.start();
-				panel.setStarted(true);
-			}
-			else {
-				eventProducer.stop();
-				panel.setStarted(false);
+		final JCheckBox checkBox = new JCheckBox("Ecoute active");
+		checkBox.addChangeListener(new ChangeListener() {
+			
+			public void stateChanged(ChangeEvent e) {
+				if ( checkBox.isSelected() ) {
+					eventProducer.start();
+					button.setStarted(true);
+				}
+				else {
+					eventProducer.stop();
+					button.setStarted(false);
+				}				
 			}
 		});
-		frame.getContentPane().add(checkBox, BorderLayout.SOUTH);
+		
+		frame.getContentPane().add(checkBox);
   
 		// important : il faut démarrer le composant et l'arrêter
 		// ici on démarre quand la fenêtre est ouverte, et on arrête quand elle est fermée
@@ -143,7 +158,7 @@ public class MainDansLaZoneTest extends JButton {
 			@Override
 			public void windowOpened(WindowEvent e) {
 				eventProducer.start();
-				panel.setStarted(true);
+				button.setStarted(true);
 				checkBox.setSelected(true);
 			}
  
