@@ -17,6 +17,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -117,18 +118,7 @@ public class MainDansLaZoneTest extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if ( started ) {
-			if ( mousePoint!=null && rectangle.contains(mousePoint) ) {
-				if ( mainDansLaZone.get() ) {
-					g.setColor(Color.GREEN); // on affiche la zone en vert quand la souris est dans la zone et qu'on reçu l'événement
-				}
-				else {
-					g.setColor(Color.YELLOW); // on affiche la zone en jaunne quand la souris est dans la zone
-				}
-			}
-			else {
-				g.setColor(Color.CYAN);
-			}
-			g.fillRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+			
 			if ( mousePoint!=null ) {
 				g.setColor(Color.BLACK);
 				g.drawLine(mousePoint.x-1, mousePoint.y, mousePoint.x+1, mousePoint.y);
@@ -175,6 +165,9 @@ public class MainDansLaZoneTest extends JPanel {
  
 		frame.setSize(600, 400);
 		frame.setLocationRelativeTo(null);
+		JButton ok = new JButton("ok");
+		ok.setSize(10,10);
+		frame.getContentPane().add(new JButton("ok"));
  
 		Rectangle zone = new Rectangle( 300, 100, 150, 100); // zone d'observation
  
@@ -194,6 +187,7 @@ public class MainDansLaZoneTest extends JPanel {
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
 		mainPanel.add(panel, BorderLayout.CENTER);
+		mainPanel.add(ok,BorderLayout.LINE_END);
  
 		JCheckBox checkBox = new JCheckBox("Ecoute active");
 		checkBox.addChangeListener(e-> {
