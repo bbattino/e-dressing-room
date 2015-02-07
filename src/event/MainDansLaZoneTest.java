@@ -103,17 +103,13 @@ public class MainDansLaZoneTest extends JButton {
  
 		frame.setSize(600, 400);
 		frame.setLocationRelativeTo(null);
-		JButton ok = new JButton("ok");
-		ok.setSize(10,10);
-		frame.getContentPane().add(new JButton("ok"));
-		System.out.println(ok.getBounds());
  
 		Rectangle zone = new Rectangle( 0, 0, 150, 100);
  
 		button = new MainDansLaZoneTest(zone,"ok"); // simulation de kinect
  
 		final MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(
-				new TrucKinect() {
+				new TrucKinect(button) {
 					@Override
 					public Point getPosition() {
 						return button.getMousePoint();

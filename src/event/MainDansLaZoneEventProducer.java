@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+
 public class MainDansLaZoneEventProducer {
 
 	private final Rectangle zone; 
@@ -21,7 +22,28 @@ public class MainDansLaZoneEventProducer {
 	private Timer timerObserver; 
 	private Timer timerEvent; 
 	private final List<Listener> listeners; 
-	private final Runnable fireEventTask;
+	//private final Runnable fireEventTask;
+	public enum Type {ENTER,HIT,EXIT}
+	private Runnable fireHitEventTask = new Runnable() {
+		public void run() {
+			fireEvent(Type.HIT);			
+		}
+	};
+	private Runnable fireEnterEventTask= new Runnable() {
+		
+		public void run() {
+			fireEvent(Type.ENTER);			
+
+		}
+	};
+	
+	private Runnable fireExitEventTask = new Runnable() {
+		
+		public void run() {
+			fireEvent(Type.EXIT);			
+			
+		}
+	};
 	
 	public MainDansLaZoneEventProducer(TrucKinect trucKinect, Rectangle zone, long time, long period) {
 		this.zone = zone;
@@ -30,7 +52,7 @@ public class MainDansLaZoneEventProducer {
 		this.trucKinect = trucKinect;
 		this.started = new AtomicBoolean(false);
 		this.listeners = new ArrayList<Listener>();
-		this.fireEventTask = new Runnable() {public void run() {fireEvent();}};
+		//this.fireEventTask = new Runnable() {public void run() {fireEvent();}};
 	}
 
 	public void start() {
@@ -54,6 +76,7 @@ public class MainDansLaZoneEventProducer {
 													// zone
 							// on lance la tâche qui attend avant d'envoyer
 							// l'évenement
+							executor.execute(fireEnterEventTask);
 							timerTask = new TimerTask() { // on lance la tâche
 															// qui attend que la
 															// main est restée
@@ -66,7 +89,8 @@ public class MainDansLaZoneEventProducer {
 								}
 
 								private void fireEvent() {
-									executor.execute(fireEventTask);
+									if(mainDansLaZone)
+									executor.execute(fireHitEventTask);
 								}
 
 							};
@@ -78,6 +102,7 @@ public class MainDansLaZoneEventProducer {
 							mainDansLaZone = false; // on relève qu'on est plus
 													// dans la zone
 							timerTask.cancel(); // on annule la tâche qui attend
+							executor.execute(fireExitEventTask);
 						}
 					}
 				}
@@ -106,11 +131,11 @@ public class MainDansLaZoneEventProducer {
 		synchronized (listeners) {
 			listeners.remove(listener);}}
 	
-	private void fireEvent() {
+	private void fireEvent(Type type) {
 		synchronized (listeners) { // on parcourt tous les listeners et on leur
 									// envoie l'événement
 			for (IMainDansLaZoneListener listener : listeners) {
-				listener.mainDansLaZone();}}}
+				listener.mainDansLaZone(type);}}}
 		
-	public interface IMainDansLaZoneListener {	void mainDansLaZone();}}
+	public interface IMainDansLaZoneListener {void mainDansLaZone(Type type);}}
 
