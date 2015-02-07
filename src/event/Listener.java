@@ -1,7 +1,5 @@
 package event;
 
-import javax.swing.JButton;
-
 import event.MainDansLaZoneEventProducer.IMainDansLaZoneListener;
 import event.MainDansLaZoneEventProducer.Type;
 
@@ -23,10 +21,7 @@ public class Listener implements IMainDansLaZoneListener{
 		}.start();
 	}
 
-	public void mainDansLaZone(Type type) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mainDansLaZone(Type type) {}
 	
 	
 
