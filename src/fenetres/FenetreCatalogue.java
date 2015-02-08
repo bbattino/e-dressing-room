@@ -23,7 +23,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class FenetreCatalogue extends JFrame implements ActionListener{
+public class FenetreCatalogue extends Fenetre implements ActionListener{
 
 
 
@@ -94,6 +94,12 @@ public class FenetreCatalogue extends JFrame implements ActionListener{
 
 			
 			this.setExtendedState(Frame.MAXIMIZED_BOTH);
+			for (JButton bouton : boutonListe)
+				addHandListener(bouton);
+			addHandListener(retourButton);
+			addHandListener(voirPanierButton);
+			addHandListener(quitterButton);
+			addHandListener(supprimerButton);
 		}
 		
 		public void tShirt(){

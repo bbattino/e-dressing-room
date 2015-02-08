@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 
 import audio.LecteurAudio;
 
-public class FenetreAffichage extends JFrame implements ActionListener{
+public class FenetreAffichage extends Fenetre implements ActionListener{
 
 
 
@@ -73,6 +73,9 @@ public class FenetreAffichage extends JFrame implements ActionListener{
 				bouton.addActionListener(this);
 			
 			this.setExtendedState(Frame.MAXIMIZED_BOTH);
+			addHandListener(panierButton);
+			addHandListener(quitterButton);
+			addHandListener(retourButton);
 			
 		}
 		

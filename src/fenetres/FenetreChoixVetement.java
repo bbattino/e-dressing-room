@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 
 import audio.LecteurAudio;
 
-public class FenetreChoixVetement extends JFrame implements ActionListener {
+public class FenetreChoixVetement extends Fenetre implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JButton essayerButton = new JButton("Essayer");
@@ -85,6 +85,12 @@ public class FenetreChoixVetement extends JFrame implements ActionListener {
 			bouton.addActionListener(this);
 
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+		addHandListener(essayerButton);
+		addHandListener(panierButton);
+		addHandListener(precedentButton);
+		addHandListener(quitterButton);
+		addHandListener(retourButton);
+		addHandListener(suivantButton);
 
 	}
 

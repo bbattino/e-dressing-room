@@ -22,7 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class FenetreIdentification extends JFrame implements ActionListener {
+public class FenetreIdentification extends Fenetre implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JButton quitterButton = new JButton("Quitter");
@@ -85,6 +85,10 @@ public class FenetreIdentification extends JFrame implements ActionListener {
 			System.err.println("Attention l'image n'existe pas !");
 
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+		addHandListener(nouveauCompteButton);
+		addHandListener(quitterButton);
+		for(JButton bouton : utilisateurs)
+			addHandListener(bouton);
 	}
 
 	public void quitter() {

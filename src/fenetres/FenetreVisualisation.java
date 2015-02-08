@@ -23,7 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class FenetreVisualisation extends JFrame implements ActionListener {
+public class FenetreVisualisation extends Fenetre implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JButton essayerButton = new JButton("Essayer");
@@ -105,6 +105,12 @@ public class FenetreVisualisation extends JFrame implements ActionListener {
 				bouton.addActionListener(this);
 
 			this.setExtendedState(Frame.MAXIMIZED_BOTH);
+			addHandListener(essayerButton);
+			addHandListener(precedentButton);
+			addHandListener(quitterButton);
+			addHandListener(retourButton);
+			addHandListener(suivantButton);
+			addHandListener(supprimerButton);
 		}
 
 	}

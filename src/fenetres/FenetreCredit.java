@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class FenetreCredit extends JFrame implements ActionListener {
+public class FenetreCredit extends Fenetre implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JButton retourButton = new JButton("Retour");
@@ -64,6 +64,8 @@ public class FenetreCredit extends JFrame implements ActionListener {
 		logger.info("Ajout des actionListeners pour les boutons \n");
 
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+		this.addHandListener(quitterButton);
+		this.addHandListener(retourButton);
 
 	}
 	public void retour(){

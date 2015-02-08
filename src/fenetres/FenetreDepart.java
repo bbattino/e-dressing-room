@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import java.util.logging.*;
 
 
-public class FenetreDepart extends JFrame implements ActionListener{
+public class FenetreDepart extends Fenetre implements ActionListener{
 
 
 
@@ -30,6 +30,7 @@ public class FenetreDepart extends JFrame implements ActionListener{
 		private static Logger logger;
 
 		public FenetreDepart() {
+			super();
 			logger = Logger.getLogger("com.foo.FenetreDepart");
 			logger.setLevel(Level.OFF);
 			setUndecorated(true);
@@ -71,6 +72,9 @@ public class FenetreDepart extends JFrame implements ActionListener{
 			logger.info("Ajout des actionListeners pour les boutons \n");
 
 			this.setExtendedState(Frame.MAXIMIZED_BOTH);
+			addHandListener(commencerButton);
+			addHandListener(creditsButton);
+			addHandListener(quitterButton);
 			
 			
 			
