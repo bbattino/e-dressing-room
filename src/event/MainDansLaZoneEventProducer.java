@@ -1,5 +1,5 @@
 package event;
-
+ 
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -10,65 +10,67 @@ import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-
+ 
 public class MainDansLaZoneEventProducer {
-
-	private final Rectangle zone; 
+ 
+	private final Rectangle zone;
 	private final long time, period;
-	private final TrucKinect trucKinect; 
-	private AtomicBoolean started; 
-	private ExecutorService executor; 
-	private Timer timerObserver; 
-	private Timer timerEvent; 
-	private final List<Listener> listeners; 
-	//private final Runnable fireEventTask;
-	public enum Type {ENTER,HIT,EXIT}
+	private final TrucKinect trucKinect;
+	private AtomicBoolean started;
+	private ExecutorService executor;
+	private Timer timerObserver;
+	private Timer timerEvent;
+	private final List<IMainDansLaZoneListener> listeners;//=> non : private final List<Listener> listeners;
+ 
+	public enum Type {
+		ENTER, HIT, EXIT
+	}
+ 
 	private Runnable fireHitEventTask = new Runnable() {
 		public void run() {
-			fireEvent(Type.HIT);			
+			fireEvent(Type.HIT);
 		}
 	};
-	private Runnable fireEnterEventTask= new Runnable() {
-		
+	private Runnable fireEnterEventTask = new Runnable() {
+ 
 		public void run() {
-			fireEvent(Type.ENTER);			
-
+			fireEvent(Type.ENTER);
+ 
 		}
 	};
-	
+ 
 	private Runnable fireExitEventTask = new Runnable() {
-		
+ 
 		public void run() {
-			fireEvent(Type.EXIT);			
-			
+			fireEvent(Type.EXIT);
+ 
 		}
 	};
-	
-	public MainDansLaZoneEventProducer(TrucKinect trucKinect, Rectangle zone, long time, long period) {
+ 
+	public MainDansLaZoneEventProducer(TrucKinect trucKinect, Rectangle zone,
+			long time, long period) {
 		this.zone = zone;
 		this.time = time;
 		this.period = period;
 		this.trucKinect = trucKinect;
 		this.started = new AtomicBoolean(false);
-		this.listeners = new ArrayList<Listener>();
-		//this.fireEventTask = new Runnable() {public void run() {fireEvent();}};
+		this.listeners = new ArrayList<IMainDansLaZoneListener>();
 	}
-
+ 
 	public void start() {
 		if (started.compareAndSet(false, true)) {
 			executor = Executors.newSingleThreadExecutor();
 			timerObserver = new Timer();
 			timerEvent = new Timer();
 			timerObserver.schedule(new TimerTask() {
-
+ 
 				private boolean mainDansLaZone;
 				private TimerTask timerTask;
-
+ 
 				@Override
 				public void run() {
 					final Point position = trucKinect.getPosition();
-					if (position != null && zone.contains(position)) { 
+					if (position != null && zone.contains(position)) {
 						if (!mainDansLaZone) { // si on a déjà détecté, on ne
 												// fait rien
 							mainDansLaZone = true; // sinon on relève qu'on a
@@ -82,17 +84,17 @@ public class MainDansLaZoneEventProducer {
 															// main est restée
 															// suffisemment
 															// longtemps
-
+ 
 								@Override
 								public void run() {
 									fireEvent();
 								}
-
+ 
 								private void fireEvent() {
-									if(mainDansLaZone)
-									executor.execute(fireHitEventTask);
+									if (mainDansLaZone)
+										executor.execute(fireHitEventTask);
 								}
-
+ 
 							};
 							timerEvent.schedule(timerTask, time);
 						}
@@ -106,11 +108,11 @@ public class MainDansLaZoneEventProducer {
 						}
 					}
 				}
-
+ 
 			}, period, period);
 		}
 	}
-
+ 
 	/**
 	 * Arrêter l'observation
 	 */
@@ -118,24 +120,36 @@ public class MainDansLaZoneEventProducer {
 		if (started.compareAndSet(true, false)) {
 			executor.shutdownNow();
 			timerEvent.cancel();
-			timerObserver.cancel();}}
-
+			timerObserver.cancel();
+		}
+	}
+ 
 	public void addListener(IMainDansLaZoneListener listener) {
 		Objects.requireNonNull(listener, "Listener can't be null");
 		synchronized (listeners) {
 			if (!listeners.contains(listener)) {
-				listeners.add((Listener) listener);}}}
-			
-
+				listeners.add(listener);
+			}
+		}
+	}
+ 
 	public void removeListener(IMainDansLaZoneListener listener) {
 		synchronized (listeners) {
-			listeners.remove(listener);}}
-	
+			listeners.remove(listener);
+		}
+	}
+ 
 	private void fireEvent(Type type) {
 		synchronized (listeners) { // on parcourt tous les listeners et on leur
 									// envoie l'événement
 			for (IMainDansLaZoneListener listener : listeners) {
-				listener.mainDansLaZone(type);}}}
-		
-	public interface IMainDansLaZoneListener {void mainDansLaZone(Type type);}}
-
+				listener.mainDansLaZone(type);
+			}
+		}
+	}
+ 
+	public interface IMainDansLaZoneListener {
+		void mainDansLaZone(Type type);
+	}
+ 
+}
