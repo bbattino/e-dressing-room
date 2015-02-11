@@ -85,6 +85,9 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 			bouton.addActionListener(this);
 
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+		System.out.println("choi1 "+essayerButton.getHeight());
+		while(essayerButton.getHeight()==0);
+		System.out.println("choi2 "+essayerButton.getHeight());
 		addHandListener(essayerButton);
 		addHandListener(panierButton);
 		addHandListener(precedentButton);

@@ -32,12 +32,12 @@ public abstract class Fenetre extends JFrame implements ActionListener {
 			public void mainDansLaZone(MainDansLaZoneEventProducer.Type type) {
 				switch (type) {
 				case ENTER: // on entre la zone
-					System.out.println("enter");
+					//System.out.println("enter");
 					bouton.getModel().setArmed(true);
 					bouton.getModel().setPressed(true);
 					break;
 				case HIT: // si la main est restée 3 secondes
-					System.out.println("hit");
+					//System.out.println("hit");
 					bouton.getModel().setArmed(false);
 					bouton.getModel().setPressed(false);
 					bouton.doClick(); // je clique le bouton
@@ -45,7 +45,7 @@ public abstract class Fenetre extends JFrame implements ActionListener {
 				case EXIT: // si la main sort (attention avec ce que j'ai fait,
 							// elle sort toujours, même si elle est restée 3
 							// secondes...
-					System.out.println("exit");
+					//System.out.println("exit");
 					bouton.getModel().setArmed(false);
 					bouton.getModel().setPressed(false);
 					break;
