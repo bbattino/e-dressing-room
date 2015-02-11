@@ -1,5 +1,6 @@
 package pactInitial;
 
+import fenetres.FenetreCatalogue;
 import fenetres.FenetreDepart;
 import audio.LecteurAudio;
 
@@ -10,6 +11,7 @@ public class Main {
 		
 		new LecteurAudio("bienvenue.wav");
 		new FenetreDepart();
+		//new FenetreCatalogue(null);
 
 	}
 

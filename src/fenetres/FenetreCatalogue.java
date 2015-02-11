@@ -94,16 +94,24 @@ public class FenetreCatalogue extends Fenetre implements ActionListener{
 
 			
 			this.setExtendedState(Frame.MAXIMIZED_BOTH);
-			System.out.println("c1 "+tShirtButton.getHeight());
+			/*System.out.println("c1 "+tShirtButton.getHeight());
 			while(tShirtButton.getHeight()==0); 
-			System.out.println("c2 "+tShirtButton.getHeight());
+			System.out.println("c2 "+tShirtButton.getHeight());*/
+			//while(tShirtButton.getHeight()==0); 
 
 			for (JButton bouton : boutonListe)
-				addHandListener(bouton);
-			addHandListener(retourButton);
-			addHandListener(voirPanierButton);
+				System.out.println(bouton.getText()+" "+bouton.getLocation()+" "+bouton.getSize());
+
+			for (JButton bouton : boutonListe)
+				addHandListener(bouton,0);
+			//for(long j=0;j<10;j++){
+			//for(long i=0;i<1000000000;i++);}
+			//addHandListener(tShirtButton,0,0,500,683);
+			
+			addHandListener(retourButton,0);
+			addHandListener(voirPanierButton,0);
 			addHandListener(quitterButton);
-			addHandListener(supprimerButton);
+			addHandListener(supprimerButton,0);
 		}
 		
 		public void tShirt(){
