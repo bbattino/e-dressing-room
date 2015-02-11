@@ -72,7 +72,7 @@ public abstract class Fenetre extends JFrame implements ActionListener {
 	}
 	public void addHandListener(final JButton bouton,int x, int y, int height, int width) {
 		final MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(new TrucKinect(bouton),
-				new Rectangle(new Point(x,y), new Dimension(height,width)), 1000, 100); 
+				new Rectangle(new Point(x,y), new Dimension(width,height)), 1000, 100); 
 																							
 
 		// alternative 1 : classe anonyme
@@ -115,5 +115,10 @@ public abstract class Fenetre extends JFrame implements ActionListener {
 
 		
 	}
+	
+	public void addHandListener(final JButton bouton,int x) {
+		addHandListener(bouton,0,0,1000,1000);
+	}
+	
 
 }

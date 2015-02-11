@@ -85,10 +85,10 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			System.err.println("Attention l'image n'existe pas !");
 
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
-		addHandListener(nouveauCompteButton);
-		addHandListener(quitterButton);
+		addHandListener(nouveauCompteButton,0);
+		addHandListener(quitterButton,0);
 		for(JButton bouton : utilisateurs)
-			addHandListener(bouton);
+			addHandListener(bouton,0);
 	}
 
 	public void quitter() {
