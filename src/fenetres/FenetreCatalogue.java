@@ -23,6 +23,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import pactInitial.Main;
+import event.MainDansLaZoneEventProducer;
+
 public class FenetreCatalogue extends Fenetre implements ActionListener{
 
 
@@ -110,18 +113,36 @@ public class FenetreCatalogue extends Fenetre implements ActionListener{
 		
 		public void tShirt(){
 			dispose();
+			if(Main.firstTShirt){
+				Main.firstTShirt=false;
+				FenetreChoixVetement fen = new FenetreChoixVetement(userName,"tshirt");
+				fen.dispose();
+			}
 			new FenetreChoixVetement(userName,"tshirt");
 		}
 		public void robe(){
 			dispose();
+			if(Main.firstRobe){
+				Main.firstRobe=false;
+				FenetreChoixVetement fen = new FenetreChoixVetement(userName,"robe");
+				fen.dispose();
+			}
 			new FenetreChoixVetement(userName,"robe");		
 		}
 		public void pantalon(){
 			dispose();
+			if(Main.firstPantalon){
+				Main.firstPantalon=false;
+				FenetreChoixVetement fen = new FenetreChoixVetement(userName,"pantalon");
+				fen.dispose();}
 			new FenetreChoixVetement(userName,"pantalon");		
 		}
 		public void pull(){
 			dispose();
+			if(Main.firstPull){
+				Main.firstPull=false;
+				FenetreChoixVetement fen = new FenetreChoixVetement(userName,"pantalon");
+				fen.dispose();}
 			new FenetreChoixVetement(userName,"pull");		
 		}
 		public void retour(){

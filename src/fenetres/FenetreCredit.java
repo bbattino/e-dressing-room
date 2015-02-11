@@ -3,6 +3,7 @@ package fenetres;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +35,10 @@ public class FenetreCredit extends Fenetre implements ActionListener {
 
 		logger = Logger.getLogger("com.foo.FenetreCredits");
 		logger.setLevel(Level.OFF);
+		
+		texte.setFont(new Font("Century", Font.BOLD, 12));
+		
+
 
 		setUndecorated(true);
 		logger.info("Initialisation de la fenêtre de credits \n");
