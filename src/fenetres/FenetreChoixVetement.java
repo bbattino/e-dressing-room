@@ -52,10 +52,6 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 			images.add(new JLabel(new ImageIcon(dossier + "/" + fichiersImage[i].getName())));
 			imagePath.add(dossier + "/" + fichiersImage[i].getName());
 		}
-		// pour eviter les dépassement d'arrayList eventuels (si il n'y a pas le
-		// même nombre de vêtements dans toutes les categories)
-		if (numeroChoix > images.size() - 1)
-			numeroChoix = 0;
 		// Utilisation de BorderLayout
 		contenu.setLayout(new BorderLayout());
 		contenu.setBackground(new Color(255, 255, 255));

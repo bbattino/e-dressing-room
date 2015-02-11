@@ -68,8 +68,6 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		if (numeroChoix > images.size() - 1)
-			numeroChoix = 0;
 		if (panierVide) {
 			dispose();
 			new FenetreCatalogue(userName);
