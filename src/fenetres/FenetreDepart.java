@@ -72,9 +72,9 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			logger.info("Ajout des actionListeners pour les boutons \n");
 
 			this.setExtendedState(Frame.MAXIMIZED_BOTH);
-			addHandListener(commencerButton,0);
-			addHandListener(creditsButton,0);
-			addHandListener(quitterButton,0);
+			addHandListener(commencerButton);
+			addHandListener(creditsButton);
+			addHandListener(quitterButton);
 			
 			
 			

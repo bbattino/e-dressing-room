@@ -1,7 +1,6 @@
 package event;
  
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +12,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
  
 public class MainDansLaZoneEventProducer {
  
-	private final Rectangle zone;
 	private final long time, period;
 	private final TrucKinect trucKinect;
 	private AtomicBoolean started;
@@ -47,9 +45,8 @@ public class MainDansLaZoneEventProducer {
 		}
 	};
  
-	public MainDansLaZoneEventProducer(TrucKinect trucKinect, Rectangle zone,
+	public MainDansLaZoneEventProducer(TrucKinect trucKinect,
 			long time, long period) {
-		this.zone = zone;
 		this.time = time;
 		this.period = period;
 		this.trucKinect = trucKinect;
@@ -70,7 +67,7 @@ public class MainDansLaZoneEventProducer {
 				@Override
 				public void run() {
 					final Point position = trucKinect.getPosition();
-					if (position != null && zone.contains(position)) {
+					if (position != null) {
 						if (!mainDansLaZone) { // si on a déjà détecté, on ne
 												// fait rien
 							mainDansLaZone = true; // sinon on relève qu'on a

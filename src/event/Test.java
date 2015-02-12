@@ -1,15 +1,11 @@
 package event;
  
- 
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
- 
 import javax.swing.JButton;
 import javax.swing.JFrame;
- 
 import event.MainDansLaZoneEventProducer.IMainDansLaZoneListener;
 import event.MainDansLaZoneEventProducer.Type;
  
@@ -31,7 +27,7 @@ public class Test {
  
 		final MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(
 				new TrucKinect(bouton),
-				new Rectangle(bouton.getLocationOnScreen(), bouton.getSize()), 1000, 100); // buttonBounds ce sont les bounds du bouton (à priori dans l'écran)
+				 1000, 100); // buttonBounds ce sont les bounds du bouton (à priori dans l'écran)
  
 		// alternative 1 : classe anonyme
 		eventProducer.addListener(new IMainDansLaZoneListener() {

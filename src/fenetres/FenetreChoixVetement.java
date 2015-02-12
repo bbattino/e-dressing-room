@@ -81,15 +81,18 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 			bouton.addActionListener(this);
 
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
-		System.out.println("choi1 "+essayerButton.getHeight());
+		/*System.out.println("choi1 "+essayerButton.getHeight());
 		//while(essayerButton.getHeight()==0);
-		System.out.println("choi2 "+essayerButton.getHeight());
-		addHandListener(essayerButton,0,0,1366,800);
-		addHandListener(panierButton,0,0,1366,800);
-		addHandListener(precedentButton,0,0,1366,800);
-		addHandListener(quitterButton,0,0,1366,800);
-		addHandListener(retourButton,0,0,1366,800);
-		addHandListener(suivantButton,0,0,1366,800);
+		System.out.println("choi2 "+essayerButton.getHeight());*/
+		//addHandListener(suivantButton,1293,0,73,729);
+
+		addHandListener(essayerButton);
+		addHandListener(panierButton);
+		addHandListener(precedentButton);
+		addHandListener(quitterButton);
+		addHandListener(retourButton);
+		addHandListener(suivantButton);
+		//addHandListener(suivantButton);
 
 	}
 
@@ -146,6 +149,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 
+		
 		if (e.getSource() == quitterButton)
 			System.exit(0);
 		else if (e.getSource() == essayerButton)

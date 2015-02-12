@@ -1,7 +1,6 @@
 package fenetres;
 
 import javax.swing.JFrame;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -17,15 +16,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import pactInitial.Main;
-import event.MainDansLaZoneEventProducer;
-
 public class FenetreCatalogue extends Fenetre implements ActionListener{
 
 
@@ -97,17 +92,14 @@ public class FenetreCatalogue extends Fenetre implements ActionListener{
 
 			
 			this.setExtendedState(Frame.MAXIMIZED_BOTH);
-			System.out.println("c1 "+tShirtButton.getHeight());
-			//while(tShirtButton.getHeight()==0); 
-			System.out.println("c2 "+tShirtButton.getHeight());
-
+		
+			
 			for (JButton bouton : boutonListe)
-				addHandListener(bouton,0,0,1366,1000);
-			addHandListener(retourButton,0,0,1000,1000);
-			addHandListener(voirPanierButton,0,0,1000,1000);
-			addHandListener(quitterButton,0,0,1000,1000);
-			addHandListener(supprimerButton,0,0,1000,1000);
-			System.out.println(contenu.getSize());
+				addHandListener(bouton);
+			addHandListener(retourButton);
+			addHandListener(voirPanierButton);
+			addHandListener(quitterButton);
+			addHandListener(supprimerButton);
 
 		}
 		
