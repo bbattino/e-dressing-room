@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import audio.LecteurAudio;
@@ -37,6 +36,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 	private int numeroChoix = 0;
 	private Container contenu = getContentPane();
 	private String userName, vetementType;
+	private static JOptionPanePerso jopp;
 
 	public FenetreChoixVetement(String userName, String typeVetement) {
 		this.userName = userName;
@@ -142,8 +142,11 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 				}
 			}
 		}
+		String[] s ={"ok"};
+		Runnable[] r = {new Runnable() {public void run() {jopp.dispose();	}}};
 		new LecteurAudio("recharge.wav");
-		JOptionPane.showMessageDialog(new JFrame(), "L'article a été ajouté au panier");
+		jopp=new JOptionPanePerso("L'article a été ajouté au panier",s, r);
+				//JOptionPane.showMessageDialog(new JFrame(), "L'article a été ajouté au panier");
 
 	}
 

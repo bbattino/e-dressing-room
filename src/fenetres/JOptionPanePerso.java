@@ -32,10 +32,10 @@ public JOptionPanePerso(String Message, String[] boutonsTitre, Runnable[] bouton
 		boutonListe.add(bouton);
 		boutonsPanel.add(bouton);
 		boutonActionListe.add(boutonsAction[i]);
+		addHandListener(bouton);
 	}
 	contenu.add(boutonsPanel,BorderLayout.PAGE_END);
 	pack();
-	
 }
 
 	public void actionPerformed(ActionEvent e) {
@@ -46,7 +46,6 @@ public JOptionPanePerso(String Message, String[] boutonsTitre, Runnable[] bouton
 			}
 		}
 	}
-
 }
 
 

@@ -1,6 +1,8 @@
 package event;
  
+import java.awt.AWTException;
 import java.awt.Point;
+import java.awt.Robot;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -18,7 +20,8 @@ public class MainDansLaZoneEventProducer {
 	private ExecutorService executor;
 	private Timer timerObserver;
 	private Timer timerEvent;
-	private final List<IMainDansLaZoneListener> listeners;//=> non : private final List<Listener> listeners;
+	private final List<IMainDansLaZoneListener> listeners;
+	private Robot robot;
  
 	public enum Type {
 		ENTER, HIT, EXIT
@@ -52,6 +55,7 @@ public class MainDansLaZoneEventProducer {
 		this.trucKinect = trucKinect;
 		this.started = new AtomicBoolean(false);
 		this.listeners = new ArrayList<IMainDansLaZoneListener>();
+		try {robot=new Robot();} catch (AWTException e) {e.printStackTrace();}
 	}
  
 	public void start() {
@@ -66,21 +70,16 @@ public class MainDansLaZoneEventProducer {
  
 				@Override
 				public void run() {
+					Point p = trucKinect.getPosition(); // A modifier par la vraie kinect !!!!
+					if(p!=null)
+						robot.mouseMove((int)p.getX(), (int)p.getY());
+					// Le code ci dessous ne devra pas être modifié lors de l'utilisation de la vraie kinect
 					final Point position = trucKinect.getPosition();
 					if (position != null) {
-						if (!mainDansLaZone) { // si on a déjà détecté, on ne
-												// fait rien
-							mainDansLaZone = true; // sinon on relève qu'on a
-													// détecter la main dans la
-													// zone
-							// on lance la tâche qui attend avant d'envoyer
-							// l'évenement
+						if (!mainDansLaZone) { 
+							mainDansLaZone = true; 
 							executor.execute(fireEnterEventTask);
-							timerTask = new TimerTask() { // on lance la tâche
-															// qui attend que la
-															// main est restée
-															// suffisemment
-															// longtemps
+							timerTask = new TimerTask() { 
  
 								@Override
 								public void run() {
@@ -91,28 +90,22 @@ public class MainDansLaZoneEventProducer {
 									if (mainDansLaZone)
 										executor.execute(fireHitEventTask);
 								}
- 
 							};
 							timerEvent.schedule(timerTask, time);
 						}
 					} else {
-						if (mainDansLaZone) { // si on n'est pas dans la zone et
-												// qu'on avait été dans la zone
-							mainDansLaZone = false; // on relève qu'on est plus
-													// dans la zone
-							timerTask.cancel(); // on annule la tâche qui attend
-							executor.execute(fireExitEventTask);
-						}
+						if (mainDansLaZone) { 
+							mainDansLaZone = false; 
+													
+							timerTask.cancel(); 
+							executor.execute(fireExitEventTask);}
 					}
 				}
- 
 			}, period, period);
 		}
 	}
  
-	/**
-	 * Arrêter l'observation
-	 */
+	
 	public void stop() {
 		if (started.compareAndSet(true, false)) {
 			executor.shutdownNow();
