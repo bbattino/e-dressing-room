@@ -145,8 +145,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 		String[] s ={"ok"};
 		Runnable[] r = {new Runnable() {public void run() {jopp.dispose();	}}};
 		new LecteurAudio("recharge.wav");
-		jopp=new JOptionPanePerso("L'article a été ajouté au panier",s, r);
-				//JOptionPane.showMessageDialog(new JFrame(), "L'article a été ajouté au panier");
+		jopp=new JOptionPanePerso("L'article a été ajouté au panier","data/greenTick.jpg",s, r);
 
 	}
 

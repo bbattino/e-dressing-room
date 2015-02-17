@@ -1,7 +1,6 @@
 package fenetres;
 
 import javax.swing.JFrame;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -11,11 +10,9 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import audio.LecteurAudio;
@@ -32,6 +29,7 @@ public class FenetreAffichage extends Fenetre implements ActionListener{
 		private JPanel bouttons = new JPanel();
 		private Container contenu = getContentPane();
 		private String userName,imagePath,vetementType;
+		private static JOptionPanePerso jopp;
 		
 
 
@@ -102,7 +100,10 @@ public class FenetreAffichage extends Fenetre implements ActionListener{
 				}
 			}
 			new LecteurAudio("recharge.wav");
-			JOptionPane.showMessageDialog(new JFrame(), "L'article a été ajouté au panier");
+			String[] s ={"ok"};
+			Runnable[] r = {new Runnable() {public void run() {jopp.dispose();	}}};
+			new LecteurAudio("recharge.wav");
+			jopp=new JOptionPanePerso("L'article a été ajouté au panier","data/greenTick.jpg",s, r);
 
 			
 		}
