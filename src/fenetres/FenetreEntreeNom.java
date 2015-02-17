@@ -2,6 +2,7 @@ package fenetres;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class FenetreEntreeNom extends Fenetre {
 	JTextArea texte = new JTextArea("\n \t \t Votre nom est : " + name + " \n\n");
 
 	public FenetreEntreeNom() {
-		setSize(1000, 800);
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+		this.setUndecorated(true);
 		alphabet.add(new JButton("a"));
 		alphabet.add(new JButton("b"));
 		alphabet.add(new JButton("c"));
@@ -112,34 +114,42 @@ public class FenetreEntreeNom extends Fenetre {
 		boutonsDuBas.add(quitterButton);
 
 		getContentPane().add(boutonsDuBas, BorderLayout.PAGE_END);
-		texte.setSize(100, 00);
 		getContentPane().add(texte, BorderLayout.PAGE_START);
 		
-		for (JButton bouton : alphabet)
+		for (JButton bouton : alphabet){
 			bouton.addActionListener(this);
+			addHandListener(bouton);
+			}
 		terminerButton.addActionListener(this);
 		annulerButton.addActionListener(this);
 		quitterButton.addActionListener(this);
+		addHandListener(terminerButton);
+		addHandListener(quitterButton);
+		addHandListener(annulerButton);
 
 	}
 
 	public void deleteChar() {
 		if(name.length()!=0){
-		String name2 = "";
-		for(int i=0;i<name.length()-1;i++)
-			name2+=name.charAt(i);
-		name=name2;
+		name=name.substring(0,name.length()-1);
 		getContentPane().remove(texte);
 		texte = new JTextArea("\n \t \t Votre nom est : " + name + " \n\n");
 		getContentPane().add(texte,BorderLayout.PAGE_START);
-		setSize(1001, 800);	setSize(1000, 800);
+		setSize(1001, 800);	this.setExtendedState(Frame.MAXIMIZED_BOTH);
+
 		}
 
 	}
 	public void terminer(){
-		
+		FenetreIdentification fen = new FenetreIdentification();
+		fen.nouveauCompte(name);
+		fen.dispose();
+		new FenetreIdentification();
+		this.dispose();
 	}
 	public void annuler(){
+		new FenetreIdentification();
+		this.dispose();
 		
 	}
 
@@ -153,8 +163,7 @@ public class FenetreEntreeNom extends Fenetre {
 					getContentPane().remove(texte);
 					texte = new JTextArea("\n \t \t Votre nom est : " + name + " \n\n");
 					getContentPane().add(texte,BorderLayout.PAGE_START);
-					setSize(1001, 800);	setSize(1000, 800);
-
+					setSize(1001, 800);	this.setExtendedState(Frame.MAXIMIZED_BOTH);
 
 					
 				}
