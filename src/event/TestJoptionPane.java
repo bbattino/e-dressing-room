@@ -11,7 +11,7 @@ public class TestJoptionPane {
 		
 		
 		
-		new JOptionPanePerso("salut", s, r);
+		new JOptionPanePerso("salut","", s, r);
 	}
 
 }
