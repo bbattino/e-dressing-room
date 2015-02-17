@@ -14,16 +14,15 @@ public class FenetreEntreeNom extends Fenetre {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<JButton> alphabet = new ArrayList<JButton>();
-	private JPanel alphabetPanel = new JPanel(),
-			boutonsDuBas=new JPanel();
+	private JPanel alphabetPanel = new JPanel(), boutonsDuBas = new JPanel();
 	JButton terminerButton = new JButton("Terminé");
 	JButton annulerButton = new JButton("Annuler");
 	JButton quitterButton = new JButton("Quiter");
-	String name ="";
-	JTextArea texte = new JTextArea("\n \t \t Votre nom est : "+name+" \n\n");
-	
-	public FenetreEntreeNom(){
-		setSize(1000,800);
+	String name = "";
+	JTextArea texte = new JTextArea("\n \t \t Votre nom est : " + name + " \n\n");
+
+	public FenetreEntreeNom() {
+		setSize(1000, 800);
 		alphabet.add(new JButton("a"));
 		alphabet.add(new JButton("b"));
 		alphabet.add(new JButton("c"));
@@ -50,7 +49,7 @@ public class FenetreEntreeNom extends Fenetre {
 		alphabet.add(new JButton("x"));
 		alphabet.add(new JButton("y"));
 		alphabet.add(new JButton("z"));
-		
+
 		alphabet.add(new JButton("A"));
 		alphabet.add(new JButton("B"));
 		alphabet.add(new JButton("C"));
@@ -77,7 +76,7 @@ public class FenetreEntreeNom extends Fenetre {
 		alphabet.add(new JButton("X"));
 		alphabet.add(new JButton("Y"));
 		alphabet.add(new JButton("Z"));
-		
+
 		alphabet.add(new JButton("-"));
 		alphabet.add(new JButton("0"));
 		alphabet.add(new JButton("1"));
@@ -89,45 +88,91 @@ public class FenetreEntreeNom extends Fenetre {
 		alphabet.add(new JButton("7"));
 		alphabet.add(new JButton("8"));
 		alphabet.add(new JButton("9"));
-		
+
 		alphabet.add(new JButton("é"));
 		alphabet.add(new JButton("è"));
 		alphabet.add(new JButton("ê"));
 		alphabet.add(new JButton("ë"));
 		alphabet.add(new JButton("ç"));
-		
-		alphabet.add(new JButton(""));
+
+		alphabet.add(new JButton(" "));
 		alphabet.add(new JButton("DEL"));
-		
-		alphabetPanel.setLayout(new GridLayout(6,14));
-		for (int i = 0; i<alphabet.size(); i++)
+
+		alphabetPanel.setLayout(new GridLayout(6, 14));
+		for (int i = 0; i < alphabet.size(); i++)
 			alphabetPanel.add(alphabet.get(i));
-		
+
 		this.setVisible(true);
 		getContentPane().setLayout(new BorderLayout());
-		getContentPane().add(alphabetPanel,BorderLayout.CENTER);
-		
+		getContentPane().add(alphabetPanel, BorderLayout.CENTER);
+
 		boutonsDuBas.setLayout(new FlowLayout());
 		boutonsDuBas.add(terminerButton);
 		boutonsDuBas.add(annulerButton);
 		boutonsDuBas.add(quitterButton);
+
+		getContentPane().add(boutonsDuBas, BorderLayout.PAGE_END);
+		texte.setSize(100, 00);
+		getContentPane().add(texte, BorderLayout.PAGE_START);
 		
-		getContentPane().add(boutonsDuBas,BorderLayout.PAGE_END);
-		texte.setSize(100,00);
+		for (JButton bouton : alphabet)
+			bouton.addActionListener(this);
+		terminerButton.addActionListener(this);
+		annulerButton.addActionListener(this);
+		quitterButton.addActionListener(this);
+
+	}
+
+	public void deleteChar() {
+		if(name.length()!=0){
+		String name2 = "";
+		for(int i=0;i<name.length()-1;i++)
+			name2+=name.charAt(i);
+		name=name2;
+		getContentPane().remove(texte);
+		texte = new JTextArea("\n \t \t Votre nom est : " + name + " \n\n");
 		getContentPane().add(texte,BorderLayout.PAGE_START);
+		setSize(1001, 800);	setSize(1000, 800);
+		}
+
+	}
+	public void terminer(){
+		
+	}
+	public void annuler(){
+		
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		for (JButton button : alphabet) {
+			if (e.getSource() == button) {
+				if (button.getText().equals("DEL")) {
+					deleteChar();
+				} else {
+					name = name + button.getText();
+					getContentPane().remove(texte);
+					texte = new JTextArea("\n \t \t Votre nom est : " + name + " \n\n");
+					getContentPane().add(texte,BorderLayout.PAGE_START);
+					setSize(1001, 800);	setSize(1000, 800);
+
+
+					
+				}
+				return;
+			}
+		}
+		if(e.getSource()==terminerButton){
+			terminer();return;}
+		if (e.getSource()==annulerButton){
+			annuler();return;}
+		if(e.getSource()==quitterButton)
+			System.exit(0);
+		
 		
 
-
 	}
-	
 
-
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-	
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		new FenetreEntreeNom();
 	}
 
