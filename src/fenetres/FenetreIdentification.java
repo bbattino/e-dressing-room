@@ -29,7 +29,7 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 	private ArrayList<JButton> utilisateurs = new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
 	private JPanel utilisateurLabel = new JPanel();
-	private static JOptionPanePerso jopp;
+	static JOptionPanePerso jopp;
 
 	public FenetreIdentification() {
 
@@ -124,6 +124,7 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			String[] s ={"ok"};
 			Runnable[] r = {new Runnable() {public void run() {jopp.dispose();}}};
 			jopp=new JOptionPanePerso("","data/warning.png",s, r);
+			
 
 		}
 	}

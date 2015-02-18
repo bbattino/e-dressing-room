@@ -146,6 +146,9 @@ public class FenetreEntreeNom extends Fenetre {
 		fen.dispose();
 		new FenetreIdentification();
 		this.dispose();
+		if(FenetreIdentification.jopp != null)
+			FenetreIdentification.jopp.setVisible(true);
+			
 	}
 	public void annuler(){
 		new FenetreIdentification();
