@@ -143,9 +143,10 @@ public class FenetreEntreeNom extends Fenetre {
 	public void terminer(){
 		FenetreIdentification fen = new FenetreIdentification();
 		fen.nouveauCompte(name);
-		fen.dispose();
+		if(fen.checkIfAccountDoesNotExist(name)){
+			fen.dispose();
 		new FenetreIdentification();
-		this.dispose();
+		this.dispose();}
 	}
 	public void annuler(){
 		new FenetreIdentification();
