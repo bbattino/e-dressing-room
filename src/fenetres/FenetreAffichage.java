@@ -52,13 +52,15 @@ public class FenetreAffichage extends Fenetre implements ActionListener{
 			//Ajouts des bouttons sur buttons
 			
 			bouttons.add(retourButton);
-			bouttons.add(quitterButton);
 			bouttons.add(panierButton);
+			bouttons.add(quitterButton);
+
 			bouttons.setBackground(new Color(255,255,255));
 			
 			listeBoutons.add(retourButton);
-			listeBoutons.add(quitterButton);
 			listeBoutons.add(panierButton);
+			listeBoutons.add(quitterButton);
+
 			
 			new LecteurAudio("SolutionSon.wav");
 			

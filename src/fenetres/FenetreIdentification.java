@@ -19,7 +19,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import audio.LecteurAudio;
 
 public class FenetreIdentification extends Fenetre implements ActionListener {
 
@@ -60,8 +59,8 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 
 		// Ajouts des bouttons sur buttons
 
-		bouttons.add(quitterButton);
 		bouttons.add(nouveauCompteButton);
+		bouttons.add(quitterButton);
 		bouttons.setBackground(new Color(255, 255, 255));
 
 		// Ajouts sur le ContentPane
