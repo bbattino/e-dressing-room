@@ -14,13 +14,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import audio.LecteurAudio;
 
 public class FenetreIdentification extends Fenetre implements ActionListener {
 
@@ -30,6 +29,7 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 	private ArrayList<JButton> utilisateurs = new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
 	private JPanel utilisateurLabel = new JPanel();
+	private static JOptionPanePerso jopp;
 
 	public FenetreIdentification() {
 
@@ -97,23 +97,11 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 	}
 
 	/******************* Nouveau Compte ********************/
-	public void nouveauCompte() {
-		String userName = JOptionPane.showInputDialog(null, "Comment vous appelez vous ?", "Identification !",
-				JOptionPane.QUESTION_MESSAGE);
-		String[] ouiNon = { "oui", "non" };
-		if (!(userName == null)) {
-			int reponse = JOptionPane.showOptionDialog(null, "Etes vous sur de vouloir créer le profil " + userName
-					+ " ?", "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, ouiNon,
-					ouiNon[1]);
-			if (reponse == 0) {
-				nouveauCompte(userName);
-				dispose();
-				new FenetreIdentification();
-			}
-		}
-	}
-
+	public void nouveauCompte() {new FenetreEntreeNom();this.dispose();}
+	
+	/****** methode appelée par la FenetreEntreeNom ******/
 	public void nouveauCompte(String userName) {
+		if(checkIfAccountDoesNotExist(userName)){
 		FileWriter writer = null;
 		try {
 			writer = new FileWriter("users/utilisateurs.txt", true);
@@ -130,7 +118,32 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			}
 		}
 		creerPanier(userName);
+		}
 
+		else{
+			String[] s ={"ok"};
+			Runnable[] r = {new Runnable() {public void run() {jopp.dispose();}}};
+			jopp=new JOptionPanePerso("","data/warning.png",s, r);
+
+		}
+	}
+	public boolean checkIfAccountDoesNotExist(String userName){
+		try {
+			InputStream ips = new FileInputStream("users/utilisateurs.txt");
+			InputStreamReader ipsr = new InputStreamReader(ips);
+			BufferedReader br = new BufferedReader(ipsr);
+			String existingUser;
+			while ((existingUser = br.readLine()) != null) {
+				if(existingUser.equals(userName)){
+					br.close();
+					return false;
+				}
+			}
+			br.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return true;		
 	}
 
 	/* Generation d'un fichier texte spécifique aux nouveux utilisateurs */
