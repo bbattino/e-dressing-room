@@ -23,6 +23,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import audio.LecteurAudio;
+
 public class FenetreVisualisation extends Fenetre implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -40,6 +42,7 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 	private Container contenu = getContentPane();
 	private String userName, vetementType;
 	private boolean panierVide = false;
+	private static JOptionPanePerso jopp;
 
 	public FenetreVisualisation(String userName) {
 		this.userName = userName;
@@ -71,7 +74,10 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 		if (panierVide) {
 			dispose();
 			new FenetreCatalogue(userName);
-			JOptionPane.showMessageDialog(new JFrame(), "Votre Panier est vide");
+			String[] s ={"ok"};
+			Runnable[] r = {new Runnable() {public void run() {jopp.dispose();	}}};
+			new LecteurAudio("recharge.wav");
+			jopp=new JOptionPanePerso("L'article a été ajouté au panier","data/panierVide.png",s, r);
 		} else {
 
 			// Utilisation de BorderLayout
