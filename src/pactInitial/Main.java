@@ -8,7 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		new LecteurAudio("bienvenue.wav");
+		new LecteurAudio("welcome.wav");
 		new FenetreDepart();
 		
 	}
