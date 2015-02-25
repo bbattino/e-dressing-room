@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import pactInitial.Main;
+
 public class FenetreEntreeNom extends Fenetre {
 
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,7 @@ public class FenetreEntreeNom extends Fenetre {
 	JTextArea texte = new JTextArea("\n \t \t Votre nom est : " + name + " \n\n");
 
 	public FenetreEntreeNom() {
+		Main.setCurentFenetre(this);
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		this.setUndecorated(true);
 		alphabet.add(new JButton("a"));

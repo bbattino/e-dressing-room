@@ -1,6 +1,7 @@
 package fenetres;
 
 import javax.swing.JFrame;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -15,10 +16,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import pactInitial.Main;
 import audio.LecteurAudio;
 
 public class FenetreVisualisation extends Fenetre implements ActionListener {
@@ -41,6 +45,7 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 	private static JOptionPanePerso jopp;
 
 	public FenetreVisualisation(String userName) {
+		Main.setCurentFenetre(this);
 		this.userName = userName;
 		setUndecorated(true);
 		setVisible(true); // affichage

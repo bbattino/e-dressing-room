@@ -14,11 +14,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import pactInitial.Main;
 
 public class FenetreIdentification extends Fenetre implements ActionListener {
 
@@ -31,6 +34,8 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 	static JOptionPanePerso jopp;
 
 	public FenetreIdentification() {
+		Main.setCurentFenetre(this);
+
 
 		/********************** Lecture des utilisateurs dans le fichier *****************/
 

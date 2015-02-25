@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import pactInitial.Main;
 import audio.LecteurAudio;
 
 public class FenetreChoixVetement extends Fenetre implements ActionListener {
@@ -39,6 +40,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 	private static JOptionPanePerso jopp;
 
 	public FenetreChoixVetement(String userName, String typeVetement) {
+		Main.setCurentFenetre(this);
 		this.userName = userName;
 		this.vetementType = typeVetement;
 		final String dossier = "data/catalogue/" + vetementType;

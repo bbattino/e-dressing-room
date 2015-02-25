@@ -44,6 +44,7 @@ public class FenetreCatalogue extends Fenetre implements ActionListener {
 	private JPanel bouttons = new JPanel();
 
 	public FenetreCatalogue(String userName) {
+		Main.setCurentFenetre(this);
 		this.userName = userName;
 		setUndecorated(true);
 		setVisible(true); // affichage

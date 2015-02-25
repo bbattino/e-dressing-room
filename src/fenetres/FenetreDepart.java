@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import pactInitial.Main;
+
 import java.util.logging.*;
 
 
@@ -30,7 +32,7 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 		private static Logger logger;
 
 		public FenetreDepart() {
-			super();
+			Main.setCurentFenetre(this);
 			logger = Logger.getLogger("com.foo.FenetreDepart");
 			logger.setLevel(Level.OFF);
 			setUndecorated(true);

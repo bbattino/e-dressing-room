@@ -1,6 +1,7 @@
 package fenetres;
 
 import javax.swing.JFrame;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -10,11 +11,13 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import pactInitial.Main;
 import audio.LecteurAudio;
 
 public class FenetreAffichage extends Fenetre implements ActionListener{
@@ -34,6 +37,7 @@ public class FenetreAffichage extends Fenetre implements ActionListener{
 
 
 		public FenetreAffichage(String imagePath, String userName, String vetementType) {
+			Main.setCurentFenetre(this);
 			this.userName=userName;
 			this.vetementType=vetementType;
 			this.imagePath=imagePath;

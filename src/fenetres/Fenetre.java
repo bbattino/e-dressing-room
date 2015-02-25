@@ -21,7 +21,7 @@ public abstract class Fenetre extends JFrame implements ActionListener {
 
 	public void addHandListener(final JButton bouton) {
 		final MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(new TrucKinect(bouton),
-				 1000, 100);
+				 3000, 100);
 
 		eventProducer.addListener(new IMainDansLaZoneListener() {
 			public void mainDansLaZone(MainDansLaZoneEventProducer.Type type) {

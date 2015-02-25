@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import pactInitial.Main;
+
 public class FenetreCredit extends Fenetre implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -30,7 +32,7 @@ public class FenetreCredit extends Fenetre implements ActionListener {
 	
 
 	public FenetreCredit(FenetreDepart fentreDepart) {
-		
+		Main.setCurentFenetre(this);
 		this.fentreDepart=fentreDepart;
 
 		logger = Logger.getLogger("com.foo.FenetreCredits");
