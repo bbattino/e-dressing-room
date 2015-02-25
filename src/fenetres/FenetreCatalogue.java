@@ -255,6 +255,18 @@ public class FenetreCatalogue extends Fenetre implements ActionListener {
 		switch(numeroBouton){
 		case 0 : retourButton.doClick();
 		break;
+		case 1 : tShirtButton.doClick();
+		break;
+		case 2 : robeButton.doClick();
+		break;
+		case 3 : pullButton.doClick();
+		break;
+		case 4 : pantalonButton.doClick();
+		break;
+		case 5 : voirPanierButton.doClick();
+		break;
+		case 6 : supprimerButton.doClick();
+		break;
 		}
 	}
 

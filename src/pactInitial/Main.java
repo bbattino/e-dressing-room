@@ -79,6 +79,26 @@ public class Main {
 					||curentFenetre instanceof FenetreAffichageSynthese
 					||curentFenetre instanceof FenetreVisualisation)
 				curentFenetre.actionBouton(0);
+			
+		case 11 : // bouton TShirt
+			if(curentFenetre instanceof FenetreCatalogue)
+				curentFenetre.actionBouton(1);
+		case 12 : // bouton Robe
+			if(curentFenetre instanceof FenetreCatalogue)
+				curentFenetre.actionBouton(2);
+		case 13 : // bouton Pull
+			if(curentFenetre instanceof FenetreCatalogue)
+				curentFenetre.actionBouton(3);
+		case 14 : // bouton pantalon
+			if(curentFenetre instanceof FenetreCatalogue)
+				curentFenetre.actionBouton(4);
+		case 15 : // voire Panier
+			if(curentFenetre instanceof FenetreCatalogue)
+				curentFenetre.actionBouton(5);
+		case 16 : // supprimer profil
+			if(curentFenetre instanceof FenetreCatalogue)
+				curentFenetre.actionBouton(6);
+			
 		}
 	}
 }
