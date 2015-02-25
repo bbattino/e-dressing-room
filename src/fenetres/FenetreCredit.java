@@ -88,4 +88,8 @@ public class FenetreCredit extends Fenetre implements ActionListener {
 			retour();
 
 	}
+	@Override
+	public void actionBouton(int numero){
+	if(numero==0)
+		retourButton.doClick();}
 }

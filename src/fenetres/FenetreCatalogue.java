@@ -249,5 +249,13 @@ public class FenetreCatalogue extends Fenetre implements ActionListener {
 			confirmerSuppression(userName);
 
 	}
+	
+	@Override
+	public void actionBouton(int numeroBouton){
+		switch(numeroBouton){
+		case 0 : retourButton.doClick();
+		break;
+		}
+	}
 
 }

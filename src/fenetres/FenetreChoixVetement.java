@@ -159,7 +159,14 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 			retour();
 		else if (e.getSource() == panierButton)
 			panier();
-
+	}
+	
+	@Override
+	public void actionBouton(int numeroBouton){
+		switch(numeroBouton){
+		case 0 : retourButton.doClick();
+		break;
+		}
 	}
 
 }

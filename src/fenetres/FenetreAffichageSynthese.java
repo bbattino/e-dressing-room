@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 //import javax.swing.ImageIcon;
 import javax.swing.JButton;
 //import javax.swing.JLabel;
@@ -128,6 +129,14 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		else if (e.getSource() == panierButton)
 			panier();
 
+	}
+	
+	@Override
+	public void actionBouton(int numeroBouton){
+		switch(numeroBouton){
+		case 0 : retourButton.doClick();
+		break;
+		}
 	}
 
 	public static void main(String args[]) {

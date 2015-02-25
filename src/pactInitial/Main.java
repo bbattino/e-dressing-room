@@ -1,8 +1,13 @@
 package pactInitial;
 
 import fenetres.Fenetre;
+import fenetres.FenetreAffichageSynthese;
+import fenetres.FenetreCatalogue;
+import fenetres.FenetreChoixVetement;
+import fenetres.FenetreCredit;
 import fenetres.FenetreDepart;
 import fenetres.FenetreIdentification;
+import fenetres.FenetreVisualisation;
 import fenetres.JOptionPanePerso;
 import audio.LecteurAudio;
 
@@ -67,8 +72,13 @@ public class Main {
 			if(curentFenetre instanceof FenetreIdentification)
 				curentFenetre.actionBouton(6);
 			break;
+		case 10 : // bouton retour
+			if(curentFenetre instanceof FenetreCredit 
+					||curentFenetre instanceof FenetreCatalogue 
+					||curentFenetre instanceof FenetreChoixVetement 
+					||curentFenetre instanceof FenetreAffichageSynthese
+					||curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(0);
 		}
-	
 	}
-	
 }

@@ -193,4 +193,12 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 		else if (e.getSource() == supprimerButton)
 			supprimer();
 	}
+	
+	@Override
+	public void actionBouton(int numeroBouton){
+		switch(numeroBouton){
+		case 0 : retourButton.doClick();
+		break;
+		}
+	}
 }
