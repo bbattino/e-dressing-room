@@ -166,6 +166,14 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 		switch(numeroBouton){
 		case 0 : retourButton.doClick();
 		break;
+		case 1 : suivantButton.doClick();
+		break;
+		case 2 : precedentButton.doClick();
+		break;
+		case 3 : panierButton.doClick();
+		break;
+		case 4 : essayerButton.doClick();
+		break;
 		}
 	}
 

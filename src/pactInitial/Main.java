@@ -98,7 +98,24 @@ public class Main {
 		case 16 : // supprimer profil
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(6);
-			
+		case 17 : // suivant
+			if(curentFenetre instanceof FenetreChoixVetement
+					|| curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(1);
+		case 18 : // precedent
+			if(curentFenetre instanceof FenetreChoixVetement
+					|| curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(2);
+		case 19 : // "panier" voir panier
+			if(curentFenetre instanceof FenetreChoixVetement)
+				curentFenetre.actionBouton(3);
+			else if(curentFenetre instanceof FenetreAffichageSynthese)
+				curentFenetre.actionBouton(1);
+		case 20 : // essayer
+			if(curentFenetre instanceof FenetreChoixVetement)
+				curentFenetre.actionBouton(4);
+			else if(curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(3);
 		}
 	}
 }

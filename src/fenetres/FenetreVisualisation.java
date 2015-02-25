@@ -199,6 +199,12 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 		switch(numeroBouton){
 		case 0 : retourButton.doClick();
 		break;
+		case 1 : suivantButton.doClick();
+		break;
+		case 2 : precedentButton.doClick();
+		break;
+		case 3 : essayerButton.doClick();
+		break;
 		}
 	}
 }
