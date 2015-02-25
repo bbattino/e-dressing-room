@@ -36,7 +36,6 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 	public FenetreIdentification() {
 		Main.setCurentFenetre(this);
 
-
 		/********************** Lecture des utilisateurs dans le fichier *****************/
 
 		try {
@@ -173,6 +172,46 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 				dispose();
 			}
 		}
+	}
+	
+	@Override
+	public void actionBouton(int numero){
+		
+		switch(numero){
+		case 0 :
+			if(utilisateurs.size()>0)
+				utilisateurs.get(0).doClick();
+			break;
+		
+		case 1:
+			if(utilisateurs.size()>1)
+				utilisateurs.get(1).doClick();
+			break;
+			
+		case 2:
+			if(utilisateurs.size()>2)
+				utilisateurs.get(2).doClick();
+			break;
+		case 3:
+			if(utilisateurs.size()>3)
+				utilisateurs.get(3).doClick();
+			break;
+		case 4:
+			if(utilisateurs.size()>4)
+				utilisateurs.get(4).doClick();
+			break;
+		case 5:
+			if(utilisateurs.size()>5)
+				utilisateurs.get(5).doClick();
+			break;
+		
+		case 6:
+			nouveauCompteButton.doClick();
+			break;
+	
+			
+		}
+		
 	}
 
 }

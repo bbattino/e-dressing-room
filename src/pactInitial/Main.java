@@ -2,6 +2,7 @@ package pactInitial;
 
 import fenetres.Fenetre;
 import fenetres.FenetreDepart;
+import fenetres.FenetreIdentification;
 import fenetres.JOptionPanePerso;
 import audio.LecteurAudio;
 
@@ -28,7 +29,44 @@ public class Main {
 		case 0 : // commencer
 			if(curentFenetre instanceof FenetreDepart)
 				curentFenetre.actionBouton(0);
+			break;
+		case 1: // A propos
+			if(curentFenetre instanceof FenetreDepart)
+				curentFenetre.actionBouton(1);
+			break;
+		case 2: //quitter
+			System.exit(0);
+			break;
 		
+		case 3: //identification 1
+			if(curentFenetre instanceof FenetreIdentification)
+				curentFenetre.actionBouton(0);
+			break;
+		
+		case 4: //identification 2
+			if(curentFenetre instanceof FenetreIdentification)
+				curentFenetre.actionBouton(1);
+			break;
+		case 5: //identification 3
+			if(curentFenetre instanceof FenetreIdentification)
+				curentFenetre.actionBouton(2);
+			break;
+		case 6: //identification 4
+			if(curentFenetre instanceof FenetreIdentification)
+				curentFenetre.actionBouton(3);
+			break;
+		case 7: //identification 5
+			if(curentFenetre instanceof FenetreIdentification)
+				curentFenetre.actionBouton(4);
+			break;
+		case 8: //identification 6
+			if(curentFenetre instanceof FenetreIdentification)
+				curentFenetre.actionBouton(5);
+			break;
+		case 9 : // nouveau Compte
+			if(curentFenetre instanceof FenetreIdentification)
+				curentFenetre.actionBouton(6);
+			break;
 		}
 	
 	}

@@ -98,6 +98,8 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			switch(numeroBouton){
 			case 0 : commencerButton.doClick();
 			break;
+			case 1 : creditsButton.doClick();
+			break;
 			}
 		}
 
