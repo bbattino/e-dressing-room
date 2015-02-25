@@ -67,7 +67,7 @@ public class FenetreEntreeNom extends Fenetre {
 		alphabet.add(new JButton("n"));
 
 		alphabet.add(new JButton("Espace"));
-		alphabet.add(new JButton("DEL"));
+		alphabet.add(new JButton("Efface"));
 
 		alphabetPanel.setLayout(new GridLayout(3,10));
 		for (int i = 0; i < 10; i++)
@@ -137,7 +137,7 @@ public class FenetreEntreeNom extends Fenetre {
 	public void actionPerformed(ActionEvent e) {
 		for (JButton button : alphabet) {
 			if (e.getSource() == button) {
-				if (button.getText().equals("DEL")) {
+				if (button.getText().equals("Efface")) {
 					deleteChar();
 				} 
 				else if(button.getText().equals("Espace")){
@@ -174,9 +174,24 @@ public class FenetreEntreeNom extends Fenetre {
 			annuler();return;}
 		if(e.getSource()==quitterButton)
 			System.exit(0);
-		
-		
 
+	}
+	
+	@Override
+	public void actionBouton(int numero){
+		if(numero>=0 && numero<28)
+			alphabet.get(numero).doClick();
+		else{
+			switch (numero) {
+			case 28:
+				terminerButton.doClick();
+				break;
+			case 29 : 
+				annulerButton.doClick();
+				break;
+
+			}
+		}
 	}
 
 	public static void main(String[] args) {

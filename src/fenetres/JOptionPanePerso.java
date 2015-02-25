@@ -13,8 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 //import javax.swing.JTextArea;
 
-import pactInitial.Main;
-
 public class JOptionPanePerso extends Fenetre {
 
 static final long serialVersionUID = 1L;
@@ -25,7 +23,6 @@ private ArrayList<Runnable> boutonActionListe= new ArrayList<Runnable>();
 private JLabel image;
 
 public JOptionPanePerso(String Message,String imagePath, String[] boutonsTitre, Runnable[] boutonsAction){
-	Main.setJOptionPanePerso(this);
 	//this.texte=new JTextArea(Message);
 	//texte.setEditable(false);
 	setLocation(600, 400);

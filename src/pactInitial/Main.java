@@ -6,15 +6,14 @@ import fenetres.FenetreCatalogue;
 import fenetres.FenetreChoixVetement;
 import fenetres.FenetreCredit;
 import fenetres.FenetreDepart;
+import fenetres.FenetreEntreeNom;
 import fenetres.FenetreIdentification;
 import fenetres.FenetreVisualisation;
-import fenetres.JOptionPanePerso;
 import audio.LecteurAudio;
 
 public class Main {
 	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true;
 	private static Fenetre curentFenetre;
-	public static JOptionPanePerso curentJoptionPanePerso;
 
 	public static void main(String[] args) {
 
@@ -25,8 +24,6 @@ public class Main {
 	
 	public static Fenetre getCurentFenetre(){return curentFenetre;}
 	public static void setCurentFenetre(Fenetre fenetre){curentFenetre=fenetre;}
-	public static JOptionPanePerso getJOptionPanePerso(){return curentJoptionPanePerso;}
-	public static void setJOptionPanePerso(JOptionPanePerso jopp){curentJoptionPanePerso=jopp;}
 	
 	public static void actionEventAudio(int numeroAction){
 		
@@ -150,8 +147,131 @@ public class Main {
 		case 24 : //non
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(8);
+			break;
 			
+			/**** lettres de l'aphabet *****/
+			
+		case 25 : //a
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(0);
+			break;
+		case 26 : //z
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(1);
+			break;
+		case 27 : //e
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(2);
+			break;
+		case 28 : //r
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(3);
+			break;
+		case 29 : //t
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(4);
+			break;
+		case 30 : //y
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(5);
+			break;
+		case 31 : //u
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(6);
+			break;
+		case 32 : //i
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(7);
+			break;
+		case 33 : //o
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(8);
+			break;
+		case 34 : //p
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(9);
+			break;
+		case 35 : //q
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(10);
+			break;
+		case 36 : //s
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(11);
+			break;
+		case 37 : //d
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(12);
+			break;
+		case 38 : //f
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(13);
+			break;
+		case 39 : //g
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(14);
+			break;
+		case 40 : //h
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(15);
+			break;
+		case 41 : //j
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(16);
+			break;
+		case 42 : //k
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(17);
+			break;
+		case 43 : //l
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(18);
+			break;
+		case 44 : //m
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(19);
+			break;
+		case 45 : //W
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(20);
+			break;
+		case 46 : //x
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(21);
+			break;
+		case 47 : //c
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(22);
+			break;
+		case 48 : //v
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(23);
+			break;
+		case 49 : //b
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(24);
+			break;
+		case 50 : // n
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(25);
+			break;
+		case 51 : // espace
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(26);
+			break;
+		case 52 : // efface
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(27);
+			break;
 
+		case 53 : // terminer
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(28);
+			break;
+		case 54 : // annuler
+			if(curentFenetre instanceof FenetreEntreeNom)
+				curentFenetre.actionBouton(29);
+			break;
 				
 
 		}
