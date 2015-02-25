@@ -56,6 +56,8 @@ public abstract class Fenetre extends JFrame implements ActionListener {
 		});
 
 	}
+	
+	public void actionBouton(int numeroBouton){}
 
 	/*public void addHandListener(final JButton bouton, int x) {
 		addHandListener(bouton, 0, 0, 1366, 800);

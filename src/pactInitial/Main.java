@@ -22,5 +22,15 @@ public class Main {
 	public static JOptionPanePerso getJOptionPanePerso(){return curentJoptionPanePerso;}
 	public static void setJOptionPanePerso(JOptionPanePerso jopp){curentJoptionPanePerso=jopp;}
 	
+	public static void actionEventAudio(int numeroAction){
+		
+		switch(numeroAction){
+		case 0 : // commencer
+			if(curentFenetre instanceof FenetreDepart)
+				curentFenetre.actionBouton(0);
+		
+		}
+	
+	}
 	
 }

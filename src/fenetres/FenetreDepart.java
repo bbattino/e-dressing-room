@@ -93,6 +93,13 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			new FenetreCredit(this);
 			setVisible(false);
 		}
+		@Override
+		public void actionBouton(int numeroBouton){
+			switch(numeroBouton){
+			case 0 : commencerButton.doClick();
+			break;
+			}
+		}
 
 		public void actionPerformed(ActionEvent e) {
 			
