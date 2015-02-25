@@ -79,43 +79,81 @@ public class Main {
 					||curentFenetre instanceof FenetreAffichageSynthese
 					||curentFenetre instanceof FenetreVisualisation)
 				curentFenetre.actionBouton(0);
-			
+			break;
 		case 11 : // bouton TShirt
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(1);
+			break;
 		case 12 : // bouton Robe
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(2);
+			break;
 		case 13 : // bouton Pull
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(3);
+			break;
 		case 14 : // bouton pantalon
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(4);
+			break;
 		case 15 : // voire Panier
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(5);
+			break;
 		case 16 : // supprimer profil
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(6);
+			break;
 		case 17 : // suivant
 			if(curentFenetre instanceof FenetreChoixVetement
 					|| curentFenetre instanceof FenetreVisualisation)
 				curentFenetre.actionBouton(1);
+			break;
 		case 18 : // precedent
 			if(curentFenetre instanceof FenetreChoixVetement
 					|| curentFenetre instanceof FenetreVisualisation)
 				curentFenetre.actionBouton(2);
+			break;
 		case 19 : // "panier" voir panier
 			if(curentFenetre instanceof FenetreChoixVetement)
 				curentFenetre.actionBouton(3);
 			else if(curentFenetre instanceof FenetreAffichageSynthese)
 				curentFenetre.actionBouton(1);
+			break;
 		case 20 : // essayer
 			if(curentFenetre instanceof FenetreChoixVetement)
 				curentFenetre.actionBouton(4);
 			else if(curentFenetre instanceof FenetreVisualisation)
 				curentFenetre.actionBouton(3);
+			break;
+		case 21 : //"retirer du panier"
+			if(curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(4);
+			break;
+			
+			/*** action des joptionpane ***/
+		case 22 : //ok
+			if(curentFenetre instanceof FenetreAffichageSynthese)
+				curentFenetre.actionBouton(2);
+			else if(curentFenetre instanceof FenetreChoixVetement)
+				curentFenetre.actionBouton(5);
+			else if(curentFenetre instanceof FenetreIdentification)
+				curentFenetre.actionBouton(7);
+			else if(curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(5);
+			
+			break;
+		case 23 : // oui
+			if(curentFenetre instanceof FenetreCatalogue)
+				curentFenetre.actionBouton(7);
+			break;
+		case 24 : //non
+			if(curentFenetre instanceof FenetreCatalogue)
+				curentFenetre.actionBouton(8);
+			
+
+				
+
 		}
 	}
 }

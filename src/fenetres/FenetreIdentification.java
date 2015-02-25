@@ -209,6 +209,9 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			nouveauCompteButton.doClick();
 			break;
 	
+		case 7 : //ok jopp
+			jopp.dispose();
+			break;
 			
 		}
 		

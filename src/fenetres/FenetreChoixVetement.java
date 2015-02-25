@@ -101,7 +101,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 	public void suivant() {
 		contenu.remove(images.get(numeroChoix));
 		numeroChoix = (numeroChoix == images.size() - 1) ? 0 : numeroChoix + 1;
-		contenu.add(images.get(numeroChoix),BorderLayout.CENTER);
+		contenu.add(images.get(numeroChoix), BorderLayout.CENTER);
 		this.setSize(getMaximumSize());
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 
@@ -110,7 +110,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 	public void precedent() {
 		contenu.remove(images.get(numeroChoix));
 		numeroChoix = (numeroChoix == 0) ? images.size() - 1 : numeroChoix - 1;
-		contenu.add(images.get(numeroChoix),BorderLayout.CENTER);
+		contenu.add(images.get(numeroChoix), BorderLayout.CENTER);
 		this.setSize(getMaximumSize());
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 
@@ -138,15 +138,19 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 				}
 			}
 		}
-		String[] s ={"ok"};
-		Runnable[] r = {new Runnable() {public void run() {jopp.dispose();	}}};
+		String[] s = { "ok" };
+		Runnable[] r = { new Runnable() {
+			public void run() {
+				jopp.dispose();
+			}
+		} };
 		new LecteurAudio("recharge.wav");
-		jopp=new JOptionPanePerso("L'article a été ajouté au panier","data/greenTick.jpg",s, r);
+		jopp = new JOptionPanePerso("L'article a été ajouté au panier", "data/greenTick.jpg", s, r);
 
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if (e.getSource() == quitterButton)
 			System.exit(0);
 		else if (e.getSource() == essayerButton)
@@ -160,20 +164,28 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 		else if (e.getSource() == panierButton)
 			panier();
 	}
-	
+
 	@Override
-	public void actionBouton(int numeroBouton){
-		switch(numeroBouton){
-		case 0 : retourButton.doClick();
-		break;
-		case 1 : suivantButton.doClick();
-		break;
-		case 2 : precedentButton.doClick();
-		break;
-		case 3 : panierButton.doClick();
-		break;
-		case 4 : essayerButton.doClick();
-		break;
+	public void actionBouton(int numeroBouton) {
+		switch (numeroBouton) {
+		case 0:
+			retourButton.doClick();
+			break;
+		case 1:
+			suivantButton.doClick();
+			break;
+		case 2:
+			precedentButton.doClick();
+			break;
+		case 3:
+			panierButton.doClick();
+			break;
+		case 4:
+			essayerButton.doClick();
+			break;
+		case 5: // ok de la jopp
+			jopp.dispose();
+			break;
 		}
 	}
 

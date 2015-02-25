@@ -75,10 +75,14 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 		if (panierVide) {
 			dispose();
 			new FenetreCatalogue(userName);
-			String[] s ={"ok"};
-			Runnable[] r = {new Runnable() {public void run() {jopp.dispose();	}}};
+			String[] s = { "ok" };
+			Runnable[] r = { new Runnable() {
+				public void run() {
+					jopp.dispose();
+				}
+			} };
 			new LecteurAudio("recharge.wav");
-			jopp=new JOptionPanePerso("L'article a été ajouté au panier","data/panierVide.png",s, r);
+			jopp = new JOptionPanePerso("L'article a été ajouté au panier", "data/panierVide.png", s, r);
 		} else {
 
 			// Utilisation de BorderLayout
@@ -133,12 +137,12 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 		this.setSize(getMaximumSize());
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 
-		}
+	}
 
 	public void precedent() {
 		contenu.remove(images.get(numeroChoix));
 		numeroChoix = (numeroChoix == 0) ? images.size() - 1 : numeroChoix - 1;
-		contenu.add(images.get(numeroChoix),BorderLayout.CENTER);
+		contenu.add(images.get(numeroChoix), BorderLayout.CENTER);
 		this.setSize(getMaximumSize());
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 	}
@@ -193,18 +197,28 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 		else if (e.getSource() == supprimerButton)
 			supprimer();
 	}
-	
+
 	@Override
-	public void actionBouton(int numeroBouton){
-		switch(numeroBouton){
-		case 0 : retourButton.doClick();
-		break;
-		case 1 : suivantButton.doClick();
-		break;
-		case 2 : precedentButton.doClick();
-		break;
-		case 3 : essayerButton.doClick();
-		break;
+	public void actionBouton(int numeroBouton) {
+		switch (numeroBouton) {
+		case 0:
+			retourButton.doClick();
+			break;
+		case 1:
+			suivantButton.doClick();
+			break;
+		case 2:
+			precedentButton.doClick();
+			break;
+		case 3:
+			essayerButton.doClick();
+			break;
+		case 4:
+			supprimerButton.doClick();
+			break;
+		case 5: // ok jopp
+			jopp.dispose();
+			break;
 		}
 	}
 }

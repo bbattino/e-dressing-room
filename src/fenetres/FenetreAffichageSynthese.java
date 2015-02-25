@@ -135,9 +135,12 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 	public void actionBouton(int numeroBouton){
 		switch(numeroBouton){
 		case 0 : retourButton.doClick();
-		break;
+			break;
 		case 1 : panierButton.doClick();
-		break;
+			break;
+		case 2 : // ok de la jopp
+			jopp.dispose();
+			break;
 		}
 	}
 
