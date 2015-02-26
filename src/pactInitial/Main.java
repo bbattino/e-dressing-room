@@ -15,6 +15,7 @@ import audio.LecteurAudio;
 public class Main {
 	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true;
 	private static Fenetre curentFenetre;
+	public static int UserNumber;
 
 	public static void main(String[] args) {
 

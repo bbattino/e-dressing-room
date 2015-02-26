@@ -43,8 +43,10 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			InputStreamReader ipsr = new InputStreamReader(ips);
 			BufferedReader br = new BufferedReader(ipsr);
 			String userName;
+			Main.UserNumber=0;
 			while ((userName = br.readLine()) != null) {
 				utilisateurs.add(new JButton(userName));
+				Main.UserNumber++;
 			}
 			br.close();
 		} catch (Exception e) {
@@ -94,16 +96,13 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			addHandListener(bouton);
 	}
 
-	public void quitter() {
-
-		System.exit(0);
-	}
 
 	/******************* Nouveau Compte ********************/
 	public void nouveauCompte() {new FenetreEntreeNom();this.dispose();}
 	
 	/****** methode appelée par la FenetreEntreeNom ******/
 	public void nouveauCompte(String userName) {
+		if(Main.UserNumber<6){
 		if(checkIfAccountDoesNotExist(userName)){
 		FileWriter writer = null;
 		try {
@@ -129,6 +128,11 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			jopp=new JOptionPanePerso("","data/warning.png",s, r);
 			
 
+		}
+		}else{
+			String[] s ={"ok"};
+			Runnable[] r = {new Runnable() {public void run() {jopp.dispose();}}};
+			jopp=new JOptionPanePerso("","data/warning2.png",s, r);
 		}
 	}
 	public boolean checkIfAccountDoesNotExist(String userName){
@@ -163,7 +167,7 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == quitterButton)
-			quitter();
+			System.exit(0);
 		else if (e.getSource() == nouveauCompteButton)
 			nouveauCompte();
 		for (JButton bouton : utilisateurs) {

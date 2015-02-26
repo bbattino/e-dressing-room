@@ -55,6 +55,10 @@ public JOptionPanePerso(String Message,String imagePath, String[] boutonsTitre, 
 			}
 		}
 	}
+
+	//cette méthode ne sera jamais executée par la jopp
+	@Override
+	public void actionBouton(int numeroBouton) {}
 }
 
 
