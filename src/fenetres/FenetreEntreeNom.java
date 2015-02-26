@@ -19,9 +19,9 @@ public class FenetreEntreeNom extends Fenetre {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<JButton> alphabet = new ArrayList<JButton>();
 	private JPanel alphabetPanel = new JPanel(), boutonsDuBas = new JPanel();
-	JButton terminerButton = new JButton("Terminé");
-	JButton annulerButton = new JButton("Annuler");
-	JButton quitterButton = new JButton("Quiter");
+	private JButton terminerButton = new JButton("Terminé"),
+					annulerButton = new JButton("Annuler"),
+					quitterButton = new JButton("Quiter");
 	String name = "";
 	JTextArea texte = new JTextArea("\n \t \t Votre nom est : " + name + " \n\n");
 
@@ -35,8 +35,7 @@ public class FenetreEntreeNom extends Fenetre {
 		boutonVide1.setBackground(new Color(255,255,255));
 		boutonVide2.setBackground(new Color(255,255,255));
 		
-
-		
+		// 1ère ligne du clavier azert
 		alphabet.add(new JButton("a"));
 		alphabet.add(new JButton("z"));
 		alphabet.add(new JButton("e"));
@@ -48,6 +47,7 @@ public class FenetreEntreeNom extends Fenetre {
 		alphabet.add(new JButton("o"));
 		alphabet.add(new JButton("p"));
 		
+		//2ème ligne du clavier azerty
 		alphabet.add(new JButton("q"));
 		alphabet.add(new JButton("s"));
 		alphabet.add(new JButton("d"));
@@ -59,6 +59,7 @@ public class FenetreEntreeNom extends Fenetre {
 		alphabet.add(new JButton("l"));
 		alphabet.add(new JButton("m"));
 
+		//3ème ligne du clavier azerty
 		alphabet.add(new JButton("w"));
 		alphabet.add(new JButton("x"));
 		alphabet.add(new JButton("c"));
@@ -189,13 +190,7 @@ public class FenetreEntreeNom extends Fenetre {
 			case 29 : 
 				annulerButton.doClick();
 				break;
-
 			}
 		}
 	}
-
-	public static void main(String[] args) {
-		new FenetreEntreeNom();
-	}
-
 }

@@ -12,33 +12,24 @@ public abstract class Fenetre extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	/*public void addHandListener(final JButton bouton) {
-		addHandListener(bouton,(int)bouton.getLocation().getX(),
-				(int)bouton.getLocation().getY(),
-				bouton.getHeight(),
-				bouton.getWidth());
-	}*/
-
 	public void addHandListener(final JButton bouton) {
-		final MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(new TrucKinect(bouton),
-				 3000, 100);
+		final MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(new TrucKinect(bouton), 3000,
+				100); // Premier int : temps à rester dans la zone pour activer,
+						// 2ème : frequence de reactualisation de la position
 
 		eventProducer.addListener(new IMainDansLaZoneListener() {
 			public void mainDansLaZone(MainDansLaZoneEventProducer.Type type) {
 				switch (type) {
-				case ENTER: // on entre 
-					// System.out.println("enter");
+				case ENTER: // on entre
 					bouton.getModel().setArmed(true);
 					bouton.getModel().setPressed(true);
 					break;
 				case HIT: // si la main est restée 3 secondes
-					// System.out.println("hit");
 					bouton.getModel().setArmed(false);
 					bouton.getModel().setPressed(false);
-					bouton.doClick(); // je clique le bouton
+					bouton.doClick();
 					break;
-				case EXIT: // si la main sort 
-					// System.out.println("exit");
+				case EXIT: // si la main sort
 					bouton.getModel().setArmed(false);
 					bouton.getModel().setPressed(false);
 					break;
@@ -56,11 +47,7 @@ public abstract class Fenetre extends JFrame implements ActionListener {
 		});
 
 	}
-	
-	public void actionBouton(int numeroBouton){}
 
-	/*public void addHandListener(final JButton bouton, int x) {
-		addHandListener(bouton, 0, 0, 1366, 800);
-	}*/
+	public abstract void actionBouton(int numeroBouton);
 
 }

@@ -24,9 +24,9 @@ import audio.LecteurAudio;
 public class FenetreAffichageSynthese extends Fenetre implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private JButton retourButton = new JButton("Retour");
-	private JButton quitterButton = new JButton("Quitter");
-	private JButton panierButton = new JButton("Ajouter au Panier");
+	private JButton retourButton = new JButton("Retour"),
+			quitterButton = new JButton("Quitter"),
+			panierButton = new JButton("Ajouter au Panier");
 	private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
 	private Container contenu = getContentPane();
@@ -39,10 +39,9 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		this.vetementType = vetementType;
 		this.imagePath = imagePath;
 		setUndecorated(true);
-		setVisible(true); // affichage
+		setVisible(true); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// JLabel image = new JLabel(new ImageIcon(imagePath));
 
 		// Utilisation de BorderLayout
 		contenu.setLayout(new BorderLayout());
@@ -62,7 +61,6 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 
 		new LecteurAudio("SolutionSon.wav");
 
-		// Ajouts sur le ContentPane
 		// contenu.add(image, BorderLayout.CENTER);
 		contenu.add(bouttons, BorderLayout.PAGE_END);
 
@@ -85,6 +83,7 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 
 	public void panier() {
 
+		/**** Ecriture dans le fichier panier.txt de l'user ******/
 		FileWriter writer = null;
 		try {
 			writer = new FileWriter("users/panier" + userName + ".txt", true);
@@ -122,12 +121,9 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == quitterButton)
-			System.exit(0);
-		else if (e.getSource() == retourButton)
-			retour();
-		else if (e.getSource() == panierButton)
-			panier();
+		if (e.getSource() == quitterButton)			System.exit(0);
+		else if (e.getSource() == retourButton)		retour();
+		else if (e.getSource() == panierButton)		panier();
 
 	}
 	
@@ -142,10 +138,6 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 			jopp.dispose();
 			break;
 		}
-	}
-
-	public static void main(String args[]) {
-		new FenetreAffichageSynthese("", "", "");
 	}
 
 }

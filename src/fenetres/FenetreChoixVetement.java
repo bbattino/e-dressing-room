@@ -24,12 +24,12 @@ import audio.LecteurAudio;
 public class FenetreChoixVetement extends Fenetre implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private JButton essayerButton = new JButton("Essayer");
-	private JButton quitterButton = new JButton("Quitter");
-	private JButton suivantButton = new JButton("suivant");
-	private JButton precedentButton = new JButton("précedent");
-	private JButton retourButton = new JButton("Retour");
-	private JButton panierButton = new JButton("panier");
+	private JButton essayerButton = new JButton("Essayer"),
+			quitterButton = new JButton("Quitter"),
+			suivantButton = new JButton("suivant"),
+			precedentButton = new JButton("précedent"),
+			retourButton = new JButton("Retour"),
+			panierButton = new JButton("panier");
 	private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
 	private JPanel bouttons = new JPanel();
 	private ArrayList<JLabel> images = new ArrayList<JLabel>();
@@ -151,18 +151,12 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == quitterButton)
-			System.exit(0);
-		else if (e.getSource() == essayerButton)
-			essayer();
-		else if (e.getSource() == suivantButton)
-			suivant();
-		else if (e.getSource() == precedentButton)
-			precedent();
-		else if (e.getSource() == retourButton)
-			retour();
-		else if (e.getSource() == panierButton)
-			panier();
+		if (e.getSource() == quitterButton)			System.exit(0);
+		else if (e.getSource() == essayerButton)	essayer();
+		else if (e.getSource() == suivantButton)	suivant();
+		else if (e.getSource() == precedentButton)	precedent();
+		else if (e.getSource() == retourButton)		retour();
+		else if (e.getSource() == panierButton)		panier();
 	}
 
 	@Override

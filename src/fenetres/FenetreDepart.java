@@ -22,12 +22,10 @@ import java.util.logging.*;
 
 public class FenetreDepart extends Fenetre implements ActionListener{
 
-
-
 		private static final long serialVersionUID = 1L;
-		private JButton commencerButton = new JButton("Commencer");
-		private JButton quitterButton = new JButton("Quitter");
-		private JButton creditsButton = new JButton("A propos");
+		private JButton commencerButton = new JButton("Commencer"),
+				quitterButton = new JButton("Quitter"),
+				creditsButton = new JButton("A propos");
 		private JPanel bouttons = new JPanel();
 		private static Logger logger;
 
@@ -46,15 +44,12 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			else
 				logger.warning("image non chargée \n");
 				
-			
-			
 
 			// Utilisation de BorderLayout
 			Container contenu = getContentPane();
 			contenu.setLayout(new BorderLayout());
 			contenu.setBackground(new Color(255, 255, 255));
 
-			
 			//Ajouts des bouttons sur buttons
 			
 			bouttons.add(commencerButton);
@@ -78,9 +73,6 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			addHandListener(creditsButton);
 			addHandListener(quitterButton);
 			
-			
-			
-
 		}
 		
 		public void commencer(){
@@ -93,6 +85,7 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			new FenetreCredit(this);
 			setVisible(false);
 		}
+		
 		@Override
 		public void actionBouton(int numeroBouton){
 			switch(numeroBouton){

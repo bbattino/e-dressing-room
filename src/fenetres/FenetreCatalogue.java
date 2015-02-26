@@ -29,18 +29,17 @@ public class FenetreCatalogue extends Fenetre implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<JButton> boutonListe = new ArrayList<JButton>();
-	private JButton tShirtButton = new JButton("T Shirt");
-	private JButton pullButton = new JButton("Pull");
-	private JButton robeButton = new JButton("Robe");
-	private JButton pantalonButton = new JButton("Pantalon");
-	private JButton quitterButton = new JButton("Quitter");
-	private JButton retourButton = new JButton("Retour");
-	private JButton voirPanierButton = new JButton("Voir le Panier");
-	private JButton supprimerButton = new JButton("Supprimer Compte");
+	private JButton tShirtButton = new JButton("T Shirt"),
+					pullButton = new JButton("Pull"),
+					robeButton = new JButton("Robe"),
+					pantalonButton = new JButton("Pantalon"),
+					quitterButton = new JButton("Quitter"),
+					retourButton = new JButton("Retour"),
+					voirPanierButton = new JButton("Voir le Panier"),
+					supprimerButton = new JButton("Supprimer Compte");
 	private JPanel catalogue = new JPanel();
 	private String userName;
 	private static JOptionPanePerso jopp;
-
 	private JPanel bouttons = new JPanel();
 
 	public FenetreCatalogue(String userName) {
@@ -273,10 +272,7 @@ public class FenetreCatalogue extends Fenetre implements ActionListener {
 			break;
 		case 8 : // jopp non
 			jopp.dispose();
-			break;
-			
-			
+			break;	
 		}
 	}
-
 }

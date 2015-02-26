@@ -150,7 +150,7 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 		return true;		
 	}
 
-	/* Generation d'un fichier texte spécifique aux nouveux utilisateurs */
+	/***** Generation d'un fichier texte spécifique aux nouveux utilisateurs ******/
 	public void creerPanier(String userName){
 		File panier = new File("users/panier"+userName+".txt");
 		try {
