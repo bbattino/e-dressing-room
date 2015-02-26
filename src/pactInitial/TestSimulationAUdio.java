@@ -1,17 +1,14 @@
 package pactInitial;
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import fenetres.FenetreDepart;
 
 public class TestSimulationAUdio extends JFrame implements ActionListener {

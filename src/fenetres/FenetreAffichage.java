@@ -124,7 +124,18 @@ public class FenetreAffichage extends Fenetre implements ActionListener{
 				panier();
 			
 		}
-
+		@Override
+		public void actionBouton(int numeroBouton){
+			switch(numeroBouton){
+			case 0 : retourButton.doClick();
+				break;
+			case 1 : panierButton.doClick();
+				break;
+			case 2 : // ok de la jopp
+				jopp.dispose();
+				break;
+			}
+		}
 	}
 
 

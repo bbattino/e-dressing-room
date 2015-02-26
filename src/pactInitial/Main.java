@@ -1,6 +1,7 @@
 package pactInitial;
 
 import fenetres.Fenetre;
+import fenetres.FenetreAffichage;
 import fenetres.FenetreAffichageSynthese;
 import fenetres.FenetreCatalogue;
 import fenetres.FenetreChoixVetement;
@@ -74,6 +75,7 @@ public class Main {
 					||curentFenetre instanceof FenetreCatalogue 
 					||curentFenetre instanceof FenetreChoixVetement 
 					||curentFenetre instanceof FenetreAffichageSynthese
+					||curentFenetre instanceof FenetreAffichage				
 					||curentFenetre instanceof FenetreVisualisation)
 				curentFenetre.actionBouton(0);
 			break;
@@ -114,7 +116,8 @@ public class Main {
 		case 19 : // "panier" voir panier
 			if(curentFenetre instanceof FenetreChoixVetement)
 				curentFenetre.actionBouton(3);
-			else if(curentFenetre instanceof FenetreAffichageSynthese)
+			else if(curentFenetre instanceof FenetreAffichageSynthese
+					||curentFenetre instanceof FenetreAffichage)
 				curentFenetre.actionBouton(1);
 			break;
 		case 20 : // essayer
@@ -130,7 +133,8 @@ public class Main {
 			
 			/*** action des joptionpane ***/
 		case 22 : //ok
-			if(curentFenetre instanceof FenetreAffichageSynthese)
+			if(curentFenetre instanceof FenetreAffichageSynthese
+					||curentFenetre instanceof FenetreAffichage)
 				curentFenetre.actionBouton(2);
 			else if(curentFenetre instanceof FenetreChoixVetement)
 				curentFenetre.actionBouton(5);
