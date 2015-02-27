@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
@@ -42,6 +41,7 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		setVisible(true); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		actionOpenGL(1);//afficher l'openGL
 
 		// Utilisation de BorderLayout
 		contenu.setLayout(new BorderLayout());
@@ -62,13 +62,15 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		new LecteurAudio("SolutionSon.wav");
 
 		// contenu.add(image, BorderLayout.CENTER);
-		contenu.add(bouttons, BorderLayout.PAGE_END);
+		contenu.add(bouttons, BorderLayout.PAGE_START);
 
 		// Ajout des Listeners
 		for (JButton bouton : listeBoutons)
 			bouton.addActionListener(this);
-
-		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+		
+		setLocation(0, 0);
+		setSize(1400, 100);
+		//this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		addHandListener(panierButton);
 		addHandListener(quitterButton);
 		addHandListener(retourButton);
@@ -76,7 +78,7 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 	}
 
 	public void retour() {
-		actionOpenGL("fermer"); // demande à l'open GL de fermer sa fenêtre
+		actionOpenGL(0); // demande à l'open GL de fermer sa fenêtre
 		dispose();
 		new FenetreChoixVetement(userName, vetementType);
 	}
@@ -111,7 +113,7 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 
 	}
 
-	public void actionOpenGL(String action) {
+	public void actionOpenGL(int action) {
 		// méthode utilisant le module java/C++ pour
 		// demander au module synthèse 3D d'executer une action
 		// sur la fenêtre openGL
@@ -140,4 +142,7 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		}
 	}
 
+	public static void main(String args[]){
+		new FenetreAffichageSynthese("", "", "");
+	}
 }

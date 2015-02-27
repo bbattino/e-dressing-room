@@ -95,7 +95,8 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 
 	public void essayer() {
 		dispose();
-		new FenetreAffichage(imagePath.get(numeroChoix), userName, vetementType);
+		//new FenetreAffichage(imagePath.get(numeroChoix), userName, vetementType);
+		new FenetreAffichageSynthese(imagePath.get(numeroChoix), userName, vetementType);
 	}
 
 	public void suivant() {
