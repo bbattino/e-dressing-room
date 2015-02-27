@@ -19,8 +19,8 @@ public class FenetreEntreeNom extends Fenetre {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<JButton> alphabet = new ArrayList<JButton>();
 	private JPanel alphabetPanel = new JPanel(), boutonsDuBas = new JPanel();
-	private JButton terminerButton = new JButton("Terminé"),
-					annulerButton = new JButton("Annuler"),
+	private JButton terminerButton = new JButton("OK"),
+					annulerButton = new JButton("Retour"),
 					quitterButton = new JButton("Quiter");
 	String name = "";
 	JTextArea texte = new JTextArea("\n \t \t Votre nom est : " + name + " \n\n");
