@@ -30,6 +30,56 @@ public class Main {
 	public static void actionEventAudio(int numeroAction){
 		
 		switch(numeroAction){
+		case 10 : // bouton retour
+			if(curentFenetre instanceof FenetreCredit 
+					||curentFenetre instanceof FenetreCatalogue 
+					||curentFenetre instanceof FenetreChoixVetement 
+					||curentFenetre instanceof FenetreAffichageSynthese
+					||curentFenetre instanceof FenetreAffichage				
+					||curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(0);
+			else if(curentFenetre instanceof FenetreEntreeNom) // redondance de "annuler"
+				curentFenetre.actionBouton(29);
+			break;
+		case 22 : //ok
+			if(curentFenetre instanceof FenetreAffichageSynthese
+					||curentFenetre instanceof FenetreAffichage)
+				curentFenetre.actionBouton(2);
+			else if(curentFenetre instanceof FenetreChoixVetement)
+				curentFenetre.actionBouton(5);
+			else if(curentFenetre instanceof FenetreIdentification)
+				curentFenetre.actionBouton(7);
+			else if(curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(5);
+			else if(curentFenetre instanceof FenetreEntreeNom) //redondance du "terminer"
+				curentFenetre.actionBouton(28);
+			break;
+		case 19 : // "panier" voir panier
+			if(curentFenetre instanceof FenetreChoixVetement)
+				curentFenetre.actionBouton(3);
+			else if(curentFenetre instanceof FenetreAffichageSynthese
+					||curentFenetre instanceof FenetreAffichage)
+				curentFenetre.actionBouton(1);
+			break;
+		case 17 : // suivant
+			if(curentFenetre instanceof FenetreChoixVetement
+					|| curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(1);
+			break;
+		case 18 : // precedent
+			if(curentFenetre instanceof FenetreChoixVetement
+					|| curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(2);
+			break;
+			
+		case 20 : // essayer
+			if(curentFenetre instanceof FenetreChoixVetement)
+				curentFenetre.actionBouton(4);
+			else if(curentFenetre instanceof FenetreVisualisation)
+				curentFenetre.actionBouton(3);
+			break;
+		
+			
 		case 0 : // commencer
 			if(curentFenetre instanceof FenetreDepart)
 				curentFenetre.actionBouton(0);
@@ -71,15 +121,7 @@ public class Main {
 			if(curentFenetre instanceof FenetreIdentification)
 				curentFenetre.actionBouton(6);
 			break;
-		case 10 : // bouton retour
-			if(curentFenetre instanceof FenetreCredit 
-					||curentFenetre instanceof FenetreCatalogue 
-					||curentFenetre instanceof FenetreChoixVetement 
-					||curentFenetre instanceof FenetreAffichageSynthese
-					||curentFenetre instanceof FenetreAffichage				
-					||curentFenetre instanceof FenetreVisualisation)
-				curentFenetre.actionBouton(0);
-			break;
+		
 		case 11 : // bouton TShirt
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(1);
@@ -104,47 +146,16 @@ public class Main {
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(6);
 			break;
-		case 17 : // suivant
-			if(curentFenetre instanceof FenetreChoixVetement
-					|| curentFenetre instanceof FenetreVisualisation)
-				curentFenetre.actionBouton(1);
-			break;
-		case 18 : // precedent
-			if(curentFenetre instanceof FenetreChoixVetement
-					|| curentFenetre instanceof FenetreVisualisation)
-				curentFenetre.actionBouton(2);
-			break;
-		case 19 : // "panier" voir panier
-			if(curentFenetre instanceof FenetreChoixVetement)
-				curentFenetre.actionBouton(3);
-			else if(curentFenetre instanceof FenetreAffichageSynthese
-					||curentFenetre instanceof FenetreAffichage)
-				curentFenetre.actionBouton(1);
-			break;
-		case 20 : // essayer
-			if(curentFenetre instanceof FenetreChoixVetement)
-				curentFenetre.actionBouton(4);
-			else if(curentFenetre instanceof FenetreVisualisation)
-				curentFenetre.actionBouton(3);
-			break;
+		
+	
 		case 21 : //"retirer du panier"
 			if(curentFenetre instanceof FenetreVisualisation)
 				curentFenetre.actionBouton(4);
 			break;
 			
 			/*** action des joptionpane ***/
-		case 22 : //ok
-			if(curentFenetre instanceof FenetreAffichageSynthese
-					||curentFenetre instanceof FenetreAffichage)
-				curentFenetre.actionBouton(2);
-			else if(curentFenetre instanceof FenetreChoixVetement)
-				curentFenetre.actionBouton(5);
-			else if(curentFenetre instanceof FenetreIdentification)
-				curentFenetre.actionBouton(7);
-			else if(curentFenetre instanceof FenetreVisualisation)
-				curentFenetre.actionBouton(5);
+		
 			
-			break;
 		case 23 : // oui
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(7);
