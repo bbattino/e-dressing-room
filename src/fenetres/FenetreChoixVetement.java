@@ -38,6 +38,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 	private Container contenu = getContentPane();
 	private String userName, vetementType;
 	private static JOptionPanePerso jopp;
+	private String filePathOpenGL;
 
 	public FenetreChoixVetement(String userName, String typeVetement) {
 		Main.setCurentFenetre(this);
@@ -92,10 +93,36 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 		addHandListener(suivantButton);
 
 	}
+	
+	public void modifierEtatFenetreOpenGL(int i){
+		
+		try {
+			new FileWriter(new File(filePathOpenGL)).close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(filePathOpenGL, true);
+			writer.write(i);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
 
 	public void essayer() {
 		dispose();
-		//new FenetreAffichage(imagePath.get(numeroChoix), userName, vetementType);
+		modifierEtatFenetreOpenGL(1);
 		new FenetreAffichageSynthese(imagePath.get(numeroChoix), userName, vetementType);
 	}
 
