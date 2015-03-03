@@ -32,7 +32,8 @@ public class Send {
 			  e.printStackTrace();
 	}}
 	
-	public static void communicationString(){
+	public static String communicationString(){
+		String answer ="";
 		try {
 			  // Connect to the pipe
 			  RandomAccessFile pipe = new RandomAccessFile("\\\\.\\pipe\\mynamedpipe", "rw");
@@ -43,11 +44,14 @@ public class Send {
 				  // read response
 				  String echoResponse = pipe.readLine();
 				  System.out.println("Response: " + lessSpace(echoResponse) );
+				  answer = lessSpace(echoResponse);
 			  pipe.close();
 			} catch (Exception e) {
 			  // TODO Auto-generated catch block
 			  e.printStackTrace();
-	}}
+	}
+		return answer;
+		}
 	
 	
 	public static String moreSpace(String arg){

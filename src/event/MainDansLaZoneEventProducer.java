@@ -70,7 +70,7 @@ public class MainDansLaZoneEventProducer {
  
 				@Override
 				public void run() {
-					Point p = trucKinect.getPosition(); // A modifier par la vraie kinect !!!!
+					Point p = trucKinect.getPositionSimu(); // A modifier par la vraie kinect !!!!
 					if(p!=null)
 						robot.mouseMove((int)p.getX(), (int)p.getY());
 					// Le code ci dessous ne devra pas être modifié lors de l'utilisation de la vraie kinect
