@@ -1,5 +1,9 @@
 package pactInitial;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import fenetres.Fenetre;
 import fenetres.FenetreAffichage;
 import fenetres.FenetreAffichageSynthese;
@@ -14,9 +18,10 @@ import audio.LecteurAudio;
 
 public class Main {
 	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true;
-	public static boolean handListenerActivated = true;
+	public static boolean handListenerActivated = false;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
+	private static String filePathOpenGL = "data/commSyntese3D.txt";
 
 	public static void main(String[] args) {
 
@@ -25,8 +30,35 @@ public class Main {
 		
 	}
 	
+	
 	public static Fenetre getCurentFenetre(){return curentFenetre;}
 	public static void setCurentFenetre(Fenetre fenetre){curentFenetre=fenetre;}
+	
+public static void modifierEtatFenetreOpenGL(int i){
+		
+		try {
+			new FileWriter(new File(filePathOpenGL)).close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(filePathOpenGL, true);
+			writer.write(""+i);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
 	
 	public static void actionEventAudio(int numeroAction){
 		

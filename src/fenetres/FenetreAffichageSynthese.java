@@ -78,7 +78,8 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 	}
 
 	public void retour() {
-		actionOpenGL(0); // demande à l'open GL de fermer sa fenêtre
+		//actionOpenGL(0); // demande à l'open GL de fermer sa fenêtre
+		Main.modifierEtatFenetreOpenGL(0);
 		dispose();
 		new FenetreChoixVetement(userName, vetementType);
 	}
@@ -123,7 +124,10 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == quitterButton)			System.exit(0);
+		if (e.getSource() == quitterButton)	{
+			Main.modifierEtatFenetreOpenGL(0);
+			System.exit(0);
+		}
 		else if (e.getSource() == retourButton)		retour();
 		else if (e.getSource() == panierButton)		panier();
 
