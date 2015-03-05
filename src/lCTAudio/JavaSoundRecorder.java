@@ -1,4 +1,5 @@
 package lCTAudio;
+
 import javax.sound.sampled.*;
 import java.io.*;
  
@@ -8,7 +9,7 @@ import java.io.*;
  */
 public class JavaSoundRecorder {
     // path of the wav file
-    File wavFile = new File("data/RecordAudio.wav");
+    File wavFile = new File("data/test.wav");
  
     // format of audio file
     AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
@@ -71,5 +72,9 @@ public class JavaSoundRecorder {
         line.stop();
         line.close();
         System.out.println("Finished");
+    }
+    public static void main(String[] args){
+    	JavaSoundRecorder j =new JavaSoundRecorder();
+    	j.start();
     }
 }
