@@ -21,7 +21,7 @@ public class Main {
 	public static boolean handListenerActivated = false, tALActivated=true;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
-	private static String filePathOpenGL = "C:/Users/Martin/Documents/Visual Studio 2013/Projects/ColorBasics-D2D/CommandeFenetre.txt";
+	private static String filePathOpenGL = "C:/Users/Martin/Documents/Visual Studio 2013/Projects/Squelette/Squelette/commandeOuverture.txt";
 
 	public static void main(String[] args) {
 
