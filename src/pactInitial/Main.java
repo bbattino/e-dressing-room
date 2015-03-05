@@ -18,7 +18,7 @@ import audio.LecteurAudio;
 
 public class Main {
 	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true;
-	public static boolean handListenerActivated = false;
+	public static boolean handListenerActivated = false, tALActivated=true;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
 	private static String filePathOpenGL = "data/commSyntese3D.txt";
@@ -27,6 +27,8 @@ public class Main {
 
 		new LecteurAudio("welcome.wav");
 		new FenetreDepart();
+		if(tALActivated)
+			new TestTAL();
 		
 	}
 	

@@ -23,7 +23,8 @@ public class TestTAL {
 	int indiceCommande = MethodeDeBase.tableauLePlusProche(T);
 	int indiceAction = MethodeDeBase.correspondanceClasseAction(indiceCommande);
 	Main.actionEventAudio(indiceAction);
-	new TestTAL();
+	if(!parole.equals(""))
+		new TestTAL();
 
 		
 		

@@ -91,6 +91,7 @@ public class MethodeDeBase
 	public static ArrayList<String> creerCommande(String phrase)
 	{
 		ArrayList<String> liste = new ArrayList<String>();
+		if(phrase==null) phrase="&%!/,";
 		int longueur =phrase.length();
 		String currentWord = "";
 		for (int i=0;i<longueur;i++)
