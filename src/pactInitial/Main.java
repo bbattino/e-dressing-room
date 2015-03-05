@@ -18,7 +18,7 @@ import audio.LecteurAudio;
 
 public class Main {
 	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true;
-	public static boolean handListenerActivated = false, tALActivated=true;
+	public static boolean handListenerActivated = true, tALActivated=false;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
 	private static String filePathOpenGL = "C:/Users/Martin/Documents/Visual Studio 2013/Projects/Squelette/Squelette/commandeOuverture.txt";
