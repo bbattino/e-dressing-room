@@ -1,20 +1,17 @@
 package event;
  
 import java.awt.Point;
- 
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
-
 import pactInitial.Send;
  
 public class TrucKinect {
 	protected final JButton bouton;
+	protected static String fileHandPosition = "C:/Users/Martin/Documents/Visual Studio 2013/Projects/ColorBasics-D2D/CommandeFenetre.txt";
  
 	public TrucKinect(JButton bouton) {
 		this.bouton = bouton;
@@ -36,7 +33,7 @@ public class TrucKinect {
 		}
 		//return new Point(1360,800);
 		return point;*/
-		String s=this.lectureFichierMain("C:/Users/Utilisateur/Documents/Kinect Studio/Samples/ColorBasics-D2D/HandPosition.txt");
+		String s=this.lectureFichierMain(fileHandPosition);
 		if(s==null)
 			return null;
 		else{
@@ -92,7 +89,7 @@ public class TrucKinect {
 	
 	public static void main(String[] args){
 		TrucKinect truc =new TrucKinect(null);
-		String s=truc.lectureFichierMain("C:/Users/Utilisateur/Documents/Kinect Studio/Samples/ColorBasics-D2D/HandPosition.txt");
+		String s=truc.lectureFichierMain(TrucKinect.fileHandPosition);
 		truc.decoupe(s);
 	}
  

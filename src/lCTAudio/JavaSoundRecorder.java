@@ -8,7 +8,7 @@ import java.io.*;
  */
 public class JavaSoundRecorder {
     // path of the wav file
-    File wavFile = new File("/cal/homes/bportenard/workspace/AudioFileReader/data/RecordAudio.wav");
+    File wavFile = new File("data/RecordAudio.wav");
  
     // format of audio file
     AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
