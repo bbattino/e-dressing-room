@@ -21,7 +21,7 @@ public class Sound
 		try {
 			stream = AudioSystem.getAudioInputStream(new File(filename));
 			format = stream.getFormat();
-			samples = getSamples(stream);
+			samples = getSamples();
 			fe = format.getSampleRate();
 			
 		} catch (UnsupportedAudioFileException e) {
@@ -52,22 +52,34 @@ public class Sound
 		return samples;
 	}
 	
-	public ArrayList<Trame> fenetrer() //bien chaud en fait (pb de type de variable)
+	public ArrayList<Trame> fenetrer() 
 	{
 		int N = (int)Math.floor(fe*0.02); //taille d'une trame (~20 ms)
 		int l = (int)stream.getFrameLength();
 		int i = 0;
+		int m = (int)format.getFrameSize();
 		ArrayList<Trame> trames = new ArrayList<Trame>(); 
 		
 		while(i < l)
 		{
-			byte[] trameCourante = new byte[N];
+			byte[] tabl = new byte[N];
+			
 			for(int j = 0; j < N; j++)
 			{
 				for(int k = 0; k < format.getFrameSize(); k++)
-					samples[j + k] = (0.54 - 0.46*Math.cos(2*Math.PI*fe*j))*samples[j+k]; //très chiant ça
-			}		
+				
+				
+					tabl[k] = (byte) ((0.54 - 0.46*Math.cos(2*Math.PI*fe*j))*samples[i*(N/2)+j*m+k]); 
+				
+			}
+			
+			Trame trameCourante = new Trame(tabl);
+			trames.add(trameCourante);
+			
+			i += Math.round(N/2) ;
 		}
+		
+		return trames;	
 	}
 
 }

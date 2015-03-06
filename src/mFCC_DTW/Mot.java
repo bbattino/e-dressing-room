@@ -1,6 +1,4 @@
 package mFCC_DTW;
-import MFCC;
-
 import java.util.ArrayList;
 
 

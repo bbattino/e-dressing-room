@@ -1,6 +1,4 @@
 package mFCC_DTW;
-import MFCC;
-
 
 public class Trame
 {
@@ -12,7 +10,11 @@ public class Trame
 		trame = tab;
 	}
 	
-	public MFCC calculateMFCC(){}
+	public MFCC calculateMFCC()
+	{
+		
+		
+	}
 	
 	public MFCC getMFCC()
 	{
