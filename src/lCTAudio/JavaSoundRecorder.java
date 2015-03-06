@@ -1,6 +1,7 @@
 package lCTAudio;
 
 import javax.sound.sampled.*;
+
 import java.io.*;
  
 /**
@@ -9,7 +10,7 @@ import java.io.*;
  */
 public class JavaSoundRecorder {
     // path of the wav file
-    File wavFile = new File("data/test.wav");
+    File wavFile = new File("lctdata/test.wav");
  
     // format of audio file
     AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
@@ -29,6 +30,25 @@ public class JavaSoundRecorder {
         AudioFormat format = new AudioFormat(sampleRate, sampleSizeInBits,
                                              channels, signed, bigEndian);
         return format;
+    }
+    
+    public JavaSoundRecorder(){ // ajouté lors de l'intégration
+    	
+    	Thread t=new Thread(){
+    		public void run(){
+    		try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+					e.printStackTrace();
+			}
+    		finish();}
+    		
+    	};
+    
+		t.start();
+    	this.start();
+    	
+    	finish();
     }
  
     /**
@@ -68,13 +88,12 @@ public class JavaSoundRecorder {
      * Closes the target data line to finish capturing and recording
      */
     void finish() 
-    {
+    {        
         line.stop();
         line.close();
-        System.out.println("Finished");
+        System.out.print("stop recording");
     }
     public static void main(String[] args){
-    	JavaSoundRecorder j =new JavaSoundRecorder();
-    	j.start();
+    	new JavaSoundRecorder();
     }
 }
