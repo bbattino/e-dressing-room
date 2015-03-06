@@ -12,6 +12,7 @@ public class Trame
 	
 	public MFCC calculateMFCC()
 	{
+		return null;
 		
 		
 	}
