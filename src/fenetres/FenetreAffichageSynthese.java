@@ -64,14 +64,14 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		new LecteurAudio("SolutionSon.wav");
 
 		// contenu.add(image, BorderLayout.CENTER);
-		contenu.add(bouttons, BorderLayout.PAGE_END);
+		contenu.add(bouttons, BorderLayout.PAGE_START);
 
 		// Ajout des Listeners
 		for (JButton bouton : listeBoutons)
 			bouton.addActionListener(this);
 		
 		setLocation(0, 0);
-		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+		setSize(1920,1080);
 		//this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		addHandListener(panierButton);
 		addHandListener(quitterButton);
