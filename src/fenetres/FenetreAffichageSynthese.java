@@ -5,11 +5,13 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 
 //import javax.swing.ImageIcon;
@@ -62,14 +64,14 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		new LecteurAudio("SolutionSon.wav");
 
 		// contenu.add(image, BorderLayout.CENTER);
-		contenu.add(bouttons, BorderLayout.PAGE_START);
+		contenu.add(bouttons, BorderLayout.PAGE_END);
 
 		// Ajout des Listeners
 		for (JButton bouton : listeBoutons)
 			bouton.addActionListener(this);
 		
 		setLocation(0, 0);
-		setSize(1400, 100);
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		//this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		addHandListener(panierButton);
 		addHandListener(quitterButton);
