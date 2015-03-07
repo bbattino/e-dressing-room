@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Frame;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pactInitial.Main;
+import pactInitial.TestPixel;
 
 import java.util.logging.*;
 
@@ -110,6 +112,22 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 				System.exit(0);
 			}
 
+		public static void main(String[] args){
+			FenetreDepart t =new FenetreDepart();
+			int x=0;
+			int y=0;
+			while(true){
+				Point p = t.getMousePosition();
+				if(p!=null){
+				if(p.x>x) {x=p.x;System.out.println("x="+x);}
+				if(p.y>y) {y=p.y;System.out.println("y="+y);}}
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			}
+		}
 	}
 
 
