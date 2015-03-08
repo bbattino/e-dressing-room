@@ -8,11 +8,13 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 
 
@@ -40,6 +42,7 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 
 	public FenetreAffichageSynthese(String imagePath, String userName, String vetementType) {
 		Main.setCurentFenetre(this);
+		//cadrage();
 		this.userName = userName;
 		this.vetementType = vetementType;
 		this.imagePath = imagePath;
@@ -54,10 +57,10 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		contenu.setBackground(new Color(255, 255, 255));
 
 		// Ajouts des bouttons sur buttons
-		bouttons.setLayout(new FlowLayout());
-		retourButton.setPreferredSize(new Dimension(300,100));
-		panierButton.setPreferredSize(new Dimension(300,100));
-		quitterButton.setPreferredSize(new Dimension(300,100));
+		//bouttons.setLayout(new FlowLayout());
+		retourButton.setPreferredSize(new Dimension(200,100));
+		panierButton.setPreferredSize(new Dimension(200,100));
+		quitterButton.setPreferredSize(new Dimension(200,100));
 		bouttons.add(retourButton);
 		bouttons.add(panierButton);
 		bouttons.add(quitterButton);
@@ -78,7 +81,9 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 			bouton.addActionListener(this);
 		
 		setLocation(0, 0);
-		setSize(1920,1080);
+		//setSize(1920,1080); taille martin
+		setSize(1000,200);
+		
 		//this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		addHandListener(panierButton);
 		addHandListener(quitterButton);
@@ -91,6 +96,31 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		Main.modifierEtatFenetreOpenGL(0);
 		dispose();
 		new FenetreChoixVetement(userName, vetementType);
+	}
+	
+	public void cadrage(){
+		JFrame droit = new JFrame();
+		droit.setLocation(new Point(830,200));
+		droit.setSize(400,600);
+		droit.setVisible(true);
+		droit.setUndecorated(true);
+		droit.getContentPane().setBackground(new Color(255, 255, 255));
+		
+		JFrame gauche = new JFrame();
+		droit.setLocation(new Point(0,200));
+		droit.setSize(200,600);
+		droit.setVisible(true);
+		droit.setUndecorated(true);
+		droit.getContentPane().setBackground(new Color(255, 255, 255));
+
+		JFrame bas = new JFrame();
+		droit.setLocation(new Point(0,700));
+		droit.setSize(1000,200);
+		droit.setVisible(true);
+		droit.setUndecorated(true);
+		droit.getContentPane().setBackground(new Color(255, 255, 255));
+
+
 	}
 
 	public void panier() {

@@ -17,7 +17,7 @@ public abstract class Fenetre extends JFrame implements ActionListener {
 
 	public void addHandListener(final JButton bouton) {
 		if(Main.handListenerActivated){
-		final MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(new TrucKinect(bouton), 3000,
+		final MainDansLaZoneEventProducer eventProducer = new MainDansLaZoneEventProducer(new TrucKinect(bouton), 1500,
 				100); // Premier int : temps à rester dans la zone pour activer,
 						// 2ème : frequence de reactualisation de la position
 

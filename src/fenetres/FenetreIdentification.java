@@ -47,7 +47,7 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			Main.UserNumber=0;
 			while ((userName = br.readLine()) != null) {
 				JButton bouton = new JButton(userName);
-				bouton.setPreferredSize(new Dimension(300,100));
+				bouton.setPreferredSize(new Dimension(200,100));
 				utilisateurs.add(bouton);
 				Main.UserNumber++;
 			}
@@ -57,8 +57,8 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 		}
 
 		setUndecorated(true);
-		quitterButton.setPreferredSize(new Dimension(300,100));
-		nouveauCompteButton.setPreferredSize(new Dimension(300,100));
+		quitterButton.setPreferredSize(new Dimension(200,100));
+		nouveauCompteButton.setPreferredSize(new Dimension(150,100));
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

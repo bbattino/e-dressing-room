@@ -45,10 +45,10 @@ public class FenetreCatalogue extends Fenetre implements ActionListener {
 
 	public FenetreCatalogue(String userName) {
 		Main.setCurentFenetre(this);
-		quitterButton.setPreferredSize(new Dimension(300,100));
-		retourButton.setPreferredSize(new Dimension(300,100));
-		voirPanierButton.setPreferredSize(new Dimension(300,100));
-		supprimerButton.setPreferredSize(new Dimension(300,100));
+		quitterButton.setPreferredSize(new Dimension(200,100));
+		retourButton.setPreferredSize(new Dimension(200,100));
+		voirPanierButton.setPreferredSize(new Dimension(200,100));
+		supprimerButton.setPreferredSize(new Dimension(200,100));
 		this.userName = userName;
 		setUndecorated(true);
 		setVisible(true); // affichage

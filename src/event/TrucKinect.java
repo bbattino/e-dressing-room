@@ -11,7 +11,7 @@ import pactInitial.Send;
  
 public class TrucKinect {
 	protected final JButton bouton;
-	protected static String fileHandPosition = "C:/Users/Martin/Desktop/ColorBasics-D2D-fonctionnel/HandPosition.txt";
+	protected static String fileHandPosition = "C:/Users/Utilisateur/Documents/Kinect Studio/Samples/ColorBasics-D2D - fonctionnel/HandPosition.txt";
 	public TrucKinect(JButton bouton) {
 		this.bouton = bouton;
 	}
