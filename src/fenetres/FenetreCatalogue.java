@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -44,6 +45,10 @@ public class FenetreCatalogue extends Fenetre implements ActionListener {
 
 	public FenetreCatalogue(String userName) {
 		Main.setCurentFenetre(this);
+		quitterButton.setPreferredSize(new Dimension(300,100));
+		retourButton.setPreferredSize(new Dimension(300,100));
+		voirPanierButton.setPreferredSize(new Dimension(300,100));
+		supprimerButton.setPreferredSize(new Dimension(300,100));
 		this.userName = userName;
 		setUndecorated(true);
 		setVisible(true); // affichage

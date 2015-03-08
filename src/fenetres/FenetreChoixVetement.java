@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,6 +42,12 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 
 	public FenetreChoixVetement(String userName, String typeVetement) {
 		Main.setCurentFenetre(this);
+		quitterButton.setPreferredSize(new Dimension(300,100));
+		suivantButton.setPreferredSize(new Dimension(300,100));
+		precedentButton.setPreferredSize(new Dimension(300,100));
+		retourButton.setPreferredSize(new Dimension(300,100));
+		panierButton.setPreferredSize(new Dimension(300,100));
+		essayerButton.setPreferredSize(new Dimension(300,100));
 		this.userName = userName;
 		this.vetementType = typeVetement;
 		final String dossier = "data/catalogue/" + vetementType;

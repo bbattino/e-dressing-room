@@ -3,6 +3,7 @@ package fenetres;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -32,6 +33,8 @@ public class FenetreCredit extends Fenetre implements ActionListener {
 	
 
 	public FenetreCredit(FenetreDepart fentreDepart) {
+		retourButton.setPreferredSize(new Dimension(300,100));
+		quitterButton.setPreferredSize(new Dimension(300,100));
 		Main.setCurentFenetre(this);
 		this.fentreDepart=fentreDepart;
 

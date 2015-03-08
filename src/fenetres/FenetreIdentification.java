@@ -3,6 +3,7 @@ package fenetres;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,7 +46,9 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			String userName;
 			Main.UserNumber=0;
 			while ((userName = br.readLine()) != null) {
-				utilisateurs.add(new JButton(userName));
+				JButton bouton = new JButton(userName);
+				bouton.setPreferredSize(new Dimension(300,100));
+				utilisateurs.add(bouton);
 				Main.UserNumber++;
 			}
 			br.close();
@@ -54,7 +57,8 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 		}
 
 		setUndecorated(true);
-
+		quitterButton.setPreferredSize(new Dimension(300,100));
+		nouveauCompteButton.setPreferredSize(new Dimension(300,100));
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -64,7 +68,7 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 		contenu.setBackground(new Color(255, 255, 255));
 
 		// Ajouts des bouttons sur buttons
-
+		
 		bouttons.add(nouveauCompteButton);
 		bouttons.add(quitterButton);
 		bouttons.setBackground(new Color(255, 255, 255));

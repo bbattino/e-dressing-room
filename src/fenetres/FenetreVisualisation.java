@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,6 +47,10 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 
 	public FenetreVisualisation(String userName) {
 		Main.setCurentFenetre(this);
+		essayerButton.setPreferredSize(new Dimension(300,100));
+		quitterButton.setPreferredSize(new Dimension(300,100));
+		supprimerButton.setPreferredSize(new Dimension(300,100));
+		retourButton.setPreferredSize(new Dimension(300,100));
 		this.userName = userName;
 		setUndecorated(true);
 		setVisible(true); // affichage
