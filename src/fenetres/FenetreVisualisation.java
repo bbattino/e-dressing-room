@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,9 +49,18 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 	public FenetreVisualisation(String userName) {
 		Main.setCurentFenetre(this);
 		essayerButton.setPreferredSize(new Dimension(300,100));
+		essayerButton.setFont(new Font("Arial",Font.PLAIN,40));
 		quitterButton.setPreferredSize(new Dimension(300,100));
+		quitterButton.setFont(new Font("Arial",Font.PLAIN,40));
 		supprimerButton.setPreferredSize(new Dimension(300,100));
+		supprimerButton.setFont(new Font("Arial",Font.PLAIN,30));
 		retourButton.setPreferredSize(new Dimension(300,100));
+		retourButton.setFont(new Font("Arial",Font.PLAIN,40));
+		suivantButton.setPreferredSize(new Dimension(200,100));
+		suivantButton.setFont(new Font("Arial",Font.PLAIN,40));
+		precedentButton.setPreferredSize(new Dimension(200,100));
+		precedentButton.setFont(new Font("Arial",Font.PLAIN,30));
+		
 		this.userName = userName;
 		setUndecorated(true);
 		setVisible(true); // affichage

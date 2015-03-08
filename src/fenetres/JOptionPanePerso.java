@@ -3,7 +3,9 @@ package fenetres;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
@@ -35,6 +37,8 @@ public JOptionPanePerso(String Message,String imagePath, String[] boutonsTitre, 
 	boutonsPanel.setLayout(new FlowLayout());
 	for(int i=0;i<boutonsTitre.length;i++){
 		JButton bouton = new JButton(boutonsTitre[i]);
+		bouton.setPreferredSize(new Dimension(100,50));
+		bouton.setFont(new Font("Arial",Font.PLAIN,40));
 		bouton.addActionListener(this);
 		boutonListe.add(bouton);
 		boutonsPanel.add(bouton);

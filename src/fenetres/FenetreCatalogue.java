@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -36,7 +37,7 @@ public class FenetreCatalogue extends Fenetre implements ActionListener {
 					pantalonButton = new JButton("Pantalon"),
 					quitterButton = new JButton("Quitter"),
 					retourButton = new JButton("Retour"),
-					voirPanierButton = new JButton("Voir le Panier"),
+					voirPanierButton = new JButton("Voir Panier"),
 					supprimerButton = new JButton("Supprimer Compte");
 	private JPanel catalogue = new JPanel();
 	private String userName;
@@ -46,9 +47,17 @@ public class FenetreCatalogue extends Fenetre implements ActionListener {
 	public FenetreCatalogue(String userName) {
 		Main.setCurentFenetre(this);
 		quitterButton.setPreferredSize(new Dimension(200,100));
+		quitterButton.setFont(new Font("Arial",Font.PLAIN,40));
 		retourButton.setPreferredSize(new Dimension(200,100));
+		retourButton.setFont(new Font("Arial",Font.PLAIN,40));
 		voirPanierButton.setPreferredSize(new Dimension(200,100));
+		voirPanierButton.setFont(new Font("Arial",Font.PLAIN,20));
 		supprimerButton.setPreferredSize(new Dimension(200,100));
+		supprimerButton.setFont(new Font("Arial",Font.PLAIN,20));
+		tShirtButton.setFont(new Font("Arial",Font.PLAIN,40));
+		pullButton.setFont(new Font("Arial",Font.PLAIN,40));
+		pantalonButton.setFont(new Font("Arial",Font.PLAIN,40));
+		robeButton.setFont(new Font("Arial",Font.PLAIN,40));
 		this.userName = userName;
 		setUndecorated(true);
 		setVisible(true); // affichage

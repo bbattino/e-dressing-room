@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,11 +44,17 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 	public FenetreChoixVetement(String userName, String typeVetement) {
 		Main.setCurentFenetre(this);
 		quitterButton.setPreferredSize(new Dimension(200,100));
+		quitterButton.setFont(new Font("Arial",Font.PLAIN,40));
 		suivantButton.setPreferredSize(new Dimension(200,100));
+		suivantButton.setFont(new Font("Arial",Font.PLAIN,40));
 		precedentButton.setPreferredSize(new Dimension(200,100));
+		precedentButton.setFont(new Font("Arial",Font.PLAIN,30));
 		retourButton.setPreferredSize(new Dimension(200,100));
+		retourButton.setFont(new Font("Arial",Font.PLAIN,40));
 		panierButton.setPreferredSize(new Dimension(200,100));
+		panierButton.setFont(new Font("Arial",Font.PLAIN,40));
 		essayerButton.setPreferredSize(new Dimension(200,100));
+		essayerButton.setFont(new Font("Arial",Font.PLAIN,40));
 		this.userName = userName;
 		this.vetementType = typeVetement;
 		final String dossier = "data/catalogue/" + vetementType;

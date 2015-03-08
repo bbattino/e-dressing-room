@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,6 +49,7 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			while ((userName = br.readLine()) != null) {
 				JButton bouton = new JButton(userName);
 				bouton.setPreferredSize(new Dimension(200,100));
+				bouton.setFont(new Font("Arial",Font.PLAIN,40));
 				utilisateurs.add(bouton);
 				Main.UserNumber++;
 			}
@@ -58,7 +60,9 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 
 		setUndecorated(true);
 		quitterButton.setPreferredSize(new Dimension(200,100));
-		nouveauCompteButton.setPreferredSize(new Dimension(150,100));
+		quitterButton.setFont(new Font("Arial",Font.PLAIN,40));
+		nouveauCompteButton.setPreferredSize(new Dimension(500,100));
+		nouveauCompteButton.setFont(new Font("Arial",Font.PLAIN,40));
 		setVisible(true); // affichage
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

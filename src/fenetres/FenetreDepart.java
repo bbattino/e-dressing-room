@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -35,8 +36,11 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 		public FenetreDepart() {
 			Main.setCurentFenetre(this);
 			commencerButton.setPreferredSize(new Dimension(300,100));
+			commencerButton.setFont(new Font("Arial",Font.PLAIN,40));
 			quitterButton.setPreferredSize(new Dimension(300,100));
+			quitterButton.setFont(new Font("Arial",Font.PLAIN,40));
 			creditsButton.setPreferredSize(new Dimension(300,100));
+			creditsButton.setFont(new Font("Arial",Font.PLAIN,40));
 			logger = Logger.getLogger("com.foo.FenetreDepart");
 			logger.setLevel(Level.OFF);
 			setUndecorated(true);
