@@ -27,6 +27,8 @@ private JLabel image;
 public JOptionPanePerso(String Message,String imagePath, String[] boutonsTitre, Runnable[] boutonsAction){
 	//this.texte=new JTextArea(Message);
 	//texte.setEditable(false);
+	//setUndecorated(true);
+
 	setLocation(100, 400);
 	image = new JLabel(new ImageIcon(imagePath));
 	Container contenu = getContentPane();

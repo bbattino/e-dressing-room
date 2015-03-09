@@ -48,13 +48,13 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 
 	public FenetreVisualisation(String userName) {
 		Main.setCurentFenetre(this);
-		essayerButton.setPreferredSize(new Dimension(300,100));
+		essayerButton.setPreferredSize(new Dimension(200,100));
 		essayerButton.setFont(new Font("Arial",Font.PLAIN,40));
-		quitterButton.setPreferredSize(new Dimension(300,100));
+		quitterButton.setPreferredSize(new Dimension(200,100));
 		quitterButton.setFont(new Font("Arial",Font.PLAIN,40));
 		supprimerButton.setPreferredSize(new Dimension(300,100));
-		supprimerButton.setFont(new Font("Arial",Font.PLAIN,30));
-		retourButton.setPreferredSize(new Dimension(300,100));
+		supprimerButton.setFont(new Font("Arial",Font.PLAIN,25));
+		retourButton.setPreferredSize(new Dimension(200,100));
 		retourButton.setFont(new Font("Arial",Font.PLAIN,40));
 		suivantButton.setPreferredSize(new Dimension(200,100));
 		suivantButton.setFont(new Font("Arial",Font.PLAIN,40));

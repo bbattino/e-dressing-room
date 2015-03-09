@@ -3,6 +3,7 @@ package fenetres;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -36,36 +37,102 @@ public class FenetreEntreeNom extends Fenetre {
 		boutonVide2.setBackground(new Color(255,255,255));
 		
 		// 1ère ligne du clavier azert
-		alphabet.add(new JButton("a"));
-		alphabet.add(new JButton("z"));
-		alphabet.add(new JButton("e"));
-		alphabet.add(new JButton("r"));
-		alphabet.add(new JButton("t"));
-		alphabet.add(new JButton("y"));
-		alphabet.add(new JButton("u"));
-		alphabet.add(new JButton("i"));
-		alphabet.add(new JButton("o"));
-		alphabet.add(new JButton("p"));
+		JButton a=new JButton("a");
+		a.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(a);
+		
+		/*JButton b=new JButton("b");
+		b.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(b);*/
+		
+		JButton z=new JButton("z");
+		z.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(z);
+		
+		JButton e=new JButton("e");
+		e.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(e);
+		
+		JButton r=new JButton("r");
+		r.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(r);
+		
+		JButton t=new JButton("t");
+		t.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(t);
+		
+		JButton y=new JButton("y");
+		y.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(y);
+		
+		JButton u=new JButton("u");
+		u.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(u);
+		
+		JButton ibuton=new JButton("i");
+		ibuton.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(ibuton);
+		
+		JButton o=new JButton("o");
+		o.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(o);
+		JButton p=new JButton("p");
+		p.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(p);
 		
 		//2ème ligne du clavier azerty
-		alphabet.add(new JButton("q"));
-		alphabet.add(new JButton("s"));
-		alphabet.add(new JButton("d"));
-		alphabet.add(new JButton("f"));
-		alphabet.add(new JButton("g"));
-		alphabet.add(new JButton("h"));
-		alphabet.add(new JButton("j"));
-		alphabet.add(new JButton("k"));
-		alphabet.add(new JButton("l"));
-		alphabet.add(new JButton("m"));
+		
+		JButton q=new JButton("q");
+		q.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(q);
+		JButton s=new JButton("s");
+		s.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(s);
+		JButton d=new JButton("d");
+		d.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(d);
+		JButton f=new JButton("f");
+		f.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(f);
+		JButton g=new JButton("g");
+		g.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(g);
+		JButton h=new JButton("h");
+		h.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(h);
+		JButton j=new JButton("j");
+		j.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(j);JButton k=new JButton("k");
+		k.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(k);JButton l=new JButton("l");
+		l.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(l);JButton m=new JButton("m");
+		m.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(m);
+		
 
 		//3ème ligne du clavier azerty
-		alphabet.add(new JButton("w"));
-		alphabet.add(new JButton("x"));
-		alphabet.add(new JButton("c"));
-		alphabet.add(new JButton("v"));
-		alphabet.add(new JButton("b"));
-		alphabet.add(new JButton("n"));
+		
+		JButton w=new JButton("w");
+		w.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(w);
+		JButton x=new JButton("x");
+		x.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(x);
+		JButton c=new JButton("c");
+		c.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(c);
+		
+		JButton v=new JButton("v");
+		v.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(v);
+		JButton b=new JButton("b");
+		b.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(b);
+		JButton n=new JButton("n");
+		n.setFont(new Font("Arial",Font.PLAIN,40));
+		alphabet.add(n);
+	
 
 		alphabet.add(new JButton("Espace"));
 		alphabet.add(new JButton("Efface"));

@@ -97,7 +97,7 @@ public class JavaSoundRecorder {
         line.close();
         System.out.print("stop recording");
         /****import DU main du module RVS***/
-        if(Main.mfccActivated==true){
+        if(Main.mfccActivated){
 		Mot motUtilisateur = new Mot("nomDuSon");
 		
 		// Initialise le dictionnaire
