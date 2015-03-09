@@ -1,4 +1,2 @@
 data/catalogue/pull/pull1.jpg
-data/catalogue/pull/pull1.jpg
-data/catalogue/pull/pull1.jpg
 data/catalogue/tshirt/catalogueTShirt1.jpg

@@ -2,6 +2,10 @@ package lCTAudio;
 
 import javax.sound.sampled.*;
 
+import pactInitial.Main;
+import mFCC_DTW.Mot;
+import rVS.Dictionary;
+
 import java.io.*;
  
 /**
@@ -92,6 +96,17 @@ public class JavaSoundRecorder {
         line.stop();
         line.close();
         System.out.print("stop recording");
+        /****import DU main du module RVS***/
+        if(Main.mfccActivated==true){
+		Mot motUtilisateur = new Mot("nomDuSon");
+		
+		// Initialise le dictionnaire
+		Dictionary dictionary = new Dictionary();
+		
+		String result = dictionary.compareAll(motUtilisateur);
+		int resInterface = dictionary.convertToInterface(result);
+		Main.actionEventAudio(resInterface);
+        }
     }
     public static void main(String[] args){
     	new JavaSoundRecorder();
