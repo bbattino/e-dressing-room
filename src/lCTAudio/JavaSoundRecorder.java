@@ -13,51 +13,39 @@ import java.io.*;
  * author: www.codejava.net
  */
 public class JavaSoundRecorder {
-    // path of the wav file
-    File wavFile = new File("lctdata/test.wav");
- 
-    // format of audio file
     AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
- 
-    // the line from which audio data is captured
-    TargetDataLine line;
- 
-    /**
-     * Defines an audio format
-     */
+     TargetDataLine line;
+     File wavFile;
+     private static int i=0;
+
     AudioFormat getAudioFormat() {
         float sampleRate = 16000;
-        int sampleSizeInBits = 8;
-        int channels = 2;
-        boolean signed = true;
-        boolean bigEndian = true;
-        AudioFormat format = new AudioFormat(sampleRate, sampleSizeInBits,
+        int sampleSizeInBits = 8, channels = 2;
+        boolean signed = true, bigEndian = true;
+        return new AudioFormat(sampleRate, sampleSizeInBits,
                                              channels, signed, bigEndian);
-        return format;
+       
     }
     
     public JavaSoundRecorder(){ // ajouté lors de l'intégration
     	
+         wavFile = new File("lctdata/test"+i+".wav");
+
+    	
     	Thread t=new Thread(){
     		public void run(){
-    		try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-					e.printStackTrace();
-			}
-    		finish();}
-    		
+    			try {	Thread.sleep(5000);} catch (InterruptedException e) {e.printStackTrace();}
+    			finish();}
     	};
     
 		t.start();
     	this.start();
-    	
     	finish();
+    	i++;
+    	new JavaSoundRecorder();
     }
  
-    /**
-     * Captures the sound and record into a WAV file
-     */
+    
     void start() {
         try {
             AudioFormat format = getAudioFormat();
@@ -72,33 +60,20 @@ public class JavaSoundRecorder {
             line.open(format);
             line.start();   // start capturing
  
-            System.out.println("Start capturing...");
+            AudioSystem.write(new AudioInputStream(line), fileType, wavFile);
  
-            AudioInputStream ais = new AudioInputStream(line);
- 
-            System.out.println("Start recording...");
- 
-            // start recording
-            AudioSystem.write(ais, fileType, wavFile);
- 
-        } catch (LineUnavailableException ex) {
-            ex.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+        } catch (LineUnavailableException ex) {ex.printStackTrace();
+        } catch (IOException ioe) { ioe.printStackTrace();}
     }
  
-    /**
-     * Closes the target data line to finish capturing and recording
-     */
     void finish() 
     {        
         line.stop();
         line.close();
-        System.out.print("stop recording");
+        System.out.println("lctdata/test"+i+".wav");
         /****import DU main du module RVS***/
         if(Main.mfccActivated){
-		Mot motUtilisateur = new Mot("nomDuSon");
+		Mot motUtilisateur = new Mot("lctdata/test"+i+".wav");
 		
 		// Initialise le dictionnaire
 		Dictionary dictionary = new Dictionary();
