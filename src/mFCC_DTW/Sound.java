@@ -81,5 +81,11 @@ public class Sound
 		
 		return trames;	
 	}
+	
+	public static void main(String[] args){
+		Sound sound = new Sound("lctdata/commencer1_converted.wav");
+		ArrayList<Trame> trames =sound.fenetrer();
+		for (Trame t : trames) System.out.println(t);
+	}
 
 }

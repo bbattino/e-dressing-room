@@ -52,10 +52,7 @@ public class JavaSoundRecorder {
             DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
  
             // checks if system supports the data line
-            if (!AudioSystem.isLineSupported(info)) {
-                System.out.println("Line not supported");
-                System.exit(0);
-            }
+            if (!AudioSystem.isLineSupported(info)) { System.out.println("Line not supported"); System.exit(0);}
             line = (TargetDataLine) AudioSystem.getLine(info);
             line.open(format);
             line.start();   // start capturing
@@ -76,11 +73,13 @@ public class JavaSoundRecorder {
 		Mot motUtilisateur = new Mot("lctdata/test"+i+".wav");
 		
 		// Initialise le dictionnaire
-		Dictionary dictionary = new Dictionary();
+		Dictionary dictionary = Main.getdictionary();
 		
-		String result = dictionary.compareAll(motUtilisateur);
-		int resInterface = dictionary.convertToInterface(result);
-		Main.actionEventAudio(resInterface);
+		/*String result = Main.getdictionary().compareAll(motUtilisateur);
+		int resInterface = Main.getdictionary().convertToInterface(result);
+		Main.actionEventAudio(resInterface);*/
+		
+		Main.actionEventAudio(dictionary.convertToInterface(dictionary.compareAll(motUtilisateur)));
         }
     }
     public static void main(String[] args){

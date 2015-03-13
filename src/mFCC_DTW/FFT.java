@@ -62,8 +62,12 @@ public class FFT
         System.out.println(title);
         System.out.println("-------------------");
         for (int i = 0; i < x.length; i++) {
-            System.out.println(x[i]);
+            System.out.println(x[i].re()+" + "+x[i].im()+"i");
         }
         System.out.println();
+    }
+    public static void main(String[] args){
+    	Complex[] c = {new Complex(1,1),new Complex(2, 4), new Complex(-2, 1),new Complex(0, 0)};
+    	afficher(fft(c),"");
     }
 }
