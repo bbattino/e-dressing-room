@@ -4,37 +4,45 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import rVS.Dictionary;
+import lCTAudio.JavaSoundRecorder;
 import fenetres.Fenetre;
-import fenetres.FenetreAffichage;
+/*import fenetres.FenetreAffichage;
 import fenetres.FenetreAffichageSynthese;
 import fenetres.FenetreCatalogue;
 import fenetres.FenetreChoixVetement;
-import fenetres.FenetreCredit;
+import fenetres.FenetreCredit;*/
 import fenetres.FenetreDepart;
 import fenetres.FenetreEntreeNom;
-import fenetres.FenetreIdentification;
-import fenetres.FenetreVisualisation;
+/*import fenetres.FenetreIdentification;
+import fenetres.FenetreVisualisation;*/
 import audio.LecteurAudio;
 
 public class Main {
 	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true;
-	public static boolean handListenerActivated = false, tALActivated=false, mfccActivated=false;
+	public static boolean handListenerActivated = false, tALActivated=true, audioActivated=false,mfccActivated=false;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
 	private static String filePathOpenGL = "C:/Users/Utilisateur/Documents/Kinect Studio/Samples/openglsquelette/commandeOuverture.txt";
-
+	private static Dictionary dictionary ;
+	
 	public static void main(String[] args) {
 
+		if(audioActivated) dictionary =  new Dictionary();
 		new LecteurAudio("welcome.wav");
 		new FenetreDepart();
-		if(tALActivated)
-			new TestTAL();
+		if(tALActivated) new TestTAL();
+		if(audioActivated) {
+			new Dictionary();
+			new JavaSoundRecorder();
+		}
 		
 	}
 	
 	
 	public static Fenetre getCurentFenetre(){return curentFenetre;}
 	public static void setCurentFenetre(Fenetre fenetre){curentFenetre=fenetre;}
+	public static Dictionary getdictionary(){return dictionary;}
 	
 public static void modifierEtatFenetreOpenGL(int i){
 		
@@ -64,8 +72,12 @@ public static void modifierEtatFenetreOpenGL(int i){
 	
 	public static void actionEventAudio(int numeroAction){
 		
+		if(numeroAction<25 || numeroAction>52){
+			curentFenetre.actionBouton(numeroAction);
+			return;}
+		
 		switch(numeroAction){
-		case 10 : // bouton retour
+		/* case 10 : // bouton retour
 			if(curentFenetre instanceof FenetreCredit 
 					||curentFenetre instanceof FenetreCatalogue 
 					||curentFenetre instanceof FenetreChoixVetement 
@@ -124,6 +136,7 @@ public static void modifierEtatFenetreOpenGL(int i){
 				curentFenetre.actionBouton(1);
 			break;
 		case 2: //quitter
+			Main.modifierEtatFenetreOpenGL(0);
 			System.exit(0);
 			break;
 		
@@ -190,7 +203,7 @@ public static void modifierEtatFenetreOpenGL(int i){
 			
 			/*** action des joptionpane ***/
 		
-			
+		/*	
 		case 23 : // oui
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(7);
@@ -198,7 +211,7 @@ public static void modifierEtatFenetreOpenGL(int i){
 		case 24 : //non
 			if(curentFenetre instanceof FenetreCatalogue)
 				curentFenetre.actionBouton(8);
-			break;
+			break; 
 			
 			/**** lettres de l'aphabet *****/
 			
@@ -314,7 +327,7 @@ public static void modifierEtatFenetreOpenGL(int i){
 			if(curentFenetre instanceof FenetreEntreeNom)
 				curentFenetre.actionBouton(27);
 			break;
-
+			/*
 		case 53 : // terminer
 			if(curentFenetre instanceof FenetreEntreeNom)
 				curentFenetre.actionBouton(28);
@@ -323,7 +336,7 @@ public static void modifierEtatFenetreOpenGL(int i){
 			if(curentFenetre instanceof FenetreEntreeNom)
 				curentFenetre.actionBouton(29);
 			break;
-				
+				*/
 
 		}
 	}

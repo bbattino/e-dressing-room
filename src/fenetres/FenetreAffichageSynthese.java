@@ -174,13 +174,29 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 	
 	@Override
 	public void actionBouton(int numeroBouton){
-		switch(numeroBouton){
+		/*switch(numeroBouton){
 		case 0 : retourButton.doClick();
 			break;
 		case 1 : panierButton.doClick();
 			break;
 		case 2 : // ok de la jopp
 			jopp.dispose();
+			break;
+		}*/
+		switch (numeroBouton) {
+		case 10:
+			retourButton.doClick();
+			break;
+		case 19:
+			panierButton.doClick();
+			break;
+			
+		case 22:
+			jopp.dispose();
+			break;
+
+		default:
+			System.err.println("commande "+numeroBouton+" non reconnue sur"+this.toString());
 			break;
 		}
 	}

@@ -19,7 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pactInitial.Main;
-import pactInitial.TestPixel;
+//import pactInitial.TestPixel;
 
 import java.util.logging.*;
 
@@ -104,6 +104,7 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			case 1 : creditsButton.doClick();
 			break;
 			}
+			
 		}
 
 		public void actionPerformed(ActionEvent e) {

@@ -247,7 +247,7 @@ public class FenetreEntreeNom extends Fenetre {
 	
 	@Override
 	public void actionBouton(int numero){
-		if(numero>=0 && numero<28)
+		/*if(numero>=0 && numero<28)
 			alphabet.get(numero).doClick();
 		else{
 			switch (numero) {
@@ -258,6 +258,6 @@ public class FenetreEntreeNom extends Fenetre {
 				annulerButton.doClick();
 				break;
 			}
-		}
+		}*/
 	}
 }

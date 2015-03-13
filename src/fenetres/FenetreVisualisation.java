@@ -216,22 +216,22 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 	@Override
 	public void actionBouton(int numeroBouton) {
 		switch (numeroBouton) {
-		case 0:
+		case 10:
 			retourButton.doClick();
 			break;
-		case 1:
+		case 17:
 			suivantButton.doClick();
 			break;
-		case 2:
+		case 18:
 			precedentButton.doClick();
 			break;
-		case 3:
+		case 20:
 			essayerButton.doClick();
 			break;
-		case 4:
+		case 21:
 			supprimerButton.doClick();
 			break;
-		case 5: // ok jopp
+		case 22: // ok jopp
 			jopp.dispose();
 			break;
 		}

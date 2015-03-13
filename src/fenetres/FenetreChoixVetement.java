@@ -178,7 +178,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 
 	@Override
 	public void actionBouton(int numeroBouton) {
-		switch (numeroBouton) {
+		/*switch (numeroBouton) {
 		case 0:
 			retourButton.doClick();
 			break;
@@ -195,6 +195,26 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 			essayerButton.doClick();
 			break;
 		case 5: // ok de la jopp
+			jopp.dispose();
+			break;
+		}*/
+		switch (numeroBouton) {
+		case 10:
+			retourButton.doClick();
+			break;
+		case 17:
+			suivantButton.doClick();
+			break;
+		case 18:
+			precedentButton.doClick();
+			break;
+		case 19:
+			panierButton.doClick();
+			break;
+		case 20:
+			essayerButton.doClick();
+			break;
+		case 22: // ok de la jopp
 			jopp.dispose();
 			break;
 		}
