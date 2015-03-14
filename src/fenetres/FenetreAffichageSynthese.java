@@ -6,20 +6,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Frame;
+/*import java.awt.FlowLayout;
+import java.awt.Frame;*/
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-
-
-
-
-
 //import javax.swing.ImageIcon;
 import javax.swing.JButton;
 //import javax.swing.JLabel;
@@ -106,7 +100,7 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		droit.setUndecorated(true);
 		droit.getContentPane().setBackground(new Color(255, 255, 255));
 		
-		JFrame gauche = new JFrame();
+		/*JFrame gauche = new JFrame();
 		droit.setLocation(new Point(0,200));
 		droit.setSize(200,600);
 		droit.setVisible(true);
@@ -118,7 +112,7 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 		droit.setSize(1000,200);
 		droit.setVisible(true);
 		droit.setUndecorated(true);
-		droit.getContentPane().setBackground(new Color(255, 255, 255));
+		droit.getContentPane().setBackground(new Color(255, 255, 255));*/
 
 
 	}

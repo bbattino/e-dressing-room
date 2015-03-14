@@ -25,6 +25,7 @@ public class FenetreEntreeNom extends Fenetre {
 					quitterButton = new JButton("Quiter");
 	String name = "";
 	JTextArea texte = new JTextArea("\n \t \t Votre nom est : " + name + " \n\n");
+	
 
 	public FenetreEntreeNom() {
 		Main.setCurentFenetre(this);
@@ -149,7 +150,6 @@ public class FenetreEntreeNom extends Fenetre {
 		for (int i=26; i<28;i++)
 			alphabetPanel.add(alphabet.get(i));
 
-
 		this.setVisible(true);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(alphabetPanel, BorderLayout.CENTER);
@@ -247,7 +247,7 @@ public class FenetreEntreeNom extends Fenetre {
 	
 	@Override
 	public void actionBouton(int numero){
-		/*if(numero>=0 && numero<28)
+		if(numero>=0 && numero<28)
 			alphabet.get(numero).doClick();
 		else{
 			switch (numero) {
@@ -258,6 +258,6 @@ public class FenetreEntreeNom extends Fenetre {
 				annulerButton.doClick();
 				break;
 			}
-		}*/
+		}
 	}
 }
