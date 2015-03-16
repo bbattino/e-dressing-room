@@ -5,7 +5,9 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import audio.LecteurAudio;
 import pactInitial.ICalibration;
@@ -14,11 +16,19 @@ public class FenetreCalibration extends JFrame implements ICalibration{
 
 	private static final long serialVersionUID = 1L;
 	private float xMax,yMax,xMin,yMin;
-	private int xMaxEcran,yMaxEcran;
+	private int xMaxEcran=1360 ,yMaxEcran=800;
 	float ax,ay,bx,by;
-	private String path;
+	private String path = "data/handPosition.txt";
 
 
+	public  FenetreCalibration() {
+		//setUndecorated(true);
+		setVisible(true); // affichage
+		setSize(600,600);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//JLabel image = new JLabel( new ImageIcon("data/bienvenue.png"));
+		waitForHand();
+	}
 	@Override
 	public float[] getFloatSeparated(String s) {
 		
@@ -53,18 +63,25 @@ public class FenetreCalibration extends JFrame implements ICalibration{
 
 	@Override
 	public void waitForHand() {
+		System.out.println("mu");
 		new LecteurAudio(""); // mettez en haut gauche jusqu'au bip
-		try {wait(3000);} 
+		try {Thread.sleep(3000);} 
 		catch (InterruptedException e) {e.printStackTrace();}
 		float[] position = getFloatSeparated(lectureFichier());
 		xMin=position[0];yMin=position[1];
+		System.out.println(""+xMin+" "+yMin);
 		
 		new LecteurAudio("");//BIP
+		System.out.println("fin bip");
 		new LecteurAudio("");// mettez en bas droite jusqy'au bip
-		try {wait(3000);} 
+		try {Thread.sleep(10000);} 
 		catch (InterruptedException e) {e.printStackTrace();}
 		position = getFloatSeparated(lectureFichier());
 		xMax=position[0];yMax=position[1];
+		System.out.println(""+xMax+" "+yMax);
+		
+		calculateCoeff();
+		System.out.println(""+ax+" "+ay+" "+bx+" "+by);
 		
 		
 		
@@ -86,11 +103,7 @@ public class FenetreCalibration extends JFrame implements ICalibration{
 	}
 	
 	public static void main(String[] args){
-		String s = "-1.173543 1.1111";
-		FenetreCalibration fc=new FenetreCalibration();
-		System.out.println(fc.getFloatSeparated(s)[0]);
-		System.out.println(fc.getFloatSeparated(s)[1]);
-
+		new FenetreCalibration();
 	}
 
 }
