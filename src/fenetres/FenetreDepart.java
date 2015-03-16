@@ -3,6 +3,7 @@ package fenetres;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
+import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -11,7 +12,8 @@ import java.awt.Frame;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+//import java.io.File;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,7 +23,6 @@ import javax.swing.JPanel;
 import pactInitial.Main;
 //import pactInitial.TestPixel;
 
-import java.util.logging.*;
 
 
 public class FenetreDepart extends Fenetre implements ActionListener{
@@ -30,8 +31,11 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 		private JButton commencerButton = new JButton("Commencer"),
 				quitterButton = new JButton("Quitter"),
 				creditsButton = new JButton("A propos");
-		private JPanel bouttons = new JPanel();
-		private static Logger logger;
+		private JPanel bouttons = new JPanel(),
+						checkboxes = new JPanel();
+		private Checkbox handListenerBox= new Checkbox("HandListener", false),
+						talBox			= new Checkbox("TAL", false),
+						audioBox		= new Checkbox("Audio",false);
 
 		public FenetreDepart() {
 			Main.setCurentFenetre(this);
@@ -41,19 +45,12 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			quitterButton.setFont(new Font("Arial",Font.PLAIN,40));
 			creditsButton.setPreferredSize(new Dimension(300,100));
 			creditsButton.setFont(new Font("Arial",Font.PLAIN,40));
-			logger = Logger.getLogger("com.foo.FenetreDepart");
-			logger.setLevel(Level.OFF);
 			setUndecorated(true);
-	        logger.info("Initialisation de la fenêtre de départ \n");
 			setVisible(true); // affichage
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			JLabel image = new JLabel( new ImageIcon("data/bienvenue.png"));
-			File imageFile = new File("data/bienvenue.png");
-			if(imageFile.exists())
-				logger.info("l'image a été chargée \n");
-			else
-				logger.warning("image non chargée \n");
-				
+			//File imageFile = new File("data/bienvenue.png");
+			
 
 			// Utilisation de BorderLayout
 			Container contenu = getContentPane();
@@ -66,17 +63,23 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			bouttons.add(creditsButton);
 			bouttons.add(quitterButton);
 			bouttons.setBackground(new Color(255,255,255));
-			logger.info("Ajout des boutons \n");
+			
+			checkboxes.add(handListenerBox);
+			checkboxes.add(talBox);
+			checkboxes.add(audioBox);
+			checkboxes.setBackground(new Color(255,255,255));
+
 
 			//Ajouts sur le ContentPane
 			contenu.add(image, BorderLayout.CENTER);
 			contenu.add(bouttons,BorderLayout.PAGE_END);
+			contenu.add(checkboxes,BorderLayout.LINE_END);
 
 			//Ajout des Listeners
 			commencerButton.addActionListener(this);
 			creditsButton.addActionListener(this);
 			quitterButton.addActionListener(this);
-			logger.info("Ajout des actionListeners pour les boutons \n");
+
 
 			this.setExtendedState(Frame.MAXIMIZED_BOTH);
 			addHandListener(commencerButton);
@@ -89,6 +92,8 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			
 			new FenetreIdentification();
 			dispose();
+			Main.setBooleans(handListenerBox.getState(), talBox.getState(), audioBox.getState());
+			Main.runWithBoolean();
 		}
 		
 		public void credits(){
@@ -109,16 +114,9 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
 			
-			if(e.getSource()==commencerButton){
-				logger.info("Clique sur Commencer \n");
-				commencer();
-			}
-			else if(e.getSource()==creditsButton){
-				logger.info("Clique sur crédit");
-				credits();
-			}
-			else if(e.getSource()==quitterButton)
-				System.exit(0);
+			if(e.getSource()==commencerButton) 		commencer();
+			else if(e.getSource()==creditsButton)	credits();
+			else if(e.getSource()==quitterButton)	System.exit(0);
 			}
 
 		public static void main(String[] args){

@@ -20,7 +20,7 @@ import audio.LecteurAudio;
 
 public class Main {
 	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true;
-	public static boolean handListenerActivated = false, tALActivated=true, audioActivated=false,mfccActivated=false;
+	public static boolean handListenerActivated = false, tALActivated=false, audioActivated=false,mfccActivated=false;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
 	private static String filePathOpenGL = "C:/Users/Utilisateur/Documents/Kinect Studio/Samples/openglsquelette/commandeOuverture.txt";
@@ -39,10 +39,19 @@ public class Main {
 		
 	}
 	
+	public static void runWithBoolean(){
+		if(tALActivated) new TestTAL();
+		if(audioActivated) {
+			new Dictionary();
+			new JavaSoundRecorder();
+		}
+	}
+	
 	
 	public static Fenetre getCurentFenetre(){return curentFenetre;}
 	public static void setCurentFenetre(Fenetre fenetre){curentFenetre=fenetre;}
 	public static Dictionary getdictionary(){return dictionary;}
+	public static void setBooleans(boolean hand, boolean tal, boolean audio){handListenerActivated=hand;tALActivated=tal;audioActivated=audio;}
 	
 public static void modifierEtatFenetreOpenGL(int i){
 		
