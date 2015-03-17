@@ -14,6 +14,7 @@ public class MainTest {
 		
 		String result = dictionary.compareAll(motUtilisateur);
 		int resInterface = dictionary.convertToInterface(result);
+		System.out.println(resInterface);
 	}
 
 }

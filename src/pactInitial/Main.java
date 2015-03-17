@@ -20,7 +20,7 @@ import audio.LecteurAudio;
 
 public class Main {
 	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true;
-	public static boolean handListenerActivated = false, tALActivated=false, audioActivated=false,mfccActivated=false;
+	public static boolean handListenerActivated = false, tALActivated=false, audioActivated=true,mfccActivated=true;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
 	private static String filePathOpenGL = "C:/Users/Utilisateur/Documents/Kinect Studio/Samples/openglsquelette/commandeOuverture.txt";
@@ -28,7 +28,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 
-		if(audioActivated) dictionary =  new Dictionary();
+		//if(audioActivated) dictionary =  new Dictionary();
 		new LecteurAudio("welcome.wav");
 		new FenetreDepart();
 		if(tALActivated) new TestTAL();

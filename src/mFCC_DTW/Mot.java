@@ -1,4 +1,5 @@
 package mFCC_DTW;
+
 import java.util.ArrayList;
 
 
@@ -6,6 +7,7 @@ public class Mot
 {
 	private final ArrayList<MFCC> coeffs = new ArrayList<MFCC>();
 	private int length;
+	private Sound son;
 	
 	public Mot(String filename)
 	{
@@ -13,10 +15,12 @@ public class Mot
 		ArrayList<Trame> trames;
 		
 		son.getSamples();
-		trames = son.fenetrer();
+		//son.fenetrer();
+		trames = son.getListTrame();
 		for(int i = 0; i < trames.size(); i++)
-			coeffs.add(trames.get(i).calculateMFCC());
+			coeffs.add(trames.get(i).calculateMFCC(i,son));
 	}
+	public Sound getSon() {return this.son;}
 	
 	public MFCC getCoeff(int i)
 	{

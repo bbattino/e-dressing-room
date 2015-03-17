@@ -7,13 +7,13 @@ import mFCC_DTW.Mot;
 
 
 public class Dictionary {
-	private Hashtable<Mot, String> dataBase; // Notre base de données : les mots et leur chaine de caractères
+	private Hashtable<Mot, String> dataBase=new Hashtable<>(); // Notre base de données : les mots et leur chaine de caractères
 	
 	/* Constructeur */
 	public Dictionary(){
 		Hashtable<Mot, String> initialisation = new Hashtable<Mot, String>();
 		
-		setString(new Mot("fileName1"), "fileName1"); // Devra être répété pour chaque mot de la base de donnée, chaque enregistrement
+		setString(new Mot("lctdata/0a.wav"), "commencer"); // Devra être répété pour chaque mot de la base de donnée, chaque enregistrement
 		
 		this.dataBase = initialisation;
 	}

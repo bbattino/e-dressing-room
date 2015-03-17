@@ -1,20 +1,24 @@
 package mFCC_DTW;
+
 import java.io.*;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.util.ArrayList;
+import javax.sound.sampled.*;
+
+/*import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.Date;
 
-import javax.sound.sampled.*;
-import javax.sound.sampled.spi.FormatConversionProvider;
+import javax.management.openmbean.ArrayType;
+import javax.sound.sampled.spi.FormatConversionProvider;*/
 
 
 public class Sound 
 {
 	private byte[] samples;
 	private AudioFormat format;
-	private AudioInputStream stream;
-	private float fe;
+	private static AudioInputStream stream;
+	private static float fe;
+	private   ArrayList<Trame> listeTrame = new ArrayList<Trame>();
 
 	public Sound(String filename)
 	{
@@ -30,8 +34,8 @@ public class Sound
 			e.printStackTrace();
 		}
 	}
-	
-	public float getfe()
+	public  ArrayList<Trame> getListTrame(){return listeTrame;}
+	public static float getfe()
 	{
 		return fe;
 	}
@@ -43,6 +47,7 @@ public class Sound
 		DataInputStream in = new DataInputStream(stream);
 		
 		try {
+			
 			in.readFully(samples);
 			
 		} catch (IOException e) {
@@ -52,7 +57,7 @@ public class Sound
 		return samples;
 	}
 	
-	public ArrayList<Trame> fenetrer() 
+	public void fenetrer() 
 	{
 		int N = (int)Math.floor(fe*0.02); //taille d'une trame (~20 ms)
 		int l = (int)stream.getFrameLength();
@@ -78,14 +83,11 @@ public class Sound
 			
 			i += Math.round(N/2) ;
 		}
-		
-		return trames;	
-	}
-	
-	public static void main(String[] args){
-		Sound sound = new Sound("lctdata/commencer1_converted.wav");
-		ArrayList<Trame> trames =sound.fenetrer();
-		for (Trame t : trames) System.out.println(t);
+		listeTrame=trames;
 	}
 
+	public static int getFrameLength() {
+		return (int)stream.getFrameLength();
+	
+	}
 }
