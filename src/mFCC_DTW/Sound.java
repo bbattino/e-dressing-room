@@ -25,15 +25,34 @@ public class Sound
 		try {
 			stream = AudioSystem.getAudioInputStream(new File(filename));
 			format = stream.getFormat();
-			samples = getSamples();
+		//	samples = getSamples();
 			fe = format.getSampleRate();
+			samples=getSamples();
 			
 		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		listeTrame=creationDeTrames();
 	}
+	
+	private ArrayList<Trame> creationDeTrames() {
+		System.out.println("creation");
+		long indice=0;
+		System.out.println(-indice+stream.getFrameLength()+" "+0.02*fe);
+		System.out.println(samples.length);
+		while(-indice+stream.getFrameLength()>0.02*fe){
+			byte[] tab=new byte[(int) (0.02*fe)];
+			
+			for (int i=0;i<tab.length;i++)
+				tab[i]=samples[(int) (indice+i)];
+			listeTrame.add(new Trame(tab));
+			indice+= (int) (0.02*fe);
+		}
+		return null;
+	}
+	
 	public  ArrayList<Trame> getListTrame(){return listeTrame;}
 	public static float getfe()
 	{
@@ -47,10 +66,13 @@ public class Sound
 		DataInputStream in = new DataInputStream(stream);
 		
 		try {
-			
+			if(samples!=null)  for (int i=0;i<samples.length;i++) if(samples[i]!=0)System.out.print(samples[i]+" "+i);
+			System.out.println("");
 			in.readFully(samples);
 			
 		} catch (IOException e) {
+			if(samples!=null) for (int i=0;i<samples.length;i++) if(samples[i]!=0)System.out.print(samples[i]+" "+i);
+
 			e.printStackTrace();
 		}
 		

@@ -12,13 +12,17 @@ public class Mot
 	public Mot(String filename)
 	{
 		Sound son = new Sound(filename);
-		ArrayList<Trame> trames;
-		
+		ArrayList<Trame> trames = new ArrayList<Trame>();
 		son.getSamples();
 		//son.fenetrer();
+
 		trames = son.getListTrame();
+
 		for(int i = 0; i < trames.size(); i++)
 			coeffs.add(trames.get(i).calculateMFCC(i,son));
+		length=coeffs.size();
+		//System.out.println(trames.size());
+
 	}
 	public Sound getSon() {return this.son;}
 	
@@ -36,7 +40,7 @@ public class Mot
 	{
 		int l1 = this.length();
 		int l2 = m2.length();
-		
+		System.out.println("l1= "+l1+" l2="+l2);
 		double[][] Dloc = new double[l2][l1];
 		double[][] Dcum = new double[l2][l1];
 		
@@ -44,6 +48,7 @@ public class Mot
 			for(int j = 0; j < l1; j++)
 				Dloc[i][j] = this.getCoeff(i).getDistance(m2.getCoeff(j)); //Dloc calculée
 		
+		//System.out.println(Dloc[0][0]);
 		Dcum[0][0] = Dloc[0][0];
 		
 		for (int i = 1; i < l2; i++)

@@ -5,9 +5,9 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import javax.swing.ImageIcon;
+//import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+//import javax.swing.JLabel;
 
 import audio.LecteurAudio;
 import pactInitial.ICalibration;
@@ -63,7 +63,7 @@ public class FenetreCalibration extends JFrame implements ICalibration{
 
 	@Override
 	public void waitForHand() {
-		System.out.println("mu");
+		/*System.out.println("mu");
 		new LecteurAudio(""); // mettez en haut gauche jusqu'au bip
 		try {Thread.sleep(3000);} 
 		catch (InterruptedException e) {e.printStackTrace();}
@@ -81,12 +81,14 @@ public class FenetreCalibration extends JFrame implements ICalibration{
 		System.out.println(""+xMax+" "+yMax);
 		
 		calculateCoeff();
-		System.out.println(""+ax+" "+ay+" "+bx+" "+by);
+		System.out.println(""+ax+" "+ay+" "+bx+" "+by);*/
 		
-		
-		
+		new LecteurAudio("");
+			
 	}
 
+	
+	
 	@Override
 	public String lectureFichier() {
 		String coordonates="";

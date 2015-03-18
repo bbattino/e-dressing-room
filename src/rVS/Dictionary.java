@@ -12,8 +12,8 @@ public class Dictionary {
 	/* Constructeur */
 	public Dictionary(){
 		Hashtable<Mot, String> initialisation = new Hashtable<Mot, String>();
-		
-		setString(new Mot("lctdata/0a.wav"), "commencer"); // Devra être répété pour chaque mot de la base de donnée, chaque enregistrement
+		initialisation.put(new Mot("lctdata/0b.wav"), "commencer");
+		initialisation.put(new Mot("lctdata/0a.wav"), "commencer"); // Devra être répété pour chaque mot de la base de donnée, chaque enregistrement
 		
 		this.dataBase = initialisation;
 	}
@@ -26,9 +26,12 @@ public class Dictionary {
 		
 		/* Comparaison avec tous les mots de dataBase */
 		Enumeration<Mot> enumMot = dataBase.keys();
+		//System.out.println("distance test "+enumMot.hasMoreElements()+" taille"+enumMot.nextElement());
+
 		while(enumMot.hasMoreElements()){
 			Mot motCurr = enumMot.nextElement(); // On récupère le prochain mot
 			distCurrent = motCurr.calculDistanceMot(other); // On calcule sa distance au mot voulu
+			System.out.println("distance"+distCurrent);
 			
 			/* Mmet à jour distance afin d'obtenir la valeur minimale */
 			if(distCurrent < ref){
@@ -72,7 +75,7 @@ public class Dictionary {
 		case "ok" : 
 			res = 22; break;
 		default :
-			res = -1; break; // Insérer ici un code d'erreur
+			res = -1; System.out.println("commande :"+name);break; // Insérer ici un code d'erreur
 		}
 		
 		return res;
