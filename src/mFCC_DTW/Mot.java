@@ -18,8 +18,8 @@ public class Mot
 
 		trames = son.getListTrame();
 
-		for(int i = 0; i < trames.size(); i++)
-			coeffs.add(trames.get(i).calculateMFCC(i,son));
+		for(int i = 0; i < trames.size(); i++){System.out.println("avant");
+			coeffs.add(trames.get(i).calculateMFCC(i,son));System.out.println((i+0.0)/trames.size());}
 		length=coeffs.size();
 		//System.out.println(trames.size());
 
@@ -40,7 +40,7 @@ public class Mot
 	{
 		int l1 = this.length();
 		int l2 = m2.length();
-		System.out.println("l1= "+l1+" l2="+l2);
+		//System.out.println("l1= "+l1+" l2="+l2);
 		double[][] Dloc = new double[l2][l1];
 		double[][] Dcum = new double[l2][l1];
 		
