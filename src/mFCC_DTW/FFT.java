@@ -41,10 +41,14 @@ public class FFT
 
     public static Complex[] fftinverse(Complex[] x) {
         int N = x.length;
-        Complex[] y = new Complex[N];
+		int puissanceDeDeux = (int) Math.pow(2, (int) (1+Math.log(N)/Math.log(2)));
+
+        Complex[] y = new Complex[puissanceDeDeux];
 
         for (int i = 0; i < N; i++) // on prend le conjugué
             y[i] = x[i].conjugate();
+        Complex nulComplex=new Complex(0, 0);
+		for (int i=N;i<puissanceDeDeux;i++) y[i]= nulComplex;
 
         y = fft(y);
        

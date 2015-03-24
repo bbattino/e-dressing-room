@@ -7,6 +7,7 @@ public class TestMFCCDTW {
 	
 	public static void main(String[] args){
 		Mot motUtilisateur = new Mot("lctdata/0a.wav");
+		System.out.println("Mot fini");
 		
 		// Initialise le dictionnaire
 		Dictionary dictionary = new Dictionary();

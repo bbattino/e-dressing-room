@@ -19,8 +19,8 @@ import fenetres.FenetreVisualisation;*/
 import audio.LecteurAudio;
 
 public class Main {
-	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true;
-	public static boolean handListenerActivated = false, tALActivated=false, audioActivated=true,mfccActivated=true;
+	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true,apiActivated=false;
+	public static boolean handListenerActivated = false, tALActivated=false, audioActivated=false,mfccActivated=false;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
 	private static String filePathOpenGL = "C:/Users/Utilisateur/Documents/Kinect Studio/Samples/openglsquelette/commandeOuverture.txt";

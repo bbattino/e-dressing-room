@@ -2,11 +2,14 @@ package lCTAudio;
 
 import javax.sound.sampled.*;
 
+import pactInitial.API;
 import pactInitial.Main;
 import mFCC_DTW.Mot;
 import rVS.Dictionary;
+import tAL.MethodeDeBase;
 
 import java.io.*;
+import java.util.ArrayList;
  
 /**
  * A sample program is to demonstrate how to record sound in Java
@@ -17,6 +20,8 @@ public class JavaSoundRecorder {
      TargetDataLine line;
      File wavFile;
      private static int i=0;
+     private API api = new API();
+
 
     AudioFormat getAudioFormat() {
         float sampleRate = 16000;
@@ -34,7 +39,7 @@ public class JavaSoundRecorder {
     	
     	Thread t=new Thread(){
     		public void run(){
-    			try {	Thread.sleep(5000);} catch (InterruptedException e) {e.printStackTrace();}
+    			try {	Thread.sleep(2000);} catch (InterruptedException e) {e.printStackTrace();}
     			finish();}
     	};
     
@@ -56,7 +61,7 @@ public class JavaSoundRecorder {
             line = (TargetDataLine) AudioSystem.getLine(info);
             line.open(format);
             line.start();   // start capturing
- 
+            System.out.println("enregistrement n°"+i);
             AudioSystem.write(new AudioInputStream(line), fileType, wavFile);
  
         } catch (LineUnavailableException ex) {ex.printStackTrace();
@@ -64,11 +69,25 @@ public class JavaSoundRecorder {
     }
  
     void finish() 
-    {        
+    {   
+    	String parole = null;
         line.stop();
         line.close();
-        System.out.println("lctdata/test"+i+".wav");
+        System.out.println("fin du n°"+i);
         /****import DU main du module RVS***/
+        if(Main.apiActivated){
+			try {
+				parole = api.sendPost("lctdata/test"+i+".wav");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		ArrayList<String> commande = MethodeDeBase.creerCommande(parole); 
+
+	int[] T = MethodeDeBase.TableauAnalyse(commande);
+	int indiceCommande = MethodeDeBase.tableauLePlusProche(T);
+	int indiceAction = MethodeDeBase.correspondanceClasseAction(indiceCommande);
+	Main.actionEventAudio(indiceAction);}
+
         if(Main.mfccActivated){
 		Mot motUtilisateur = new Mot("lctdata/test"+i+".wav");
 		

@@ -38,10 +38,10 @@ public class Sound
 	}
 	
 	private ArrayList<Trame> creationDeTrames() {
-		System.out.println("creation");
+		//System.out.println("creation");
 		long indice=0;
-		System.out.println(-indice+stream.getFrameLength()+" "+0.02*fe);
-		System.out.println(samples.length);
+		//System.out.println(-indice+stream.getFrameLength()+" "+0.02*fe);
+	//	System.out.println(samples.length);
 		while(-indice+stream.getFrameLength()>0.02*fe){
 			byte[] tab=new byte[(int) (0.02*fe)];
 			
@@ -50,7 +50,7 @@ public class Sound
 			listeTrame.add(new Trame(tab));
 			indice+= (int) (0.02*fe);
 		}
-		return null;
+		return listeTrame;
 	}
 	
 	public  ArrayList<Trame> getListTrame(){return listeTrame;}
@@ -66,12 +66,9 @@ public class Sound
 		DataInputStream in = new DataInputStream(stream);
 		
 		try {
-			if(samples!=null)  for (int i=0;i<samples.length;i++) if(samples[i]!=0)System.out.print(samples[i]+" "+i);
-			System.out.println("");
 			in.readFully(samples);
 			
 		} catch (IOException e) {
-			if(samples!=null) for (int i=0;i<samples.length;i++) if(samples[i]!=0)System.out.print(samples[i]+" "+i);
 
 			e.printStackTrace();
 		}
