@@ -25,7 +25,7 @@ public class JavaSoundRecorder {
 
     AudioFormat getAudioFormat() {
         float sampleRate = 16000;
-        int sampleSizeInBits = 8, channels = 2;
+        int sampleSizeInBits = 16, channels = 1;// avant channels 2 (stéréo)
         boolean signed = true, bigEndian = true;
         return new AudioFormat(sampleRate, sampleSizeInBits,
                                              channels, signed, bigEndian);
@@ -39,7 +39,7 @@ public class JavaSoundRecorder {
     	
     	Thread t=new Thread(){
     		public void run(){
-    			try {	Thread.sleep(2000);} catch (InterruptedException e) {e.printStackTrace();}
+    			try {	Thread.sleep(5000);} catch (InterruptedException e) {e.printStackTrace();}
     			finish();}
     	};
     

@@ -17,12 +17,8 @@ import java.nio.ByteOrder;
  ************************************************************************************************************/
 public class FlacEncoder {
 
-    /**
-     * Constructor
-     */
-    public FlacEncoder() {
-
-    }
+ 
+    public FlacEncoder() {}
 
     /**
      * Converts a wave file to a FLAC file(in order to POST the data to Google and retrieve a response) <br>
@@ -35,9 +31,9 @@ public class FlacEncoder {
 
 
         StreamConfiguration streamConfiguration = new StreamConfiguration();
-        streamConfiguration.setSampleRate(8000);
-        streamConfiguration.setBitsPerSample(16);
-        streamConfiguration.setChannelCount(1);
+        streamConfiguration.setSampleRate(16000);//avant 8000
+        streamConfiguration.setBitsPerSample(16);// 16
+        streamConfiguration.setChannelCount(1);//1
 
 
         try {

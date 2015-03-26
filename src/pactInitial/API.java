@@ -23,7 +23,7 @@ import com.sun.net.ssl.HttpsURLConnection;
 
 @SuppressWarnings("deprecation")
 public class API {
-	public String sendPost(String wavString) throws Exception {
+	public String sendPost(String wavString,int rate) throws Exception {
 	    String USER_AGENT = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2",
 	    url = "https://www.google.com/speech-api/v2/recognize?output=json&lang=fr-FR&key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw&client=chromium&maxresults=1&pfilter=2";
 
@@ -32,6 +32,7 @@ public class API {
         File flacFile = new File("data/flac.flac");
         File waveFile = new File(wavString);
         flacEncoder.convertWaveToFlac(waveFile, flacFile);
+        
         
       //  GoogleResponse googleResponse = getRecognizedDataForFlac(flacFile, maxResults, 44100);
         
@@ -44,7 +45,7 @@ public class API {
 	    ((HttpURLConnection) con).setRequestMethod("POST");
 	    con.setRequestProperty("User-Agent", USER_AGENT);
 	    //con.setRequestProperty("Content-Type", "audio/l16; rate=16000");
-	    con.setRequestProperty("Content-Type", "audio/x-flac; rate=44100");
+	    con.setRequestProperty("Content-Type", "audio/x-flac; rate="+rate);
 	    //con.setRequestProperty("Content-Type", "audio/x-wav; rate=16000");
 
 
@@ -56,7 +57,7 @@ public class API {
 	    //BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(wr, "UTF-8"));
 
 	    wr.write(Files.readAllBytes(Paths
-	            .get("data/test0.flac")));
+	            .get("data/flac.flac")));
 	    wr.flush();
 	    wr.close();
 
@@ -84,19 +85,32 @@ public class API {
 	   return reponseUtile;
 
 	}
+	
+	public String sendPost(String wavString) throws Exception{
+		return sendPost(wavString,16000); // parfois marche mieux avec 44100 à retester avec la Kinect
+	}
+	
 	/** Pour ne selectionner que la phrase de la réponse gg et non sa proba***/
 	private String decoupe(String GoogleResponse) {
+		if(GoogleResponse.length()>54){
 		String substring1 = GoogleResponse.substring(55);// les 55 premiers carateres sont inutils
 		int indice = 0;
 		String curentSymbol=substring1.substring(indice,indice+1);
 		while(!curentSymbol.equals("\"")){ indice++; curentSymbol=substring1.substring(indice,indice+1);}
-		return substring1.substring(0,indice);
+		return substring1.substring(0,indice);}
+		else return null;
 	
 	}
 	
 	public static void main(String[] args) throws Exception{
 		API t = new API();
-		String s=t.sendPost("lctdata/test2.wav");
+		//if(t.sendPost("lctdata/0a.wav",44100).length()<30) System.out.println("pas fonctionnel ");
+
+		/*for (int i=1;i<51;i++){
+			if(t.sendPost("lctdata/test0.wav",10000+1000*i)==null) System.out.println("pas fonctionnel "+i);
+			else System.err.println("**********"+i+"************");
+		}*/
+		String s=t.sendPost("lctdata/test0.wav");
 				
 	}
 }
