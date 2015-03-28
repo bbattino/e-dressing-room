@@ -2,26 +2,20 @@ package pactInitial;
 
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
-import tAL.MethodeDeBase;
+import lCTAudio.JavaSoundRecorder;
 
 import com.darkprograms.speech.recognizer.FlacEncoder;
-import com.darkprograms.speech.recognizer.GoogleResponse;
-import com.sun.net.ssl.HttpsURLConnection;
 
-@SuppressWarnings("deprecation")
 public class API {
 	public String sendPost(String wavString,int rate) throws Exception {
 	    String USER_AGENT = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2",
@@ -38,7 +32,8 @@ public class API {
         
         //Delete converted FLAC data
         //flacFile.delete();
-	    @SuppressWarnings("deprecation")
+ 	   System.out.println("sending Request To API");
+
 	    URLConnection con =  (URLConnection) obj.openConnection();
 
 	    // add reuqest header
@@ -64,8 +59,9 @@ public class API {
 	   
 	    
 	    int responseCode = ((HttpURLConnection) con).getResponseCode();
-	    System.out.println("\nSending 'POST' request to URL : " + url);
-	    System.out.println("Response Code : " + responseCode);
+	   // System.out.println("\nSending 'POST' request to URL : " + url);
+	   if(responseCode!=200)  System.out.println("Response Code : " + responseCode);
+	   System.out.println("Analysing API response");
 
 	    BufferedReader in = new BufferedReader(new InputStreamReader(
 	            con.getInputStream(), Charset.forName("UTF-8")));
@@ -78,10 +74,11 @@ public class API {
 	    in.close();
 
 	    // print result
-	    System.out.println(response.toString());
 	    
 	    String reponseUtile = decoupe(response.toString());
-	    
+	    if(reponseUtile!=null) System.out.println(reponseUtile);
+	    else System.err.println("Commande non détéctée");
+
 	   return reponseUtile;
 
 	}
@@ -101,6 +98,19 @@ public class API {
 		else return null;
 	
 	}
+	public String sendPostFromLCT(String wavString){
+		String s=null;
+		try {
+			s=sendPost(wavString);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//new JavaSoundRecorder();
+		return s;
+		
+		
+	}
 	
 	public static void main(String[] args) throws Exception{
 		API t = new API();
@@ -110,7 +120,7 @@ public class API {
 			if(t.sendPost("lctdata/test0.wav",10000+1000*i)==null) System.out.println("pas fonctionnel "+i);
 			else System.err.println("**********"+i+"************");
 		}*/
-		String s=t.sendPost("lctdata/test0.wav");
+		t.sendPost("lctdata/test0.wav");
 				
 	}
 }
