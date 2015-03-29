@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Frame;
 /*import java.awt.FlowLayout;
 import java.awt.Frame;*/
 import java.awt.Point;
@@ -14,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
 //import javax.swing.ImageIcon;
 import javax.swing.JButton;
 //import javax.swing.JLabel;
@@ -197,5 +199,14 @@ public class FenetreAffichageSynthese extends Fenetre implements ActionListener 
 
 	public static void main(String args[]){
 		new FenetreAffichageSynthese("", "", "");
+	}
+
+	@Override
+	public void refreshIndicateurVocal() {
+		this.bouttons.remove(Main.getIndicateurVocal());
+		Main.refreshIndicateur();
+		this.bouttons.add(Main.getIndicateurVocal());
+		this.setSize(1364,799);
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);		
 	}
 }

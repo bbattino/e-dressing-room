@@ -75,6 +75,7 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 		
 		bouttons.add(nouveauCompteButton);
 		bouttons.add(quitterButton);
+		bouttons.add(Main.getIndicateurVocal());
 		bouttons.setBackground(new Color(255, 255, 255));
 
 		// Ajouts sur le ContentPane
@@ -226,6 +227,17 @@ public class FenetreIdentification extends Fenetre implements ActionListener {
 			break;
 			
 		}
+		
+	}
+
+
+	@Override
+	public void refreshIndicateurVocal() {
+		this.bouttons.remove(Main.getIndicateurVocal());
+		Main.refreshIndicateur();
+		this.bouttons.add(Main.getIndicateurVocal());
+		this.setSize(1364,799);
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		
 	}
 

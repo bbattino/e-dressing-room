@@ -142,7 +142,7 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 	public void essayer() {
 
 		dispose();
-		new FenetreAffichage(imagePath.get(numeroChoix), userName, vetementType);
+		new FenetreAffichageSynthese(imagePath.get(numeroChoix), userName, vetementType);
 	}
 
 	public void suivant() {
@@ -235,5 +235,15 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 			jopp.dispose();
 			break;
 		}
+	}
+
+	@Override
+	public void refreshIndicateurVocal() {
+		this.bouttons.remove(Main.getIndicateurVocal());
+		Main.refreshIndicateur();
+		this.bouttons.add(Main.getIndicateurVocal());
+		this.setSize(1364,799);
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);	
+		
 	}
 }

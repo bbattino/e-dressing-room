@@ -9,11 +9,8 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.io.File;
-
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,8 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pactInitial.Main;
-//import pactInitial.TestPixel;
-
 
 
 public class FenetreDepart extends Fenetre implements ActionListener{
@@ -62,6 +57,7 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			bouttons.add(commencerButton);
 			bouttons.add(creditsButton);
 			bouttons.add(quitterButton);
+			bouttons.add(Main.getIndicateurVocal());
 			bouttons.setBackground(new Color(255,255,255));
 			
 			checkboxes.add(handListenerBox);
@@ -119,8 +115,8 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			else if(e.getSource()==quitterButton)	System.exit(0);
 			}
 
-		public static void main(String[] args){
-			FenetreDepart t =new FenetreDepart();
+		public static void main(String[] args) throws InterruptedException{
+			/*FenetreDepart t =new FenetreDepart();
 			int x=0;
 			int y=0;
 			while(true){
@@ -133,8 +129,26 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			}
+			}*/
+			
+			new FenetreDepart();
+			Thread.sleep(3000);
+			Main.setIndicateurocalBoolean(false);
+			System.out.println("false");
+			Thread.sleep(2000);
+			Main.setIndicateurocalBoolean(true);
 		}
+
+		@Override
+		public void refreshIndicateurVocal() {
+			this.bouttons.remove(Main.getIndicateurVocal());
+			Main.refreshIndicateur();
+			this.bouttons.add(Main.getIndicateurVocal());
+			this.setSize(1364,799);
+			this.setExtendedState(Frame.MAXIMIZED_BOTH);
+			
+		}
+		
 	}
 
 

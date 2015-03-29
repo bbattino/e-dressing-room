@@ -95,4 +95,12 @@ public class FenetreCredit extends Fenetre implements ActionListener {
 	public void actionBouton(int numero){
 	if(numero==0)
 		retourButton.doClick();}
+	@Override
+	public void refreshIndicateurVocal() {
+		this.bouttons.remove(Main.getIndicateurVocal());
+		Main.refreshIndicateur();
+		this.bouttons.add(Main.getIndicateurVocal());
+		this.setSize(1364,799);
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);			
+	}
 }

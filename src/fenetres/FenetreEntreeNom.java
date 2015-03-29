@@ -260,4 +260,13 @@ public class FenetreEntreeNom extends Fenetre {
 			}
 		}
 	}
+
+	@Override
+	public void refreshIndicateurVocal() {
+		this.boutonsDuBas.remove(Main.getIndicateurVocal());
+		Main.refreshIndicateur();
+		this.boutonsDuBas.add(Main.getIndicateurVocal());
+		this.setSize(1364,799);
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);			
+	}
 }

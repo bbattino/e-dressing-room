@@ -52,7 +52,7 @@ public class JavaSoundRecorder {
     public JavaSoundRecorder(){ // ajouté lors de l'intégration
         wavFile = new File("data/commandeVocale.wav");
         Thread t=new Thread(){@Override public void run(){
-    		try {Thread.sleep(5000);} catch (InterruptedException e) {e.printStackTrace();}
+    		try {Thread.sleep(6000);} catch (InterruptedException e) {e.printStackTrace();}
     		finish();}
     	};
     
@@ -72,6 +72,7 @@ public class JavaSoundRecorder {
             line.open(format);
             line.start();   // start capturing
             System.out.print("enregistrement...");
+            Main.setIndicateurocalBoolean(true);
             AudioSystem.write(new AudioInputStream(line), fileType, wavFile);
  
         } catch (LineUnavailableException ex) {ex.printStackTrace();
@@ -80,10 +81,12 @@ public class JavaSoundRecorder {
  
     void finish() 
     {   
+    	int indiceAction;
     	String parole = null;
         line.stop();
         line.close();
         System.out.println("   fin de l'enregistrement");
+        Main.setIndicateurocalBoolean(false);
         /****import DU main du module RVS***/
         if(true){ //if(Main.apiActivated){
 			try {
@@ -92,12 +95,16 @@ public class JavaSoundRecorder {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			if(parole!=null){
 		ArrayList<String> commande = MethodeDeBase.creerCommande(parole); 
 
 	int[] T = MethodeDeBase.TableauAnalyse(commande);
 	int indiceCommande = MethodeDeBase.tableauLePlusProche(T);
-	int indiceAction = MethodeDeBase.correspondanceClasseAction(indiceCommande);
+	indiceAction = MethodeDeBase.correspondanceClasseAction(indiceCommande);
+			}
+			else indiceAction=-2;
 	System.out.println(indiceAction);
+	Main.actionEventAudio(indiceAction);
 	new JavaSoundRecorder();
 	//Main.actionEventAudio(indiceAction);
         }

@@ -3,19 +3,12 @@ package pactInitial;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import rVS.Dictionary;
 import lCTAudio.JavaSoundRecorder;
 import fenetres.Fenetre;
-/*import fenetres.FenetreAffichage;
-import fenetres.FenetreAffichageSynthese;
-import fenetres.FenetreCatalogue;
-import fenetres.FenetreChoixVetement;
-import fenetres.FenetreCredit;*/
 import fenetres.FenetreDepart;
 import fenetres.FenetreEntreeNom;
-/*import fenetres.FenetreIdentification;
-import fenetres.FenetreVisualisation;*/
+import fenetres.IndicateurVocal;
 import audio.LecteurAudio;
 
 public class Main {
@@ -25,12 +18,15 @@ public class Main {
 	public static int UserNumber;
 	private static String filePathOpenGL = "C:/Users/Utilisateur/Documents/Kinect Studio/Samples/openglsquelette/commandeOuverture.txt";
 	private static Dictionary dictionary ;
+	private static IndicateurVocal indicateurVocal=new IndicateurVocal(true);
+	private static boolean IndicateurVocalBoolean=false;
 	
 	public static void main(String[] args) {
 
 		//if(audioActivated) dictionary =  new Dictionary();
 		new LecteurAudio("welcome.wav");
 		new FenetreDepart();
+		new JavaSoundRecorder();// a supprimer 
 		if(tALActivated) new TestTAL();
 		if(audioActivated) {
 			new Dictionary();
@@ -78,8 +74,34 @@ public static void modifierEtatFenetreOpenGL(int i){
 		}
 		
 	}
+public static IndicateurVocal getIndicateurVocal() {
+	return indicateurVocal;
+}
+
+public static void setIndicateurVocal(IndicateurVocal indicateurVocal) {
+	Main.indicateurVocal = indicateurVocal;
+}
+
+public static boolean getIndicateurocalBoolean() {
+	return IndicateurVocalBoolean;
+}
+
+public static void setIndicateurocalBoolean(boolean indicateurocalBoolean) {
+	IndicateurVocalBoolean = indicateurocalBoolean;
+	curentFenetre.refreshIndicateurVocal();
 	
+}
+	
+public static void refreshIndicateur() {
+	indicateurVocal=new IndicateurVocal(IndicateurVocalBoolean);
+
+	
+}
 	public static void actionEventAudio(int numeroAction){
+		
+		if(numeroAction==2){
+			System.exit(1);
+		}
 		
 		if(numeroAction<25 || numeroAction>52){
 			curentFenetre.actionBouton(numeroAction);
@@ -349,4 +371,8 @@ public static void modifierEtatFenetreOpenGL(int i){
 
 		}
 	}
+
+	
+
+	
 }

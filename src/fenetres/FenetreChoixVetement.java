@@ -220,4 +220,15 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 		}
 	}
 
+
+
+	@Override
+	public void refreshIndicateurVocal() {
+		this.bouttons.remove(Main.getIndicateurVocal());
+		Main.refreshIndicateur();
+		this.bouttons.add(Main.getIndicateurVocal());
+		this.setSize(1364,799);
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);	
+	}
+
 }

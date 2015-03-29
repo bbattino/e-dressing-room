@@ -54,5 +54,6 @@ public abstract class Fenetre extends JFrame implements ActionListener {
 	}
 
 	public abstract void actionBouton(int numeroBouton);
+	public abstract void refreshIndicateurVocal();
 
 }
