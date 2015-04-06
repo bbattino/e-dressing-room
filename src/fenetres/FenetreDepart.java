@@ -3,7 +3,7 @@ package fenetres;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
-import java.awt.Checkbox;
+//import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -28,9 +28,10 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 				creditsButton = new JButton("A propos");
 		private JPanel bouttons = new JPanel(),
 						checkboxes = new JPanel();
-		private Checkbox handListenerBox= new Checkbox("HandListener", false),
+		
+		/*private Checkbox handListenerBox= new Checkbox("HandListener", false),
 						talBox			= new Checkbox("TAL", false),
-						audioBox		= new Checkbox("Audio",false);
+						*///audioBox		= new Checkbox("Audio",false);
 
 		public FenetreDepart() {
 			Main.setCurentFenetre(this);
@@ -60,10 +61,10 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			bouttons.add(Main.getIndicateurVocal());
 			bouttons.setBackground(new Color(255,255,255));
 			
-			checkboxes.add(handListenerBox);
+			/*checkboxes.add(handListenerBox);
 			checkboxes.add(talBox);
 			checkboxes.add(audioBox);
-			checkboxes.setBackground(new Color(255,255,255));
+			checkboxes.setBackground(new Color(255,255,255));*/
 
 
 			//Ajouts sur le ContentPane
@@ -88,8 +89,8 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			
 			new FenetreIdentification();
 			dispose();
-			Main.setBooleans(handListenerBox.getState(), talBox.getState(), audioBox.getState());
-			Main.runWithBoolean();
+			//Main.setBooleans(handListenerBox.getState(), talBox.getState(), audioBox.getState());
+			//Main.runWithBoolean();
 		}
 		
 		public void credits(){

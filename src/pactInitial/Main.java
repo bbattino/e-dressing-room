@@ -12,21 +12,23 @@ import fenetres.IndicateurVocal;
 import audio.LecteurAudio;
 
 public class Main {
-	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true,apiActivated=false;
+	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true,apiActivated=true;
 	public static boolean handListenerActivated = false, tALActivated=false, audioActivated=false,mfccActivated=false;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
 	private static String filePathOpenGL = "C:/Users/Utilisateur/Documents/Kinect Studio/Samples/openglsquelette/commandeOuverture.txt";
 	private static Dictionary dictionary ;
-	private static IndicateurVocal indicateurVocal=new IndicateurVocal(true);
+	private static IndicateurVocal indicateurVocal=new IndicateurVocal();
 	private static boolean IndicateurVocalBoolean=false;
+	private static char IndicateurVocalEtat=1;
+	public static float ax,ay,bx,by;
 	
 	public static void main(String[] args) {
 
 		//if(audioActivated) dictionary =  new Dictionary();
 		new LecteurAudio("welcome.wav");
 		new FenetreDepart();
-		new JavaSoundRecorder();// a supprimer 
+		new JavaSoundRecorder();// a supprimer lors du pan4 pour eviter deux instanciations apreès audioActivated true 
 		if(tALActivated) new TestTAL();
 		if(audioActivated) {
 			new Dictionary();
@@ -35,6 +37,7 @@ public class Main {
 		
 	}
 	
+	@Deprecated // Mis en depreciated car finalement j'abandonne les checkbox inutiles
 	public static void runWithBoolean(){
 		if(tALActivated) new TestTAL();
 		if(audioActivated) {
@@ -93,7 +96,7 @@ public static void setIndicateurocalBoolean(boolean indicateurocalBoolean) {
 }
 	
 public static void refreshIndicateur() {
-	indicateurVocal=new IndicateurVocal(IndicateurVocalBoolean);
+	indicateurVocal=new IndicateurVocal();
 
 	
 }
@@ -370,6 +373,18 @@ public static void refreshIndicateur() {
 				*/
 
 		}
+	}
+
+	public static char getIndicateurocalState() {
+		// TODO Auto-generated method stub
+		return IndicateurVocalEtat;
+	}
+
+	public static void setIndicateurocalState(char state) {
+		// TODO Auto-generated method stub
+		IndicateurVocalEtat=state;
+		curentFenetre.refreshIndicateurVocal();
+		
 	}
 
 	

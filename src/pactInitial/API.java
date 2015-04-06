@@ -102,6 +102,8 @@ public class API {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Main.setIndicateurocalState((char)2);
+			try{Thread.sleep(1000);}catch(Exception ex){}
 		}
 		//new JavaSoundRecorder();
 		return s;
@@ -117,7 +119,7 @@ public class API {
 			if(t.sendPost("lctdata/test0.wav",10000+1000*i)==null) System.out.println("pas fonctionnel "+i);
 			else System.err.println("**********"+i+"************");
 		}*/
-		t.sendPost("lctdata/test0.wav");
+		t.sendPost("lctdata/0a.wav");
 				
 	}
 }

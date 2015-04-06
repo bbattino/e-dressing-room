@@ -72,7 +72,8 @@ public class JavaSoundRecorder {
             line.open(format);
             line.start();   // start capturing
             System.out.print("enregistrement...");
-            Main.setIndicateurocalBoolean(true);
+           // Main.setIndicateurocalBoolean(true);
+            Main.setIndicateurocalState((char) 0);
             AudioSystem.write(new AudioInputStream(line), fileType, wavFile);
  
         } catch (LineUnavailableException ex) {ex.printStackTrace();
@@ -86,14 +87,20 @@ public class JavaSoundRecorder {
         line.stop();
         line.close();
         System.out.println("   fin de l'enregistrement");
-        Main.setIndicateurocalBoolean(false);
+       // Main.setIndicateurocalBoolean(false);
+        Main.setIndicateurocalState((char) 1);
         /****import DU main du module RVS***/
-        if(true){ //if(Main.apiActivated){
+        if(Main.apiActivated){
 			try {
 				//parole = api.sendPost("lctdata/test"+i+".wav");
 				parole = api.sendPostFromLCT("data/commandeVocale.wav");
 			} catch (Exception e) {
 				e.printStackTrace();
+				/*Main.setIndicateurocalState((char) 2);
+				System.err.println(Main.getIndicateurocalState());
+				try{Thread.sleep(2000);}catch(Exception ex){}
+				new JavaSoundRecorder(); */	//* Permet de continuer la reco vocale
+											//* si une requete n'a pas fonctioné
 			}
 			if(parole!=null){
 		ArrayList<String> commande = MethodeDeBase.creerCommande(parole); 
