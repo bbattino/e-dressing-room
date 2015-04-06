@@ -5,19 +5,22 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+
 //import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 //import javax.swing.JLabel;
 
+
 import audio.LecteurAudio;
 import pactInitial.ICalibration;
+import pactInitial.Main;
 
 public class FenetreCalibration extends JFrame implements ICalibration{
 
 	private static final long serialVersionUID = 1L;
 	private float xMax,yMax,xMin,yMin;
 	private int xMaxEcran=1360 ,yMaxEcran=800;
-	float ax,ay,bx,by;
+	//float ax,ay,bx,by;
 	private String path = "data/handPosition.txt";
 
 
@@ -31,8 +34,7 @@ public class FenetreCalibration extends JFrame implements ICalibration{
 	}
 	@Override
 	public float[] getFloatSeparated(String s) {
-		
-		
+			
 			String xString="";
 			String yString="";
 			String CurentWord = "";
@@ -54,36 +56,45 @@ public class FenetreCalibration extends JFrame implements ICalibration{
 	}
 
 	@Override
-	public void calculateCoeff() {
-		this.ax=(float) (-(xMaxEcran+0.0)/(xMax-xMin));
-		this.bx=(float) -xMax*this.ax;
-		this.ay=(float) (-(yMaxEcran+0.0)/(yMax-yMin));
-		this.by=(float) -yMax*this.ay;
+	public String calculateCoeff() {
+		String coeffString = "";
+		float a=(float) (-(xMaxEcran+0.0)/(xMax-xMin));
+		coeffString+=a;
+		Main.ax=a;
+		float b=(float) -xMax*a;
+		coeffString+=b;
+		Main.bx=(float) b;
+		
+		a=(float) (-(yMaxEcran+0.0)/(yMax-yMin));
+		coeffString+=a;
+		Main.ay=a;
+		b=(float) -yMax*a;
+		Main.by=b;
+		return coeffString+b;
 	}
 
 	@Override
 	public void waitForHand() {
-		/*System.out.println("mu");
+		System.out.println("son : mise main haut gauche");
 		new LecteurAudio(""); // mettez en haut gauche jusqu'au bip
-		try {Thread.sleep(3000);} 
+		try {Thread.sleep(4000);} 
 		catch (InterruptedException e) {e.printStackTrace();}
 		float[] position = getFloatSeparated(lectureFichier());
 		xMin=position[0];yMin=position[1];
-		System.out.println(""+xMin+" "+yMin);
+		System.out.println("son : mise main haut gauche "+xMin+" "+yMin);
 		
 		new LecteurAudio("");//BIP
 		System.out.println("fin bip");
 		new LecteurAudio("");// mettez en bas droite jusqy'au bip
-		try {Thread.sleep(10000);} 
+		try {Thread.sleep(4000);} 
 		catch (InterruptedException e) {e.printStackTrace();}
 		position = getFloatSeparated(lectureFichier());
 		xMax=position[0];yMax=position[1];
 		System.out.println(""+xMax+" "+yMax);
 		
-		calculateCoeff();
-		System.out.println(""+ax+" "+ay+" "+bx+" "+by);*/
+		System.out.println(calculateCoeff());
 		
-		new LecteurAudio("");
+		//new LecteurAudio("");
 			
 	}
 
