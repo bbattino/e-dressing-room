@@ -3,7 +3,9 @@ package rVS;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import mFCC_DTW.Mot;
+import mfccBis.Mot;
+
+//import mFCC_DTW.Mot;
 
 
 public class Dictionary {

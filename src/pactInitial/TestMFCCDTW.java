@@ -1,6 +1,7 @@
 package pactInitial;
 
-import mFCC_DTW.Mot;
+import mfccBis.Mot;
+//import mFCC_DTW.Mot;
 import rVS.Dictionary;
 
 public class TestMFCCDTW {

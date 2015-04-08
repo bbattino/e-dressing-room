@@ -3,7 +3,8 @@ package mFCC_DTW;
 public class Trame
 {
 	private byte[] trame;
-	private MFCC c = new MFCC(0, 0, 0);
+	//private MFCC c = new MFCC(0, 0, 0);
+	private MFCC c = new MFCC(13,16000, 26,512,false,0,false);
 	
 	public Trame(byte[] tab)
 	{

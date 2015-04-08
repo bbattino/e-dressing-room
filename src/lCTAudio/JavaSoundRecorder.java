@@ -2,9 +2,11 @@ package lCTAudio;
 
 import javax.sound.sampled.*;
 
+import mfccBis.Mot;
 import pactInitial.API;
 import pactInitial.Main;
-import mFCC_DTW.Mot;
+//import mFCC_DTW.Mot;
+
 import rVS.Dictionary;
 import tAL.MethodeDeBase;
 
