@@ -30,7 +30,7 @@ public class Main {
 	private static int numeroVetementChoisi=0;
 	
 	public static void main(String[] args) {
-
+		refreshParametres3D();
 		//if(audioActivated) dictionary =  new Dictionary();
 		new LecteurAudio("welcome.wav");
 		new Methodes1PPVCosinus();
@@ -414,6 +414,8 @@ public static void refreshIndicateur() {
 	}
 	/***** Après chaque modification des infos à passer au C, on réactualise dans le fichier ou le pipe ********/
 	private static void refreshParametres3D() {
+		int ouvert3D= fenetreAffichage3DOuverte ? 0:1;
+		int affichage= quitterAffichage3D ? 1:0;
 		
 		try {
 			new FileWriter(new File(filePathOpenGL)).close();
@@ -424,7 +426,7 @@ public static void refreshIndicateur() {
 		FileWriter writer = null;
 		try {
 			writer = new FileWriter(filePathOpenGL, true);
-			writer.write(""+quitterAffichage3D+" "+fenetreAffichage3DOuverte+" "+numeroVetementChoisi);
+			writer.write(""+affichage+" "+ouvert3D+" "+numeroVetementChoisi);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
