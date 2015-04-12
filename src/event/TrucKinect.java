@@ -19,13 +19,13 @@ public class TrucKinect {
 		this.bouton = bouton;
 	}
 	
-	public void requestHandPosition(){
+	/*public void requestHandPosition(){
 		new Send("requestHand");
 		String answer =Send.communicationString();
 		System.out.println(answer);
 		
 		
-	}
+	}*/
 	/***********************************************************************************
 	 * Retourne la position de la main non convertie par la Kinect pour utiliser des 
 	 * coefficiants d'optimisation calculés par l'interface graphique

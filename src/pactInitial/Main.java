@@ -15,7 +15,7 @@ import audio.LecteurAudio;
 
 public class Main {
 	public static boolean firstTShirt = true, firstRobe = true, firstPull = true, firstPantalon = true,apiActivated=true;
-	public static boolean handListenerActivated = false, tALActivated=false, audioActivated=false,mfccActivated=false;
+	public static boolean handListenerActivated = true, tALActivated=false, audioActivated=false,mfccActivated=false;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
 	//private static String filePathOpenGL = "C:/Users/Utilisateur/Documents/Kinect Studio/Samples/openglsquelette/commandeOuverture.txt";
@@ -29,8 +29,22 @@ public class Main {
 	private static boolean fenetreAffichage3DOuverte = false;
 	private static int numeroVetementChoisi=0;
 	
+	public static int x,y;
+	
 	public static void main(String[] args) {
 		refreshParametres3D();
+		Runnable r = new Runnable() {
+			
+			@Override
+			public void run() {
+				Send mes = new Send (" ");
+				mes.impressionString();
+				
+			}
+		};
+		Thread coo = new Thread(r);
+		coo.start();
+
 		//if(audioActivated) dictionary =  new Dictionary();
 		new LecteurAudio("welcome.wav");
 		new Methodes1PPVCosinus();
