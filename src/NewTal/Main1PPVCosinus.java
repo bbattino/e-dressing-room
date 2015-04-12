@@ -2,6 +2,8 @@ package NewTal;
 
 import java.util.ArrayList;
 
+import pactInitial.Main;
+
 
 public class Main1PPVCosinus {
 
@@ -15,7 +17,7 @@ public class Main1PPVCosinus {
 		new Methodes1PPVCosinus();
 	
 	
-	String parole="ajouter au panier";
+	String parole="";
 	
 	
 	int[] T = new int[Methodes1PPVCosinus.N]; 
@@ -31,9 +33,10 @@ public class Main1PPVCosinus {
 	
 	int indiceAction = Methodes1PPVCosinus.correspondanceClasseAction(indiceCommande);
 	
-	System.out.println(indiceCommande);
-	System.out.println(indiceAction); // indice a recuperer pour l'intégration
-	System.out.println(Methodes1PPVCosinus.toutesLesPhrases.get(indiceCommande));
+	//System.out.println("commande n∞ "+indiceCommande);
+	//System.out.println("action GUI n∞ "+indiceAction);
+	//System.out.println(Methodes1PPVCosinus.toutesLesPhrases.get(indiceCommande));
+	Main.actionEventAudio(indiceAction);
 	
 
 	}

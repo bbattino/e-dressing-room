@@ -2,13 +2,14 @@ package lCTAudio;
 
 import javax.sound.sampled.*;
 
+import NewTal.Methodes1PPVCosinus;
 import mfccBis.Mot;
 import pactInitial.API;
 import pactInitial.Main;
 //import mFCC_DTW.Mot;
 
 import rVS.Dictionary;
-import tAL.MethodeDeBase;
+//import tAL.MethodeDeBase;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -84,7 +85,7 @@ public class JavaSoundRecorder {
  
     void finish() 
     {   
-    	int indiceAction;
+    	int indiceAction = 0;
     	String parole = null;
         line.stop();
         line.close();
@@ -105,11 +106,30 @@ public class JavaSoundRecorder {
 											//* si une requete n'a pas fonctioné
 			}
 			if(parole!=null){
-		ArrayList<String> commande = MethodeDeBase.creerCommande(parole); 
+				//*** Ancien TAL***//
+	/*	ArrayList<String> commande = MethodeDeBase.creerCommande(parole); 
 
 	int[] T = MethodeDeBase.TableauAnalyse(commande);
 	int indiceCommande = MethodeDeBase.tableauLePlusProche(T);
-	indiceAction = MethodeDeBase.correspondanceClasseAction(indiceCommande);
+	indiceAction = MethodeDeBase.correspondanceClasseAction(indiceCommande);*/
+			
+				int[] T = new int[Methodes1PPVCosinus.N]; 
+				// T est le tableau d'analyse du mot qui contiendra les nombres d'occurences des mots de la phrase a analyser
+
+				
+				ArrayList<String> commande = Methodes1PPVCosinus.creerCommande(parole); 
+				/** commande est la arraylist de mots de la phrase a analyser*/
+				
+				T = Methodes1PPVCosinus.TableauAnalyse(commande);
+				
+				int indiceCommande = Methodes1PPVCosinus.tableauLePlusProche(T);
+				
+				indiceAction = Methodes1PPVCosinus.correspondanceClasseAction(indiceCommande);
+				
+				//System.out.println("commande n° "+indiceCommande);
+				//System.out.println("action GUI n° "+indiceAction);
+				//System.out.println(Methodes1PPVCosinus.toutesLesPhrases.get(indiceCommande));
+				Main.actionEventAudio(indiceAction);
 			}
 			else indiceAction=-2;
 	System.out.println(indiceAction);

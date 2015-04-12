@@ -254,8 +254,10 @@ public class FenetreCatalogue extends Fenetre implements ActionListener {
 			pull();
 		else if (e.getSource() == retourButton)
 			retour();
-		else if (e.getSource() == quitterButton)
+		else if (e.getSource() == quitterButton){
+			Main.setQuitterAffichage3D(true);
 			System.exit(0);
+		}
 		else if (e.getSource() == voirPanierButton)
 			voirPanier();
 		else if (e.getSource() == supprimerButton)

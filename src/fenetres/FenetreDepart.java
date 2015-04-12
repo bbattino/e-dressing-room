@@ -113,7 +113,7 @@ public class FenetreDepart extends Fenetre implements ActionListener{
 			
 			if(e.getSource()==commencerButton) 		commencer();
 			else if(e.getSource()==creditsButton)	credits();
-			else if(e.getSource()==quitterButton)	System.exit(0);
+			else if(e.getSource()==quitterButton)	{Main.setQuitterAffichage3D(true);System.exit(0);}
 			}
 
 		public static void main(String[] args) throws InterruptedException{

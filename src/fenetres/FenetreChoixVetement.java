@@ -111,7 +111,10 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 
 	public void essayer() {
 		dispose();
-		Main.modifierEtatFenetreOpenGL(1);
+		//Main.modifierEtatFenetreOpenGL(1);
+		Main.setOuverture(true);
+		String vetementString = imagePath.get(numeroChoix);
+		Main.setVetementChoisi(Integer.parseInt(vetementString.substring(vetementString.length()-1)));
 		new FenetreAffichageSynthese(imagePath.get(numeroChoix), userName, vetementType);
 	}
 
@@ -168,7 +171,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == quitterButton)			System.exit(0);
+		if (e.getSource() == quitterButton)			{Main.setQuitterAffichage3D(true);System.exit(0);}
 		else if (e.getSource() == essayerButton)	essayer();
 		else if (e.getSource() == suivantButton)	suivant();
 		else if (e.getSource() == precedentButton)	precedent();

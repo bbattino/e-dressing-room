@@ -11,7 +11,7 @@ public class Methodes1PPVCosinus
 	public static String[] B ; 
 	// B est un tableau de taille N qui contiendra les mots de notre base de données 
 
-	protected static int N ;
+	public static int N ;
 		// valeur a changer. 
 		// N est le nombre de lemmes ou de mots
 	
@@ -286,63 +286,35 @@ public class Methodes1PPVCosinus
 	
 	public static int correspondanceClasseAction(int indice)
 	{
-		int indiceClasseAction;
+	
 		
 		switch(indice)
 		{
 		case 0 :
-			indiceClasseAction = 0;
-		break;
-		
+			return 0;
 		case 1 :
-			indiceClasseAction = 0;
-		break;
-		
+			return 0;
 		case 3 :
-			indiceClasseAction = 10;
-		break;
-		
+			return 10;
 		case 2 :
-			indiceClasseAction = 2;
-		break;
-		
+			return 2;
 		case 8 :
-			indiceClasseAction = 5;
-		break;
-		
+			return 5;
 		case 7 :
-			indiceClasseAction = 22;
-		break;
-		
+			return 22;
 		case 6 :
-			indiceClasseAction = 17;
-		break;
-		
+			return  17;
 		case 35 :
-			indiceClasseAction = 13;
-		break;
-		
+			return 13;
 		case 32 :
-			indiceClasseAction = 20;
-		break;
-		
+			return 20;
 		case 33 :
-			indiceClasseAction = 20;
-		break;
-		
+			return 20;
 		case 37 :
-			indiceClasseAction = 20;
-		break;
-		
-		
+			return 20;
 		default :
-			indiceClasseAction = -1;
+			return -1;
 			
-		
-		
-		}
-		
-		return (indiceClasseAction);
-				
+		}			
 	}
 }

@@ -199,8 +199,10 @@ public class FenetreVisualisation extends Fenetre implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == quitterButton)
+		if (e.getSource() == quitterButton){
+			Main.setQuitterAffichage3D(true);
 			System.exit(0);
+		}
 		else if (e.getSource() == essayerButton)
 			essayer();
 		else if (e.getSource() == suivantButton)

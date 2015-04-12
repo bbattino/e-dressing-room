@@ -3,12 +3,14 @@ package pactInitial;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import rVS.Dictionary;
 import lCTAudio.JavaSoundRecorder;
 import fenetres.Fenetre;
 import fenetres.FenetreDepart;
 import fenetres.FenetreEntreeNom;
 import fenetres.IndicateurVocal;
+import NewTal.Methodes1PPVCosinus;
 import audio.LecteurAudio;
 
 public class Main {
@@ -16,17 +18,22 @@ public class Main {
 	public static boolean handListenerActivated = false, tALActivated=false, audioActivated=false,mfccActivated=false;
 	private static Fenetre curentFenetre;
 	public static int UserNumber;
-	private static String filePathOpenGL = "C:/Users/Utilisateur/Documents/Kinect Studio/Samples/openglsquelette/commandeOuverture.txt";
+	//private static String filePathOpenGL = "C:/Users/Utilisateur/Documents/Kinect Studio/Samples/openglsquelette/commandeOuverture.txt";
+	private static String filePathOpenGL = "C:/Users/Martin/Documents/Visual Studio 2013/Projects/Squelette/Squelette/commandes.txt";
 	private static Dictionary dictionary ;
 	private static IndicateurVocal indicateurVocal=new IndicateurVocal();
 	private static boolean IndicateurVocalBoolean=false;
 	private static char IndicateurVocalEtat=1;
 	public static float ax,ay,bx,by;
+	private static boolean quitterAffichage3D=false;
+	private static boolean fenetreAffichage3DOuverte = false;
+	private static int numeroVetementChoisi=0;
 	
 	public static void main(String[] args) {
 
 		//if(audioActivated) dictionary =  new Dictionary();
 		new LecteurAudio("welcome.wav");
+		new Methodes1PPVCosinus();
 		new FenetreDepart();
 		new JavaSoundRecorder();// a supprimer lors du pan4 pour eviter deux instanciations apreès audioActivated true 
 		if(tALActivated) new TestTAL();
@@ -103,6 +110,7 @@ public static void refreshIndicateur() {
 	public static void actionEventAudio(int numeroAction){
 		
 		if(numeroAction==2){
+			setQuitterAffichage3D(true);
 			System.exit(1);
 		}
 		
@@ -384,6 +392,51 @@ public static void refreshIndicateur() {
 		// TODO Auto-generated method stub
 		IndicateurVocalEtat=state;
 		curentFenetre.refreshIndicateurVocal();
+		
+	}
+
+	/**** Permet d'informer le code C++ si l'utilisateur veut quitter le programme depuis la GUI****/
+	public static void setQuitterAffichage3D(boolean quitterAffichage3D) {
+		Main.quitterAffichage3D = quitterAffichage3D;
+		refreshParametres3D();
+	}
+	
+	/***** Demande à l'affichage 3D de rendre la fenêtre OpenGL visible ou non ********/
+	public static void setOuverture(boolean ouvert){
+		fenetreAffichage3DOuverte=ouvert;
+		refreshParametres3D();
+	}
+	
+	/***** actualise le numéro du vêtement choisi par l'user sur la GUI *******/
+	public static void setVetementChoisi(int numeroVetement){
+		numeroVetementChoisi=numeroVetement;
+		refreshParametres3D();
+	}
+	/***** Après chaque modification des infos à passer au C, on réactualise dans le fichier ou le pipe ********/
+	private static void refreshParametres3D() {
+		
+		try {
+			new FileWriter(new File(filePathOpenGL)).close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(filePathOpenGL, true);
+			writer.write(""+quitterAffichage3D+" "+fenetreAffichage3DOuverte+" "+numeroVetementChoisi);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		
 	}
 

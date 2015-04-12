@@ -240,8 +240,10 @@ public class FenetreEntreeNom extends Fenetre {
 			terminer();return;}
 		if (e.getSource()==annulerButton){
 			annuler();return;}
-		if(e.getSource()==quitterButton)
+		if(e.getSource()==quitterButton){
+			Main.setQuitterAffichage3D(true);
 			System.exit(0);
+		}
 
 	}
 	
