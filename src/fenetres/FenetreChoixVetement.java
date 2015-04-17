@@ -29,7 +29,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 	private JButton essayerButton = new JButton("Essayer"),
 			quitterButton = new JButton("Quitter"),
 			suivantButton = new JButton("suivant"),
-			precedentButton = new JButton("précedent"),
+			precedentButton = new JButton("précédent"),
 			retourButton = new JButton("Retour"),
 			panierButton = new JButton("panier");
 	private ArrayList<JButton> listeBoutons = new ArrayList<JButton>();
@@ -114,9 +114,36 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 		//Main.modifierEtatFenetreOpenGL(1);
 		Main.setOuverture(true);
 		String vetementString = imagePath.get(numeroChoix);
-		Main.setVetementChoisi(Integer.parseInt(vetementString.substring(vetementString.length()-1)));
+		int numeroVetement = Integer.parseInt(vetementString.substring(vetementString.length()-5,vetementString.length()-4));
+
+		/***** Verification que le vêtement est en stock *******/
+		if(numeroVetement<8){ // Cas normal
+		Main.setVetementChoisi(numeroVetement);		
 		new FenetreAffichageSynthese(imagePath.get(numeroChoix), userName, vetementType);
+		}
+		else if (numeroVetement==8){ // 8 = code d'erreur du vêtement pas dispo
+			vetementNonDisponible();
+		}
+		else {
+			System.err.println("Erreur dans la classe FenêtreChoix : numéro demandé non reconnu :("+numeroVetement+")");
+			new FenetreCatalogue(userName); // On revient au catalogue
+			}
+			}
+	private void vetementNonDisponible() {
+		
+		String[] s = { "ok" };
+		Runnable[] r = { new Runnable() {
+			public void run() {
+				jopp.dispose();
+			}
+		} };
+		new LecteurAudio("recharge.wav");
+		@
+		jopp = new JOptionPanePerso("Vêtement non disponible", "data/greenTick.jpg", s, r);
+
+		
 	}
+	
 
 	public void suivant() {
 		contenu.remove(images.get(numeroChoix));
