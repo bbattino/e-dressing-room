@@ -110,7 +110,6 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 	
 
 	public void essayer() {
-		dispose();
 		//Main.modifierEtatFenetreOpenGL(1);
 		Main.setOuverture(true);
 		String vetementString = imagePath.get(numeroChoix);
@@ -118,8 +117,9 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 
 		/***** Verification que le vêtement est en stock *******/
 		if(numeroVetement<8){ // Cas normal
-		Main.setVetementChoisi(numeroVetement);		
-		new FenetreAffichageSynthese(imagePath.get(numeroChoix), userName, vetementType);
+			dispose();
+			Main.setVetementChoisi(numeroVetement);		
+			new FenetreAffichageSynthese(imagePath.get(numeroChoix), userName, vetementType);
 		}
 		else if (numeroVetement==8){ // 8 = code d'erreur du vêtement pas dispo
 			vetementNonDisponible();
@@ -138,8 +138,7 @@ public class FenetreChoixVetement extends Fenetre implements ActionListener {
 			}
 		} };
 		new LecteurAudio("recharge.wav");
-		@
-		jopp = new JOptionPanePerso("Vêtement non disponible", "data/greenTick.jpg", s, r);
+		jopp = new JOptionPanePerso("Vêtement non disponible", "data/ruptureDeStock.jpg", s, r);
 
 		
 	}
