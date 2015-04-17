@@ -2,8 +2,6 @@ package NewTal;
 
 import java.util.ArrayList;
 
-import pactInitial.Main;
-
 
 public class Main1PPVCosinus {
 
@@ -17,26 +15,25 @@ public class Main1PPVCosinus {
 		new Methodes1PPVCosinus();
 	
 	
-	String parole="";
+		String parole="je voudrais accéder au panier";
 	
 	
-	int[] T = new int[Methodes1PPVCosinus.N]; 
-	// T est le tableau d'analyse du mot qui contiendra les nombres d'occurences des mots de la phrase a analyser
+		int[] T = new int[Methodes1PPVCosinus.N]; 
+			// T est le tableau d'analyse du mot qui contiendra les nombres d'occurences des mots de la phrase a analyser
 
 	
-	ArrayList<String> commande = Methodes1PPVCosinus.creerCommande(parole); 
-	/** commande est la arraylist de mots de la phrase a analyser*/
+		ArrayList<String> commande = Methodes1PPVCosinus.creerCommande(parole); 
+			/** commande est la arraylist de mots de la phrase a analyser*/
 	
-	T = Methodes1PPVCosinus.TableauAnalyse(commande);
+		T = Methodes1PPVCosinus.TableauAnalyse(commande);
 	
-	int indiceCommande = Methodes1PPVCosinus.tableauLePlusProche(T);
+		int indiceCommande = Methodes1PPVCosinus.tableauLePlusProche(T);
 	
-	int indiceAction = Methodes1PPVCosinus.correspondanceClasseAction(indiceCommande);
+		int indiceAction = Methodes1PPVCosinus.correspondanceClasseAction(indiceCommande);
 	
-	//System.out.println("commande n∞ "+indiceCommande);
-	//System.out.println("action GUI n∞ "+indiceAction);
-	//System.out.println(Methodes1PPVCosinus.toutesLesPhrases.get(indiceCommande));
-	Main.actionEventAudio(indiceAction);
+		System.out.println(indiceCommande);
+		System.out.println(indiceAction); // indice a recuperer pour l'intégration
+		System.out.println(Methodes1PPVCosinus.toutesLesPhrases.get(indiceCommande));
 	
 
 	}
